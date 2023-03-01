@@ -1,0 +1,14 @@
+version: 2020.3.30f1
+
+Phụ:
+Menu: start, option.
+Option: Control, điều chỉnh âm lượng.
+Audio: 
+
+Chính:
+level Test
+level1
+level2
+level3
+
+Thiên: level test, option, level 1

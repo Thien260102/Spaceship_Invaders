@@ -1,0 +1,6 @@
+Tên đề tài: Spaceship Invaders
+Thể loại:   Shoot 'em up
+Mô tả chung: game bắn máy bay ngoài không gian
+
+Assets:
+- Spaceship: https://craftpix.net/freebies/free-spaceship-pixel-art-sprite-sheets/
