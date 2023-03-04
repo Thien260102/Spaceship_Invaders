@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
         float halfHeight = mainCamera.orthographicSize;
         float halfWidth = mainCamera.aspect * halfHeight;
+        Debug.Log(string.Format("Height: {0}, width: {1}", halfHeight * 2, halfWidth * 2));
 
         // limit moving area of player
         if (mousePosition.x < -halfWidth + Variables.Adjust)
@@ -33,11 +34,15 @@ public class PlayerController : MonoBehaviour
             mousePosition.y = halfHeight - Variables.Adjust;
         player.position = mousePosition;
 
-        // pressed mouse left
+        // pressed mouse left // Spaceship shooting
         if (Input.GetMouseButtonDown(0))
         {
-            Vector2 position = new Vector2(player.position.x, player.position.y + 1);
+            Vector2 position = new Vector2(player.position.x - Variables.Adjust / 3, player.position.y + Variables.Adjust);
             GameObject Instantiate_Bullet = Instantiate(bullet, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as GameObject;
+            Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+
+            position = new Vector2(player.position.x + Variables.Adjust / 3, player.position.y + Variables.Adjust); ;
+            Instantiate_Bullet = Instantiate(bullet, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as GameObject;
             Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
         }
 

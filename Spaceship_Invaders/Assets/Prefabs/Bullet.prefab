@@ -124,7 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
-  bullet: {fileID: 1891721268394253275}
+  Bullet: {fileID: 1891721268394253274}
+  Explosion: {fileID: 3546241938369737458, guid: 75b62a1de6cea2c469afa518419d7eaa, type: 3}
 --- !u!50 &1891721268394253275
 Rigidbody2D:
   serializedVersion: 4
