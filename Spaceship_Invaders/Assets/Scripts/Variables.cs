@@ -13,5 +13,14 @@ namespace Assets.Scripts
         public const float BulletSpeed = 0.2f;
 
         public const float ExplosionTime = 0.4f;
+
+        public const int HP_Enemy1 = 100;
+        public const int HP_Enemy2 = 500;
+        public const int HP_Enemy3 = 5000;
+        public const int HP_Enemy4 = 10000;
+        public const int HP_Enemy5 = 20000;
+        public const int HP_Enemy6 = 200000;
+
+        public const int DAMAGE_Bullet1 = 100;
     }
 }
