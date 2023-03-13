@@ -8,10 +8,18 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D player;
     public Camera mainCamera;
     public GameObject bullet;
+
+    public GameObject pauseMenu; 
+    private bool paused = false;
+
     // Update is called once per frame
     void Update()
     {
-        MouseController();
+        KeyboardController();
+        if (!paused)
+        {
+            MouseController();
+        }
     }
 
     void MouseController()
@@ -49,5 +57,18 @@ public class PlayerController : MonoBehaviour
 
         Cursor.visible = false; // invisible cursor
         Cursor.lockState = CursorLockMode.Confined;// block cursor into Game screen
+    }
+
+    void KeyboardController()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PauseMenuScript pauseMenuScript = pauseMenu.GetComponent<PauseMenuScript>();
+            pauseMenuScript.Show();
+
+            paused = true;
+            Cursor.visible = true; // invisible cursor
+            Cursor.lockState = CursorLockMode.None;// block cursor into Game screen
+        }
     }
 }
