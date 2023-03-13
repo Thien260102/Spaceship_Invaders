@@ -10,7 +10,8 @@ namespace Assets.Scripts
     public static class Variables
     {
         public const float Adjust = 0.5f;
-        public const float BulletSpeed = 0.2f;
+        public const float PlayerBulletSpeed = 0.2f;
+        public const float EnemyBulletSpeed = 0.1f;
 
         public const float ExplosionTime = 0.4f;
 

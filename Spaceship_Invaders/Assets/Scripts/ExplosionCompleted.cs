@@ -8,7 +8,7 @@ public class ExplosionCompleted : MonoBehaviour
 
     public void ExplosionEnd(int i)
     {
-        Debug.Log(i);
+        Debug.Log("ExplosionCompleted");
         Destroy(Explosion);
     }
 }

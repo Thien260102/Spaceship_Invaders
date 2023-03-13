@@ -5,7 +5,7 @@ using Assets.Scripts;
 
 public class BulletCollision : MonoBehaviour
 {
-    public Camera mainCamera;
+    private Camera mainCamera;
     private Rigidbody2D Bullet_Rigidbody;
     public GameObject Bullet;
     public GameObject Explosion;
@@ -19,14 +19,24 @@ public class BulletCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Bullet_Rigidbody.AddForce(new Vector2(0.0f, Variables.BulletSpeed), ForceMode2D.Impulse);
+        switch(Bullet.tag)
+        {
+            case "PlayerBullet":
+                Bullet_Rigidbody.AddForce(new Vector2(0.0f, Variables.PlayerBulletSpeed), ForceMode2D.Impulse);
+                break;
+
+            default:
+                Bullet_Rigidbody.AddForce(new Vector2(0.0f, -Variables.EnemyBulletSpeed), ForceMode2D.Impulse);
+                break;
+        }
+        
 
         float halfHeight = mainCamera.orthographicSize;
 
         Vector2 BulletPosition = this.transform.position;
         
         //bullet out of screen, so delete it.
-        if (BulletPosition.y > halfHeight)
+        if (BulletPosition.y > halfHeight || BulletPosition.y < -halfHeight)
         {
             Debug.Log("Bullet out of screen");
             Destroy(Bullet);
@@ -38,23 +48,31 @@ public class BulletCollision : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject obj = collision.gameObject;
-        if(obj.tag == "Enemy")
+
+        switch(obj.tag)
         {
-            Instantiate(Explosion, collision.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+            case "Enemy":
+                if(Bullet.tag == "PlayerBullet")
+                {
+                    Instantiate(Explosion, collision.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
 
-            Destroy(collision.gameObject);
-            Destroy(Bullet);
-            Debug.Log("Collision");
+                    Destroy(collision.gameObject);
+                    Destroy(Bullet);
+                    Debug.Log("Collision");
+                }
+                break;
+
+            default:
+                if(Bullet.tag != "PlayerBullet")
+                {
+                    Instantiate(Explosion, collision.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+
+                    Destroy(collision.gameObject);
+                    Destroy(Bullet);
+                    Debug.Log("GameOver");
+                }
+                break;
         }
-    }
 
-    private void ExplosionStart()
-    {
-        Invoke("DestroyObjects", Variables.ExplosionTime);
-    }
-
-    private void DestroyObjects()
-    {
-        Destroy(Explosion);
     }
 }
