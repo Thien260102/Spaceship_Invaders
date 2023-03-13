@@ -11,7 +11,7 @@ namespace Assets.Scripts
     {
         public const float Adjust = 0.5f;
         public const float PlayerBulletSpeed = 0.2f;
-        public const float EnemyBulletSpeed = 0.1f;
+        public const float EnemyBulletSpeed = 0.01f;
 
         public const float ExplosionTime = 0.4f;
 
@@ -23,5 +23,12 @@ namespace Assets.Scripts
         public const int HP_Enemy6 = 200000;
 
         public const int DAMAGE_Bullet1 = 100;
+
+        public const int Enemy1 = 0;
+        public const int Enemy2 = 1;
+        public const int Enemy3 = 2;
+        public const int Enemy4 = 3;
+        public const int Enemy5 = 4;
+        public const int Enemy6 = 5;
     }
 }
