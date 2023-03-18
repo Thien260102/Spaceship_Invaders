@@ -9,6 +9,9 @@ namespace Assets.Scripts
 {
     public static class Variables
     {
+        public const float ScreenHeight = 16.0f;
+        public const float ScreenWidth = 28.4f;
+
         public const float Adjust = 0.5f;
         public const float PlayerBulletSpeed = 0.2f;
         public const float EnemyBulletSpeed = 0.01f;

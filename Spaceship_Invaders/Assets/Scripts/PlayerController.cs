@@ -12,6 +12,11 @@ public class PlayerController : MonoBehaviour
     public GameObject pauseMenu; 
     private bool paused = false;
 
+    private void Start()
+    {
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -27,9 +32,8 @@ public class PlayerController : MonoBehaviour
         //get mouse position
         Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-        float halfHeight = mainCamera.orthographicSize;
-        float halfWidth = mainCamera.aspect * halfHeight;
-        Debug.Log(string.Format("Height: {0}, width: {1}", halfHeight * 2, halfWidth * 2));
+        float halfHeight = Variables.ScreenHeight / 2;
+        float halfWidth = Variables.ScreenWidth / 2;
 
         // limit moving area of player
         if (mousePosition.x < -halfWidth + Variables.Adjust)

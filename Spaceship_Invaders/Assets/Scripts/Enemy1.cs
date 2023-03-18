@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts;
 
-public class Enemy1 : MonoBehaviour
+public class Enemy1 : MonoBehaviour, IEnemy
 {
     float DeltaTime;
     public GameObject bullet;
-    int HP;
     public Rigidbody2D Body;
+
+    public int HP
+    {
+        get { return HP; }
+        set { }
+    }
+
     void Awake()
     {
-        Body = GetComponent<Rigidbody2D>();
         HP = Variables.HP_Enemy1;
+        Body = GetComponent<Rigidbody2D>();
         DeltaTime = 0;
     }
     // Update is called once per frame

@@ -31,7 +31,7 @@ public class BulletCollision : MonoBehaviour
         }
         
 
-        float halfHeight = mainCamera.orthographicSize;
+        float halfHeight = Variables.ScreenHeight / 2;
 
         Vector2 BulletPosition = this.transform.position;
         
@@ -56,7 +56,7 @@ public class BulletCollision : MonoBehaviour
                 {
                     Instantiate(Explosion, collision.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
 
-                    Destroy(collision.gameObject);
+                    collision.gameObject.SetActive(false);
                     Destroy(Bullet);
                     Debug.Log("Collision");
                 }
