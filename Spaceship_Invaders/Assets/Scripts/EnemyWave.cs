@@ -108,6 +108,7 @@ namespace Assets.Scripts
             {
                 Direction.x = 1;
                 IsTouchTheEndPoint = true;
+                return;
             }
 
             Vector2 position;
@@ -136,7 +137,21 @@ namespace Assets.Scripts
 
         private void ReciprocastingMovement() // EnemyWave is reciprocasting
         {
-            
+            Vector2 position;
+
+            for (int i = 0; i < CurrentEnemyWave.Count; i++)
+            {
+                position = CurrentEnemyWave[i].transform.position;
+                position += Direction * Variables.EnemyFlySpeed;
+
+                if (position.x > Variables.ScreenWidth / 2.0f)
+                    Direction.x = -1;
+                else if (position.x < -Variables.ScreenWidth / 2.0f)
+                    Direction.x = 1;
+
+                Debug.Log(position);
+                CurrentEnemyWave[i].transform.position = position;
+            }
 
             Debug.Log("Reciprocasting");
         }    
