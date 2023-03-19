@@ -13,11 +13,34 @@ namespace Assets.Scripts
 
         public Vector2 StartPoint; // Initialize point, and start
         public Vector2 EndPoint;   // End point from start
+        private Vector2 Direction;
 
-        public Vector2 Range; // two direction: X-axis and Y-axis
+        public float ReciprocastingRange;
+
+        private bool IsTouchTheEndPoint = false;
+        private Vector2 OldPos;
 
         private List<GameObject> CurrentEnemyWave = null;
 
+
+        private void Awake()
+        {
+            // determine direction of EnemyWave to use.
+            if (StartPoint.x < EndPoint.x)
+                Direction.x = 1;
+            else if (StartPoint.x > EndPoint.x)
+                Direction.x = -1;
+            else
+                Direction.x = 0;
+
+            if (StartPoint.y < EndPoint.y)
+                Direction.y = 1;
+            else if (StartPoint.y > EndPoint.y)
+                Direction.y = -1;
+            else
+                Direction.y = 0;
+
+        }
 
         public void HandleUpdate()
         {
@@ -46,17 +69,13 @@ namespace Assets.Scripts
 
         private void Movement()
         {
-            float direction = 1.0f;
-            if (CurrentEnemyWave[CurrentEnemyWave.Count - 1].transform.position.x > Variables.ScreenWidth / 2)
-                direction = -1.0f;
-
-            Vector2 position;
-            foreach (GameObject e in CurrentEnemyWave)
+            if(IsTouchTheEndPoint == false)
             {
-                position = e.transform.position;
-                position.x += direction * 0.1f;
-
-                e.transform.position = position;
+                FlyIntoTheEndPoint();
+            }
+            else
+            {
+                ReciprocastingMovement();
             }
         }
 
@@ -64,13 +83,14 @@ namespace Assets.Scripts
         {
             CurrentEnemyWave = new List<GameObject>();
 
+            Vector2 position = StartPoint;
             for (int i = 0; i < CorrespondingEnemyQuantity.Length; i++)
             {
-                StartPoint.y += 2;
+                position.y += 1.5f;
                 for (int j = 0; j < CorrespondingEnemyQuantity[i]; j++)
                 {
-                    StartPoint.x -= 1;
-                    GameObject Instantiate_Enemy = Instantiate(enemyReference[i], StartPoint, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as GameObject;
+                    position.x -= 1;
+                    GameObject Instantiate_Enemy = Instantiate(enemyReference[i], position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as GameObject;
                     Instantiate_Enemy.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
 
                     CurrentEnemyWave.Add(Instantiate_Enemy);
@@ -78,6 +98,48 @@ namespace Assets.Scripts
 
             }
         }
+
+        
+        private void FlyIntoTheEndPoint() // EnemyWave start from outside and fly into the Screen.
+        {
+            OldPos = CurrentEnemyWave[0].transform.position;
+
+            if (Direction.x == 0 && Direction.y == 0)
+            {
+                Direction.x = 1;
+                IsTouchTheEndPoint = true;
+            }
+
+            Vector2 position;
+
+            for(int i = 0; i < CurrentEnemyWave.Count; i++)
+            {
+                position = CurrentEnemyWave[i].transform.position;
+                position += Direction * Variables.EnemyFlySpeed;
+
+                if((Direction.x > 0 && position.x > EndPoint.x)
+                    || (Direction.x < 0 && position.x < EndPoint.x))
+                {
+                    Direction.x = 0;
+                }
+
+                if ((Direction.y > 0 && position.y > EndPoint.y)
+                    || (Direction.y < 0 && position.y < EndPoint.y))
+                {
+                    Direction.y = 0;
+                }
+
+                CurrentEnemyWave[i].transform.position = position;
+            }
+            
+        }
+
+        private void ReciprocastingMovement() // EnemyWave is reciprocasting
+        {
+            
+
+            Debug.Log("Reciprocasting");
+        }    
 
         public void Destructor()
         {

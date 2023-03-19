@@ -33,5 +33,7 @@ namespace Assets.Scripts
         public const int Enemy4 = 3;
         public const int Enemy5 = 4;
         public const int Enemy6 = 5;
+
+        public const float EnemyFlySpeed = 0.05f;
     }
 }

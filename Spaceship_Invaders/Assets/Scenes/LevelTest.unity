@@ -820,9 +820,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CorrespondingEnemyQuantity: 050000000200000001000000020000000300000004000000
-  StartPoint: {x: -17, y: -3}
-  EndPoint: {x: 10, y: -3}
-  Range: {x: 3, y: 0}
+  StartPoint: {x: -5, y: 0}
+  EndPoint: {x: 10, y: -4}
+  ReciprocastingRange: 2
 --- !u!1 &421277204
 GameObject:
   m_ObjectHideFlags: 0
@@ -2759,7 +2759,7 @@ MonoBehaviour:
   CorrespondingEnemyQuantity: 00000000000000000a000000000000000000000000000000
   StartPoint: {x: -17, y: 0}
   EndPoint: {x: 10, y: 0}
-  Range: {x: 3, y: 0}
+  ReciprocastingRange: 0
 --- !u!1 &1236299765
 GameObject:
   m_ObjectHideFlags: 0
