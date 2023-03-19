@@ -62,7 +62,7 @@ public class BulletCollision : MonoBehaviour
                 }
                 break;
 
-            default:
+            case "Player":
                 if(Bullet.tag != "PlayerBullet")
                 {
                     Instantiate(Explosion, collision.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));

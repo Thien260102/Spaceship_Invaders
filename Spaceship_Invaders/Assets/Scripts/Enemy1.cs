@@ -6,6 +6,7 @@ using Assets.Scripts;
 public class Enemy1 : MonoBehaviour, IEnemy
 {
     float DeltaTime;
+    float maxTime;
     public GameObject bullet;
     public Rigidbody2D Body;
 
@@ -20,24 +21,26 @@ public class Enemy1 : MonoBehaviour, IEnemy
         HP = Variables.HP_Enemy1;
         Body = GetComponent<Rigidbody2D>();
         DeltaTime = 0;
+        maxTime = Random.Range(5, 10);
     }
     // Update is called once per frame
     void Update()
     {
-        if (DeltaTime < 1)
+        if (DeltaTime < maxTime)
             DeltaTime += Time.deltaTime;
         else
         {
             DeltaTime = 0;
-
-            Vector2 position = new Vector2(Body.position.x, Body.position.y - Variables.Adjust);
-            GameObject Instantiate_Bullet = Instantiate(bullet, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as GameObject;
-            Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+            Shooting();
+            maxTime = Random.Range(5, 10);
         }
     }
 
-    public void setPosition(Vector2 position)
+    private void Shooting()
     {
-        Body.position = position;
+        Vector2 position = new Vector2(Body.position.x, Body.position.y - Variables.Adjust);
+        GameObject Instantiate_Bullet = Instantiate(bullet, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as GameObject;
+        Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
     }
+
 }
