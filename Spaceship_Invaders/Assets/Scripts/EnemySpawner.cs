@@ -12,7 +12,7 @@ namespace Assets.Scripts
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField]
-        public GameObject[] enemyReference;
+        public Entity[] enemyReference;
 
         [SerializeField]
         public GameObject[] ListWave;
@@ -38,7 +38,7 @@ namespace Assets.Scripts
                 if (enemyWave.HasEnemies() == false)
                     enemyWave.Destructor();
                 else
-                    enemyWave.HandleUpdate();
+                    enemyWave.HandleUpdate(Time.deltaTime);
 
             }
             else

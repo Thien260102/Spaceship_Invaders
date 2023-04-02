@@ -18,9 +18,8 @@ namespace Assets.Scripts
         public float ReciprocastingRange;
 
         private bool IsTouchTheEndPoint = false;
-        private Vector2 OldPos;
 
-        private List<GameObject> CurrentEnemyWave = null;
+        private List<Entity> CurrentEnemyWave = null;
 
 
         private void Awake()
@@ -42,10 +41,10 @@ namespace Assets.Scripts
 
         }
 
-        public void HandleUpdate()
+        public void HandleUpdate(float deltaTime)
         {
             //Enemies are moving
-            Movement();
+            Movement(deltaTime);
 
             //Deleting death enemies
             PurgeDeletedObjects();
@@ -56,32 +55,32 @@ namespace Assets.Scripts
 
         private void PurgeDeletedObjects()
         {
-            foreach (GameObject o in CurrentEnemyWave.ToList())
+            foreach (Entity e in CurrentEnemyWave.ToList())
             {
-                if (o.activeSelf == false)
+                if (e.IsDeleted)
                 {
-                    CurrentEnemyWave.Remove(o);
-                    Destroy(o);
+                    CurrentEnemyWave.Remove(e);
+                    e.Destructor();
                     Debug.Log("Delete");
                 }
             }
         }
 
-        private void Movement()
+        private void Movement(float deltaTime)
         {
             if(IsTouchTheEndPoint == false)
             {
-                FlyIntoTheEndPoint();
+                FlyIntoTheEndPoint(deltaTime);
             }
             else
             {
-                ReciprocastingMovement();
+                ReciprocastingMovement(deltaTime);
             }
         }
 
-        public void InitEnemyWave(GameObject[] enemyReference)
+        public void InitEnemyWave(Entity[] enemyReference)
         {
-            CurrentEnemyWave = new List<GameObject>();
+            CurrentEnemyWave = new List<Entity>();
 
             Vector2 position = StartPoint;
             for (int i = 0; i < CorrespondingEnemyQuantity.Length; i++)
@@ -90,7 +89,7 @@ namespace Assets.Scripts
                 for (int j = 0; j < CorrespondingEnemyQuantity[i]; j++)
                 {
                     position.x -= 1;
-                    GameObject Instantiate_Enemy = Instantiate(enemyReference[i], position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as GameObject;
+                    Entity Instantiate_Enemy = Instantiate(enemyReference[i], position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Entity;
                     Instantiate_Enemy.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
 
                     CurrentEnemyWave.Add(Instantiate_Enemy);
@@ -100,9 +99,9 @@ namespace Assets.Scripts
         }
 
         
-        private void FlyIntoTheEndPoint() // EnemyWave start from outside and fly into the Screen.
+        private void FlyIntoTheEndPoint(float deltaTime) // EnemyWave start from outside and fly into the Screen.
         {
-            OldPos = CurrentEnemyWave[0].transform.position;
+            //OldPos = CurrentEnemyWave[0].transform.position;
 
             if (Direction.x == 0 && Direction.y == 0)
             {
@@ -116,7 +115,7 @@ namespace Assets.Scripts
             for(int i = 0; i < CurrentEnemyWave.Count; i++)
             {
                 position = CurrentEnemyWave[i].transform.position;
-                position += Direction * Variables.EnemyFlySpeed;
+                position += Direction * Variables.EnemyFlySpeed * deltaTime;
 
                 if((Direction.x > 0 && position.x > EndPoint.x)
                     || (Direction.x < 0 && position.x < EndPoint.x))
@@ -135,21 +134,21 @@ namespace Assets.Scripts
             
         }
 
-        private void ReciprocastingMovement() // EnemyWave is reciprocasting
+        private void ReciprocastingMovement(float deltaTime) // EnemyWave is reciprocasting
         {
             Vector2 position;
 
             for (int i = 0; i < CurrentEnemyWave.Count; i++)
             {
                 position = CurrentEnemyWave[i].transform.position;
-                position += Direction * Variables.EnemyFlySpeed;
+                position += Direction * Variables.EnemyFlySpeed * deltaTime;
 
                 if (position.x > Variables.ScreenWidth / 2.0f)
                     Direction.x = -1;
                 else if (position.x < -Variables.ScreenWidth / 2.0f)
                     Direction.x = 1;
 
-                Debug.Log(position);
+                //Debug.Log(position);
                 CurrentEnemyWave[i].transform.position = position;
             }
 

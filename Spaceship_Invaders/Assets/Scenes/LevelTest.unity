@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &76681314 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7612868707155839844, guid: e730c37fa66df0549a43a331046198df, type: 3}
-  m_PrefabInstance: {fileID: 7612868707213384454}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &255757146
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,12 +428,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyReference:
-  - {fileID: 6531502858018101229, guid: 68d60ba34419679499c01b7823c7820a, type: 3}
-  - {fileID: 7475306524053981490, guid: afaa125e047d71a4ab427cebcae3e008, type: 3}
-  - {fileID: 1288215435478263056, guid: bc205e2c06bd56f4aba3c2a86f8ec653, type: 3}
-  - {fileID: 6631556338641971525, guid: 176b08e4a2d81f741a787f9bec2d0853, type: 3}
-  - {fileID: 4332859279338094866, guid: c253370bbf5ea7443b6f3304fec61ff2, type: 3}
-  - {fileID: 3377282830142786565, guid: 8672f466fd058e14497b856dc67a59ba, type: 3}
+  - {fileID: 4402568336884997738, guid: 68d60ba34419679499c01b7823c7820a, type: 3}
+  - {fileID: -3625691331573499543, guid: afaa125e047d71a4ab427cebcae3e008, type: 3}
+  - {fileID: 6311761357621424984, guid: bc205e2c06bd56f4aba3c2a86f8ec653, type: 3}
+  - {fileID: 2451372747355611538, guid: 176b08e4a2d81f741a787f9bec2d0853, type: 3}
+  - {fileID: 4209799338455868416, guid: c253370bbf5ea7443b6f3304fec61ff2, type: 3}
+  - {fileID: -4038646389724718021, guid: 8672f466fd058e14497b856dc67a59ba, type: 3}
   ListWave:
   - {fileID: 255757146}
   - {fileID: 1058780654}
@@ -449,11 +444,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3411698911964571841, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: pauseMenu
-      value: 
-      objectReference: {fileID: 76681314}
-    - target: {fileID: 3411698911964571841, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+    - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 519420031}
@@ -463,11 +454,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3411698911964571842, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.562
+      value: 0.56
       objectReference: {fileID: 0}
     - target: {fileID: 3411698911964571842, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.791
+      value: -7.24
       objectReference: {fileID: 0}
     - target: {fileID: 3411698911964571842, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_LocalPosition.z

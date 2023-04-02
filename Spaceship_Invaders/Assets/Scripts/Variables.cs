@@ -9,14 +9,26 @@ namespace Assets.Scripts
 {
     public static class Variables
     {
+        public const int PLAYER = 0;
+        public const int ENEMY = 1;
+        public const int BULLET = 2;
+
         public const float ScreenHeight = 16.0f;
         public const float ScreenWidth = 28.4f;
 
         public const float Adjust = 0.5f;
-        public const float PlayerBulletSpeed = 0.2f;
-        public const float EnemyBulletSpeed = 0.01f;
 
-        public const float ExplosionTime = 0.4f;
+        #region Player
+
+        public const float PlayerBulletSpeed = 15.0f;
+
+
+        #endregion
+
+
+        #region Enemy
+
+        public const float EnemyBulletSpeed = 5.0f;
 
         public const int HP_Enemy1 = 100;
         public const int HP_Enemy2 = 500;
@@ -25,7 +37,6 @@ namespace Assets.Scripts
         public const int HP_Enemy5 = 20000;
         public const int HP_Enemy6 = 200000;
 
-        public const int DAMAGE_Bullet1 = 100;
 
         public const int Enemy1 = 0;
         public const int Enemy2 = 1;
@@ -34,6 +45,23 @@ namespace Assets.Scripts
         public const int Enemy5 = 4;
         public const int Enemy6 = 5;
 
-        public const float EnemyFlySpeed = 0.05f;
+        #endregion
+
+
+        #region Bullet
+        public const int ByPlayer = 10;
+        public const int ByEnemy = 20;
+
+        public const int DAMAGE_Bullet1 = 50;
+        public const int Damage_Bullet_Default = 50;
+
+        #endregion
+
+
+
+        public const float ExplosionTime = 0.4f;
+
+
+        public const float EnemyFlySpeed = 1.0f;
     }
 }
