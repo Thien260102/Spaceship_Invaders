@@ -9,6 +9,7 @@ public class PauseMenuScript : MonoBehaviour
     public List<GameObject> PauseMenuCanvas= new List<GameObject>();
 
     private bool isVisible = false;
+    private Player player;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class PauseMenuScript : MonoBehaviour
         {
             MainMenuCanvas.Add(c);
         }*/
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     public void NavigateTo(int targetCanvas)
@@ -42,6 +44,8 @@ public class PauseMenuScript : MonoBehaviour
         }
         isVisible = false;
         //ResumeGame
+
+        player.GameResume();
     }
 
     public bool isShowing()
