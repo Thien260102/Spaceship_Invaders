@@ -427,7 +427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2098325681
 Transform:
   m_ObjectHideFlags: 0
@@ -495,7 +495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3411698911964571842, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.24
+      value: -7.253
       objectReference: {fileID: 0}
     - target: {fileID: 3411698911964571842, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -528,6 +528,22 @@ PrefabInstance:
     - target: {fileID: 3411698911964571842, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411698911964571843, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+      propertyPath: m_Size.x
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411698911964571843, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3411698911964571843, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4723107735738678597, guid: 90568800d456c1a4b815b5c1eeed34c0, type: 3}
+    - target: {fileID: 3411698911964571843, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3411698911964571852, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_Name
