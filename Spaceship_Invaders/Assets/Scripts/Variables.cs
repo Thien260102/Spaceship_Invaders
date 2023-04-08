@@ -22,6 +22,13 @@ namespace Assets.Scripts
 
         public const float PlayerBulletSpeed = 15.0f;
 
+        // state
+        public const int Player_IDLE = 0;
+        public const int Player_MOVE = 1;
+        public const int Player_BOOST = 2;
+        public const int Player_DESTROYED = 4;
+
+        public const float Player_SPEED_BOOST = 1.0f;
 
         #endregion
 

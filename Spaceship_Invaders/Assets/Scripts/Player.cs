@@ -8,6 +8,9 @@ public class Player : Entity
     public Camera mainCamera;
     public Bullet bullet;
 
+    public Animator animator;
+    private Vector2 Velocity;
+
     public GameObject pauseMenu; 
     private bool paused = false;
 
@@ -26,14 +29,33 @@ public class Player : Entity
     // Update is called once per frame
     void Update()
     {
-        KeyboardController();
-        if (!paused)
-        {
-            MouseController2();
-        }
-
         if (IsDeleted)
-            Destroy(gameObject);
+        {
+            State = Variables.Player_DESTROYED;
+            Invoke("Destroyed", 1.0f);
+        }
+        else 
+        {
+            KeyboardController();
+            if (!paused)
+            {
+                MouseController2();
+            }
+
+            SetState();
+        } 
+
+        animator.SetInteger("State", State);
+    }
+
+    void SetState()
+    {
+        if (Velocity.x == 0 && Velocity.y == 0)
+            State = Variables.Player_IDLE;
+        else if (Velocity.y >= Variables.Player_SPEED_BOOST)
+            State = Variables.Player_BOOST;
+        else
+            State = Variables.Player_MOVE;
     }
 
     void MouseController()
@@ -82,6 +104,7 @@ public class Player : Entity
         Vector3 newbodyPosition = new Vector3(Body.position.x, Body.position.y, mousePosition.z);
         newbodyPosition += mouseMovement * sensitivity;
 
+        Velocity = mouseMovement / Time.deltaTime;
 
         float halfHeight = Variables.ScreenHeight / 2;
         float halfWidth = Variables.ScreenWidth / 2;
@@ -146,5 +169,11 @@ public class Player : Entity
 
         paused = false;
         Cursor.visible = false; // invisible cursor
+    }
+
+
+    void Destroyed()
+    {
+        Destroy(gameObject);
     }
 }

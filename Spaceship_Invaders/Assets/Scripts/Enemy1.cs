@@ -21,6 +21,9 @@ public class Enemy1 : Enemy
     // Update is called once per frame
     void Update()
     {
+        if (HP <= 0)
+            IsDeleted = true;
+
         if (DeltaTime < maxTime)
             DeltaTime += Time.deltaTime;
         else
@@ -39,5 +42,7 @@ public class Enemy1 : Enemy
         Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
         Instantiate_Bullet.Init(Variables.ByEnemy);
     }
+
+    
 
 }

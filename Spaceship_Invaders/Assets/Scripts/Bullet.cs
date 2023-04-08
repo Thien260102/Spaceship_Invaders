@@ -67,7 +67,7 @@ namespace Assets.Scripts
                 switch (collision.gameObject.tag)
                 {
                     case "Enemy":
-                        if (Type == Variables.ByPlayer)
+                        if (this.Type == Variables.ByPlayer)
                         {
                             Instantiate(Explosion, collision.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -79,11 +79,11 @@ namespace Assets.Scripts
                         break;
 
                     case "Player":
-                        if (Type == Variables.ByEnemy)
+                        if (this.Type == Variables.ByEnemy)
                         {
                             Instantiate(Explosion, collision.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
 
-                            Destroy(entity);
+                            entity.IsDeleted = true;
                             Destroy(gameObject);
                             Debug.Log("GameOver");
                         }
