@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31171acb6887123469188a23fd6c65f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CorrespondingEnemyQuantity: 050000000200000001000000020000000300000004000000
+  CorrespondingEnemyQuantity: 010000000100000001000000010000000100000001000000
   StartPoint: {x: -5, y: 0}
   EndPoint: {x: 10, y: -4}
   ReciprocastingRange: 2
@@ -253,30 +253,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &641502323 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3411698911964571852, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-  m_PrefabInstance: {fileID: 3411698912650114683}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &641502329
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641502323}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fd04cc39379a42a498ecc1628e0fb159, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1044093821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7612868707155839844, guid: e730c37fa66df0549a43a331046198df, type: 3}
@@ -458,8 +434,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyReference:
   - {fileID: 4402568336884997738, guid: 68d60ba34419679499c01b7823c7820a, type: 3}
-  - {fileID: -3625691331573499543, guid: afaa125e047d71a4ab427cebcae3e008, type: 3}
-  - {fileID: 6311761357621424984, guid: bc205e2c06bd56f4aba3c2a86f8ec653, type: 3}
+  - {fileID: -1163143195586125660, guid: afaa125e047d71a4ab427cebcae3e008, type: 3}
+  - {fileID: 569658467, guid: bc205e2c06bd56f4aba3c2a86f8ec653, type: 3}
   - {fileID: 2451372747355611538, guid: 176b08e4a2d81f741a787f9bec2d0853, type: 3}
   - {fileID: 4209799338455868416, guid: c253370bbf5ea7443b6f3304fec61ff2, type: 3}
   - {fileID: -4038646389724718021, guid: 8672f466fd058e14497b856dc67a59ba, type: 3}
@@ -473,10 +449,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 641502329}
     - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: pauseMenu
       value: 
@@ -528,22 +500,6 @@ PrefabInstance:
     - target: {fileID: 3411698911964571842, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3411698911964571843, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: m_Size.x
-      value: 0.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 3411698911964571843, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: m_Size.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 3411698911964571843, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 4723107735738678597, guid: 90568800d456c1a4b815b5c1eeed34c0, type: 3}
-    - target: {fileID: 3411698911964571843, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3411698911964571852, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_Name

@@ -28,8 +28,6 @@ namespace Assets.Scripts
         public const int Player_BOOST = 2;
         public const int Player_DESTROYED = 4;
 
-        public const float Player_SPEED_BOOST = 1.0f;
-
         #endregion
 
 
@@ -37,8 +35,8 @@ namespace Assets.Scripts
 
         public const float EnemyBulletSpeed = 5.0f;
 
-        public const int HP_Enemy1 = 100;
-        public const int HP_Enemy2 = 500;
+        public const int HP_Enemy1 = 1000;
+        public const int HP_Enemy2 = 2000;
         public const int HP_Enemy3 = 5000;
         public const int HP_Enemy4 = 10000;
         public const int HP_Enemy5 = 20000;

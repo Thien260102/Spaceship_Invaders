@@ -52,7 +52,7 @@ public class Player : Entity
     {
         if (Velocity.x == 0 && Velocity.y == 0)
             State = Variables.Player_IDLE;
-        else if (Velocity.y >= Variables.Player_SPEED_BOOST)
+        else if (Velocity.y > 0)
             State = Variables.Player_BOOST;
         else
             State = Variables.Player_MOVE;

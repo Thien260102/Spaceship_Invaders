@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7475306524053981485}
   - component: {fileID: 7475306524053981484}
   - component: {fileID: 7475306524053981491}
-  - component: {fileID: -3625691331573499543}
+  - component: {fileID: -1163143195586125660}
   m_Layer: 0
   m_Name: Enemy2
   m_TagString: Enemy
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7475306524053981490}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.71, y: 5.42, z: 0}
-  m_LocalScale: {x: 2.0383, y: 1.819, z: 1}
+  m_LocalScale: {x: 1.8717709, y: 1.6340077, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -132,7 +132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.79, y: 0.4}
   m_EdgeRadius: 0
---- !u!114 &-3625691331573499543
+--- !u!114 &-1163143195586125660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,8 +141,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7475306524053981490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c53663a334de9046a92c09a7334b10f, type: 3}
+  m_Script: {fileID: 11500000, guid: bf29277957e834545b5b412e5e7e51b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 7475306524053981484}
-  bullet: {fileID: -8668377855623765851, guid: 346f7023ce3162d40ae4ecba467f353b, type: 3}
+  bullet: {fileID: 4974306614864712385, guid: 3bd2649f1c8673b4aac7f1c3119824fe, type: 3}
