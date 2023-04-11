@@ -14,9 +14,6 @@ public class Player : Entity
     public GameObject pauseMenu; 
     private bool paused = false;
 
-    private Vector3 mousePositionDiffirential = Vector3.zero;
-    private Vector3 mousePositionBuffer = Vector3.zero;
-
     private Vector3 lastFrameMousePosition;
     public float sensitivity = 1.0f;
 
@@ -56,44 +53,6 @@ public class Player : Entity
             State = Variables.Player_BOOST;
         else
             State = Variables.Player_MOVE;
-    }
-
-    void MouseController()
-    {
-        //get mouse position
-        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition) - mousePositionDiffirential;
-
-        float halfHeight = Variables.ScreenHeight / 2;
-        float halfWidth = Variables.ScreenWidth / 2;
-
-        // limit moving area of player
-        if (mousePosition.x < -halfWidth + Variables.Adjust)
-            mousePosition.x = -halfWidth + Variables.Adjust;
-        else if (mousePosition.x > halfWidth - Variables.Adjust)
-            mousePosition.x = halfWidth - Variables.Adjust;
-        if (mousePosition.y < -halfHeight + Variables.Adjust)
-            mousePosition.y = -halfHeight + Variables.Adjust;
-        else if (mousePosition.y > halfHeight - Variables.Adjust)
-            mousePosition.y = halfHeight - Variables.Adjust;
-        Body.position = mousePosition;
-
-        // pressed mouse left // Spaceship shooting
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector2 position = new Vector2(Body.position.x - Variables.Adjust / 3, Body.position.y + Variables.Adjust);
-            Bullet Instantiate_Bullet = Instantiate(bullet, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Bullet;
-            Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-            Instantiate_Bullet.Init(Variables.ByPlayer);
-
-            position = new Vector2(Body.position.x + Variables.Adjust / 3, Body.position.y + Variables.Adjust); ;
-            Instantiate_Bullet = Instantiate(bullet, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Bullet;
-            Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-            Instantiate_Bullet.Init(Variables.ByPlayer);
-        }
-
-
-        Cursor.visible = false; // invisible cursor
-        Cursor.lockState = CursorLockMode.Confined;// block cursor into Game screen
     }
 
     void MouseController2()
@@ -150,8 +109,6 @@ public class Player : Entity
 
     void GamePaused()
     {
-        mousePositionBuffer = mainCamera.ScreenToWorldPoint(Input.mousePosition) - mousePositionDiffirential;
-
         PauseMenuScript pauseMenuScript = pauseMenu.GetComponent<PauseMenuScript>();
         pauseMenuScript.Show();
 
@@ -163,8 +120,9 @@ public class Player : Entity
 
     public void GameResume()
     {
-        //Keep player position
-        mousePositionDiffirential = mainCamera.ScreenToWorldPoint(Input.mousePosition) - mousePositionBuffer;
+        //Since movement is detected by mouse position difference, reset last mouse position here so
+        //there wont be a difference, then the player position wont jump.
+        lastFrameMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Time.timeScale = 1.0f;
 
         paused = false;
