@@ -16,6 +16,7 @@ public class Enemy1 : Enemy
         DeltaTime = 0;
         maxTime = Random.Range(2, 10);
         Body = GetComponent<Rigidbody2D>();
+        nextDestinationNode = 1;
     }
 
     // Update is called once per frame
@@ -32,6 +33,11 @@ public class Enemy1 : Enemy
             Shooting();
             maxTime = Random.Range(5, 10);
         }
+
+        if (nextDestinationNode < path.NodeCount())
+        {
+            Movement();
+        }
     }
 
     private void Shooting()
@@ -43,6 +49,5 @@ public class Enemy1 : Enemy
         Instantiate_Bullet.Init(Variables.ByEnemy);
     }
 
-    
 
 }
