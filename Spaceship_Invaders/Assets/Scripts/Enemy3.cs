@@ -15,6 +15,7 @@ namespace Assets.Scripts
             DeltaTime = 0;
             maxTime = Random.Range(2, 15);
             Body = GetComponent<Rigidbody2D>();
+            nextDestinationNode = 1;
         }
 
         // Update is called once per frame
@@ -30,6 +31,11 @@ namespace Assets.Scripts
                 DeltaTime = 0;
                 Shooting();
                 maxTime = Random.Range(5, 15);
+            }
+
+            if (nextDestinationNode < path.NodeCount())
+            {
+                Movement();
             }
         }
 

@@ -95,6 +95,7 @@ public class Player : Entity
 
 
         Cursor.visible = false; // invisible cursor
+        Cursor.lockState = CursorLockMode.Confined;// block cursor into Game screen
 
         lastFrameMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
     }
