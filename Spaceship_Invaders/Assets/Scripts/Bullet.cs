@@ -34,7 +34,7 @@ namespace Assets.Scripts
             {
                 case Variables.ByPlayer:
                     Position.y += Variables.PlayerBulletSpeed * Time.deltaTime;
-                    Debug.Log("Player shooting");
+                    //Debug.Log("Player shooting");
                     break;
 
                 default:
@@ -51,11 +51,11 @@ namespace Assets.Scripts
             //bullet out of screen, so delete it.
             if (BulletPosition.y > halfHeight || BulletPosition.y < -halfHeight)
             {
-                Debug.Log("Bullet out of screen");
+                //Debug.Log("Bullet out of screen");
                 Destroy(gameObject);
             }
 
-            Debug.Log("update");
+            //Debug.Log("update");
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -74,7 +74,7 @@ namespace Assets.Scripts
                             entity.DamageTaken(Damage);
 
                             Destroy(gameObject);
-                            Debug.Log("Collision");
+                            //Debug.Log("Collision");
                         }
                         break;
 

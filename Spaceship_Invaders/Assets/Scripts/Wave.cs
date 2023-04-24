@@ -31,7 +31,8 @@ namespace Assets.Scripts
 
     public class Wave : MonoBehaviour
     {
-        [SerializeField]
-        public List<SpawnSequence> spawnSequences;
+        //Time delay before spawning wave
+        [SerializeField] public float delayBeforeSpawn;
+        [SerializeField] public List<SpawnSequence> spawnSequences;
     }
 }

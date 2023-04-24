@@ -10,12 +10,14 @@ namespace Assets.Scripts
 
         int waveIndex, spawnSequenceIndex = 0;
 
+        bool waveDoneSpawning;
+
         List<Enemy> Enemies = new List<Enemy>();
 
         // Start is called before the first frame update
         void Start()
         {
-            StartCoroutine(SpawnWave(waves[0]));
+            StartCoroutine(Scenario());
         }
 
         // Update is called once per frame
@@ -37,12 +39,33 @@ namespace Assets.Scripts
             }
         }
 
+        public IEnumerator Scenario()
+        {
+            while (waveIndex < waves.Count)
+            {
+                waveDoneSpawning = false;
+                yield return new WaitForSeconds(waves[waveIndex].delayBeforeSpawn);
+                Debug.Log("Spawning wave: " + waveIndex.ToString());
+                StartCoroutine(SpawnWave(waves[waveIndex]));
+
+                //wait until wave down spawning and all enemies are dead, check every 0.2 sec
+                while (!waveDoneSpawning || Enemies.Count != 0)
+                {
+                    yield return new WaitForSeconds(0.2f);
+                }
+
+                waveDoneSpawning = false;
+                waveIndex++;
+            }
+            //level is done, do stuff
+            Debug.Log("level complete ");
+        }
+
         public IEnumerator SpawnWave(Wave wave)
         {
             int index = 0;
             while (index < wave.spawnSequences.Count)
             {
-                Debug.Log("Spawning Wave");
                 StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
                 index++;
                 if (index >= wave.spawnSequences.Count)
@@ -62,6 +85,7 @@ namespace Assets.Scripts
                 if(index < wave.spawnSequences.Count)
                     yield return new WaitForSeconds(wave.spawnSequences[index].delayPostSequence);
             }
+            waveDoneSpawning = true;
         }
 
         public IEnumerator SpawnSpawnSequence(SpawnSequence spawnSequence, int i)
@@ -76,7 +100,6 @@ namespace Assets.Scripts
 
         public IEnumerator SpawnEnemies(EnemySpawnInfo enemySpawnInfo, Path path)
         {
-            Debug.Log("CCCC");
             for (int i = 0; i < enemySpawnInfo.quantity; i++)
             {
                 Enemy Instantiate_Enemy = Instantiate(enemySpawnInfo.enemy, path.GetNodePosition(0), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));

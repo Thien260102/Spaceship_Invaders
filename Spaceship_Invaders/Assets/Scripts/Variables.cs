@@ -35,9 +35,9 @@ namespace Assets.Scripts
 
         public const float EnemyBulletSpeed = 5.0f;
 
-        public const int HP_Enemy1 = 1000;
-        public const int HP_Enemy2 = 2000;
-        public const int HP_Enemy3 = 5000;
+        public const int HP_Enemy1 = 100; //1000
+        public const int HP_Enemy2 = 200;  //2000
+        public const int HP_Enemy3 = 300;  //5000
         public const int HP_Enemy4 = 10000;
         public const int HP_Enemy5 = 20000;
         public const int HP_Enemy6 = 200000;
