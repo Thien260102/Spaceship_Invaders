@@ -23,6 +23,9 @@ namespace Assets.Scripts
     public class SpawnSequence
     {
         [SerializeField] public Path path;
+        //Use to make Enemies Orbit
+        [SerializeField] public Path OrbitPath;
+
         [SerializeField] public EnemySpawnInfo[] enemySpawnInfos;
         //Does this sequence happens parallel with the previous sequence or after?
         [SerializeField] public WaitBetweenSequenceType WaitType;

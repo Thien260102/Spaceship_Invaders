@@ -12,7 +12,7 @@ public class Enemy1 : Enemy
     {
         this.Init();
         HP = Variables.HP_Enemy1;
-
+        
         DeltaTime = 0;
         maxTime = Random.Range(2, 10);
         Body = GetComponent<Rigidbody2D>();
@@ -37,6 +37,13 @@ public class Enemy1 : Enemy
         if (nextDestinationNode < path.NodeCount())
         {
             Movement();
+        }
+        else if(OrbitPath != null)
+        {
+            if (nextNode < OrbitPath.NodeCount())
+                OrbitMovement();
+            else
+                nextNode = 0;
         }
     }
 

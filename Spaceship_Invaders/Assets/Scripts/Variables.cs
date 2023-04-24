@@ -62,7 +62,7 @@ namespace Assets.Scripts
 
         #endregion
 
-
+        public const float DistanceBetweenTwoEnemies = 0.8f;
 
         public const float ExplosionTime = 0.4f;
 

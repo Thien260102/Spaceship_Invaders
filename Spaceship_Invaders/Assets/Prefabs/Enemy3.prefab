@@ -146,3 +146,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 1288215435478263058}
   bullet: {fileID: 1004416390338961791, guid: 097c65200d4fea84caf9e911189f1e0a, type: 3}
+  path: {fileID: 0}
+  nextDestinationNode: 0

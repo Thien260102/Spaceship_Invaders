@@ -1,8 +1,5 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -16,9 +13,13 @@ namespace Assets.Scripts
         public Path path;
         public int nextDestinationNode;
 
+        public Path OrbitPath;
+        public int nextNode;
+
         public void Init()
         {
             ID = Variables.ENEMY;
+            nextNode = 0;
         }
 
 
@@ -32,6 +33,17 @@ namespace Assets.Scripts
                 nextDestinationNode++;
             }
         }
+
+        protected void OrbitMovement()
+        {
+            Vector2 destination = new Vector2(OrbitPath.GetNodePosition(nextNode).x, OrbitPath.GetNodePosition(nextNode).y);
+            Body.position = Vector2.Lerp(Body.position, destination, Variables.EnemyFlySpeed / 2 * Time.deltaTime);
+
+            if (Vector2.Distance(Body.position, destination) < 3f)
+            {
+                nextNode++;
+            }
+        }    
 
     }
 }

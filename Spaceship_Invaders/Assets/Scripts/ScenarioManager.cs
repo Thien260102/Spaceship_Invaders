@@ -8,7 +8,7 @@ namespace Assets.Scripts
     {
         [SerializeField] List<Wave> waves;
 
-        int waveIndex, spawnSequenceIndex = 0;
+        int waveIndex;// spawnSequenceIndex = 0;
 
         bool waveDoneSpawning;
 
@@ -98,17 +98,18 @@ namespace Assets.Scripts
             Debug.Log("Spawning Sequence: " + i.ToString());
             foreach (EnemySpawnInfo enemySpawnInfo in spawnSequence.enemySpawnInfos)
             {
-                StartCoroutine(SpawnEnemies(enemySpawnInfo, spawnSequence.path));
+                StartCoroutine(SpawnEnemies(enemySpawnInfo, spawnSequence.path, spawnSequence.OrbitPath));
             }
             yield return new WaitForSeconds(0);
         }
 
-        public IEnumerator SpawnEnemies(EnemySpawnInfo enemySpawnInfo, Path path)
+        public IEnumerator SpawnEnemies(EnemySpawnInfo enemySpawnInfo, Path path, Path orbitPath)
         {
             for (int i = 0; i < enemySpawnInfo.quantity; i++)
             {
                 Enemy Instantiate_Enemy = Instantiate(enemySpawnInfo.enemy, path.GetNodePosition(0), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
                 Instantiate_Enemy.path = path;
+                Instantiate_Enemy.OrbitPath = orbitPath;
                 Enemies.Add(Instantiate_Enemy);
                 yield return new WaitForSeconds(enemySpawnInfo.delayBetweenSpawn);
             }

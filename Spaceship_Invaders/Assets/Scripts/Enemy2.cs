@@ -38,6 +38,13 @@ namespace Assets.Scripts
             {
                 Movement();
             }
+            else if (OrbitPath != null)
+            {
+                if (nextNode < OrbitPath.NodeCount())
+                    OrbitMovement();
+                else
+                    nextNode = 0;
+            }
         }
 
         private void Shooting()
