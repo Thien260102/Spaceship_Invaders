@@ -74,13 +74,14 @@ namespace Assets.Scripts
                 {
                     yield return new WaitForSeconds(wave.spawnSequences[index].delayPostSequence);
 
-                    while (wave.spawnSequences[index].WaitType == WaitBetweenSequenceType.Parallel)
+                    while (index < wave.spawnSequences.Count &&
+                        wave.spawnSequences[index].WaitType == WaitBetweenSequenceType.Parallel)
                     {
                         StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
                         index++;
                     }
 
-                    if (Enemies.Count == 0)
+                    if (Enemies.Count == 0 && index < wave.spawnSequences.Count)
                     {
                         StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
                         index++;

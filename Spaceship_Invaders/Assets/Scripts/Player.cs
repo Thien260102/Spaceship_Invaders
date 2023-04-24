@@ -21,6 +21,9 @@ public class Player : Entity
     {
         Body = GetComponent<Rigidbody2D>();
         lastFrameMousePosition = Body.position;
+
+        Body.isKinematic = false; // turn on OncollisionEnter2d
+        Body.gravityScale = 0.0f;
     }
 
     // Update is called once per frame
@@ -29,6 +32,7 @@ public class Player : Entity
         if (IsDeleted)
         {
             State = Variables.Player_DESTROYED;
+            Body.isKinematic = true; // turn off OncollisionEnter2d
             Invoke("Destroyed", 1.0f);
         }
         else 
@@ -130,6 +134,17 @@ public class Player : Entity
         Cursor.visible = false; // invisible cursor
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GameObject Object = collision.gameObject;
+
+        if(Object.tag != "Player")
+        {
+            IsDeleted = true;
+        }
+
+        Debug.Log("Player collide enemy");
+    }
 
     void Destroyed()
     {
