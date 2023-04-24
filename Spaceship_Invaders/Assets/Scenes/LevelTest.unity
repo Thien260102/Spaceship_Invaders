@@ -302,21 +302,21 @@ MonoBehaviour:
     - enemy: {fileID: 4402568336884997738, guid: 68d60ba34419679499c01b7823c7820a, type: 3}
       quantity: 5
       delayBetweenSpawn: 0.2
-    WaitType: 1
+    WaitType: 0
     delayPostSequence: 0
   - path: {fileID: 1270428134}
     enemySpawnInfos:
     - enemy: {fileID: -1163143195586125660, guid: afaa125e047d71a4ab427cebcae3e008, type: 3}
       quantity: 5
       delayBetweenSpawn: 0.2
-    WaitType: 1
+    WaitType: 0
     delayPostSequence: 0
   - path: {fileID: 1436991069}
     enemySpawnInfos:
     - enemy: {fileID: 569658467, guid: bc205e2c06bd56f4aba3c2a86f8ec653, type: 3}
       quantity: 5
       delayBetweenSpawn: 0.2
-    WaitType: 1
+    WaitType: 0
     delayPostSequence: 0
 --- !u!4 &633684254
 Transform:

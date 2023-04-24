@@ -63,28 +63,33 @@ namespace Assets.Scripts
 
         public IEnumerator SpawnWave(Wave wave)
         {
-            int index = 0;
-            while (index < wave.spawnSequences.Count)
+            if (wave.spawnSequences.Count > 0)
             {
+                int index = 0;
+
                 StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
                 index++;
-                if (index >= wave.spawnSequences.Count)
+
+                while (index < wave.spawnSequences.Count)
                 {
-                    yield return new WaitForSeconds(0);
-                }
-                else while (index < wave.spawnSequences.Count &&
-                        wave.spawnSequences[index].WaitType == WaitBetweenSequenceType.Parallel)
+                    yield return new WaitForSeconds(wave.spawnSequences[index].delayPostSequence);
+
+                    while (wave.spawnSequences[index].WaitType == WaitBetweenSequenceType.Parallel)
                     {
                         StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
                         index++;
-                        if (index >= wave.spawnSequences.Count)
-                        {
-
-                        }
                     }
-                if(index < wave.spawnSequences.Count)
-                    yield return new WaitForSeconds(wave.spawnSequences[index].delayPostSequence);
+
+                    if (Enemies.Count == 0)
+                    {
+                        StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
+                        index++;
+                    }
+
+                    
+                }
             }
+            
             waveDoneSpawning = true;
         }
 
