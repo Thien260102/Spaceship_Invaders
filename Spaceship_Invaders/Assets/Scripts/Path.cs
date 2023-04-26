@@ -9,6 +9,11 @@ namespace Assets.Scripts
         [SerializeField]
         List<Vector3> PathNodes;
 
+        public void InitPath()
+        {
+            PathNodes = new List<Vector3>();
+        }
+
         public Vector3 GetNodePosition(int index)
         {
             if (index >= PathNodes.Count)

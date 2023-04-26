@@ -64,9 +64,9 @@ namespace Assets.Scripts
 
             if(entity != null)
             {
-                switch (collision.gameObject.tag)
+                switch (entity.ID)
                 {
-                    case "Enemy":
+                    case Variables.ENEMY:
                         if (this.Type == Variables.ByPlayer)
                         {
                             Instantiate(Explosion, collision.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
@@ -78,7 +78,7 @@ namespace Assets.Scripts
                         }
                         break;
 
-                    case "Player":
+                    case Variables.PLAYER:
                         if (this.Type == Variables.ByEnemy)
                         {
                             Instantiate(Explosion, collision.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));

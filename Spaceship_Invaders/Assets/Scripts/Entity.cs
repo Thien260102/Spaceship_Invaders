@@ -10,7 +10,7 @@ namespace Assets.Scripts
 {
     public class Entity : MonoBehaviour
     {
-        protected int ID { get; set; } //player, enemies, bullet
+        public int ID { get; set; } //player, enemies, bullet
 
         protected int HP { get; set; }
 
