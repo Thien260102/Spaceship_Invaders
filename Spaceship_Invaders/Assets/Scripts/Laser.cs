@@ -20,12 +20,17 @@ public class Laser : Weapon
 
     public GameObject Explosion;
 
+
+
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
         laserLine = this.GetComponent<LineRenderer>();
         animator = this.GetComponent<Animator>();
         Init(Variables.ByPlayer);
+
+        Debug.Log("Laser shoot");
     }
 
     public void Init(int type = 10, int damage = Variables.Damage_Laser_Default)

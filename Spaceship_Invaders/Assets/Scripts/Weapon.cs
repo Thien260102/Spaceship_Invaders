@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
 
     protected float DelayTimer; //timer
 
-    void Start()
+    protected void Start()
     {
         if (RateOfFire != 0)
         {
@@ -23,6 +23,7 @@ public class Weapon : MonoBehaviour
         }
         DelayTimer = 0.0f;
         Debug.Log(DelayBetweenShots.ToString());
+        //Debug.Log("Weapon shoot");
     }
 
     void Update()
