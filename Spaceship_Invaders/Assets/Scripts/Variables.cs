@@ -12,6 +12,8 @@ namespace Assets.Scripts
         public const int PLAYER = 0;
         public const int ENEMY = 1;
         public const int BULLET = 2;
+        public const int LASER = 3;
+        public const int MISSLE = 4;
 
         public const float ScreenHeight = 16.0f;
         public const float ScreenWidth = 28.4f;
@@ -21,6 +23,9 @@ namespace Assets.Scripts
         #region Player
 
         public const float PlayerBulletSpeed = 15.0f;
+        public const float PlayerMissleSpeed = 10.0f;
+        public const float PlayerMissleRotatingSpeed = 240.0f;
+        public const float PlayerMissleCircleCastRadius = 2.5f;
 
         // state
         public const int Player_IDLE = 0;
@@ -34,6 +39,7 @@ namespace Assets.Scripts
         #region Enemy
 
         public const float EnemyBulletSpeed = 5.0f;
+        public const float EnemyMissleSpeed = 5.0f;
 
         public const int HP_Enemy1 = 100; //1000
         public const int HP_Enemy2 = 200;  //2000
@@ -59,6 +65,18 @@ namespace Assets.Scripts
 
         public const int DAMAGE_Bullet1 = 50;
         public const int Damage_Bullet_Default = 50;
+
+        #endregion
+
+        #region Laser
+        public const int DAMAGE_Laser1 = 200;
+        public const int Damage_Laser_Default = 200;
+
+        #endregion
+
+        #region Missle
+        public const int DAMAGE_Missle1 = 25;
+        public const int Damage_Missle_Default = 25;
 
         #endregion
 

@@ -6,7 +6,7 @@ using Assets.Scripts;
 public class Player : Entity
 {
     public Camera mainCamera;
-    public Bullet bullet;
+    public Weapon weapon;
 
     public Animator animator;
     private Vector2 Velocity;
@@ -86,6 +86,17 @@ public class Player : Entity
         // pressed mouse left // Spaceship shooting
         if (Input.GetMouseButtonDown(0))
         {
+            weapon.Trigger();
+            //Laser laser = laserHolder.GetComponent<Laser>();
+            //laser.Shoot();
+
+            //MissleLauncher launcher = missleHolder.GetComponent<MissleLauncher>();
+            //launcher.Shoot();
+
+            //Gun gun = missleHolder.GetComponent<Gun>();
+            //gun.Shoot();
+
+            /*
             Vector2 position = new Vector2(Body.position.x - Variables.Adjust / 3, Body.position.y + Variables.Adjust);
             Bullet Instantiate_Bullet = Instantiate(bullet, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Bullet;
             Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
@@ -95,6 +106,7 @@ public class Player : Entity
             Instantiate_Bullet = Instantiate(bullet, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Bullet;
             Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
             Instantiate_Bullet.Init(Variables.ByPlayer);
+            */
         }
 
 
