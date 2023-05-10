@@ -12,7 +12,7 @@ namespace Assets.Scripts
     {
         public int ID { get; set; } //player, enemies, bullet
 
-        protected int HP { get; set; }
+        public int HP { get; set; }
 
         public Rigidbody2D Body;
 

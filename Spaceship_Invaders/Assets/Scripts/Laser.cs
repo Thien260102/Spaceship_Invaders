@@ -72,6 +72,7 @@ public class Laser : Weapon
             {
                 switch (entity.ID)
                 {
+                    case Variables.ASTEROID:
                     case Variables.ENEMY:
                         if (this.Type == Variables.ByPlayer)
                         {

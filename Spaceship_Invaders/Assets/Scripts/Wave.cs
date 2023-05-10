@@ -14,7 +14,7 @@ namespace Assets.Scripts
     [System.Serializable]
     public class EnemySpawnInfo
     {
-        [SerializeField] public Enemy enemy;
+        [SerializeField] public Entity entity;
         [SerializeField] public uint quantity;
         [SerializeField] public float delayBetweenSpawn; // delay between spawning each enemy
     }

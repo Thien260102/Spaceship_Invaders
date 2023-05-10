@@ -12,7 +12,7 @@ namespace Assets.Scripts
 
         bool waveDoneSpawning;
 
-        List<Enemy> Enemies = new List<Enemy>();
+        List<Entity> EnemiesOrAsteroid = new List<Entity>();
 
         // Start is called before the first frame update
         void Start()
@@ -28,11 +28,18 @@ namespace Assets.Scripts
 
         private void PurgeDeletedObjects()
         {
-            foreach (Enemy e in Enemies.ToArray())
+            foreach (Entity e in EnemiesOrAsteroid.ToArray())
             {
                 if (e.IsDeleted)
                 {
-                    Enemies.Remove(e);
+                    EnemiesOrAsteroid.Remove(e);
+
+                    if(e.ID == Variables.ASTEROID)
+                    {
+                        if(e.HP <= 0)
+                            ((Asteroid)e).MyDestroy(EnemiesOrAsteroid);
+                    }
+
                     e.Destructor();
                     Debug.Log("Delete");
                 }
@@ -49,7 +56,7 @@ namespace Assets.Scripts
                 StartCoroutine(SpawnWave(waves[waveIndex]));
 
                 //wait until wave down spawning and all enemies are dead, check every 0.2 sec
-                while (!waveDoneSpawning || Enemies.Count != 0)
+                while (!waveDoneSpawning || EnemiesOrAsteroid.Count != 0)
                 {
                     yield return new WaitForSeconds(0.2f);
                 }
@@ -81,7 +88,7 @@ namespace Assets.Scripts
                         index++;
                     }
 
-                    if (Enemies.Count == 0 && index < wave.spawnSequences.Count)
+                    if (EnemiesOrAsteroid.Count == 0 && index < wave.spawnSequences.Count)
                     {
                         StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
                         index++;
@@ -106,14 +113,34 @@ namespace Assets.Scripts
 
         public IEnumerator SpawnEnemies(EnemySpawnInfo enemySpawnInfo, Path path, Path orbitPath)
         {
-            for (int i = 0; i < enemySpawnInfo.quantity; i++)
+            if ((enemySpawnInfo.entity as Enemy) != null)
             {
-                Enemy Instantiate_Enemy = Instantiate(enemySpawnInfo.enemy, path.GetNodePosition(0), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
-                Instantiate_Enemy.path = path;
-                Instantiate_Enemy.OrbitPath = orbitPath;
-                Enemies.Add(Instantiate_Enemy);
-                yield return new WaitForSeconds(enemySpawnInfo.delayBetweenSpawn);
+                for (int i = 0; i < enemySpawnInfo.quantity; i++)
+                {
+                    Enemy Instantiate_Enemy = Instantiate(enemySpawnInfo.entity, path.GetNodePosition(0), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Enemy;
+                    Instantiate_Enemy.path = path;
+                    Instantiate_Enemy.OrbitPath = orbitPath;
+                    EnemiesOrAsteroid.Add(Instantiate_Enemy);
+                    yield return new WaitForSeconds(enemySpawnInfo.delayBetweenSpawn);
+                }
+
             }
+            else
+            {
+                Vector3 position = path.GetNodePosition(0);
+                for (int i = 0; i < enemySpawnInfo.quantity; i++)
+                {
+                    position.x += (i * 0.25f);
+                    position.y += (i * 0.25f);
+
+                    Asteroid Instantiate_Asteroid = Instantiate(enemySpawnInfo.entity, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Asteroid;
+                    Instantiate_Asteroid.path = path;
+                    EnemiesOrAsteroid.Add(Instantiate_Asteroid);
+                    yield return new WaitForSeconds(enemySpawnInfo.delayBetweenSpawn);
+                }
+            }
+
+
         }
     }
 }

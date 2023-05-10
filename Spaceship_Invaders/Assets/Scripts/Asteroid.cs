@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -10,7 +11,6 @@ namespace Assets.Scripts
         public Level level;
 
         public Path path;
-        int nextDestinationNode;
 
         public enum Level{
             Large,
@@ -22,8 +22,7 @@ namespace Assets.Scripts
         {
             Body = GetComponent<Rigidbody2D>();
             
-            ID = Variables.ENEMY;
-            nextDestinationNode = 1;
+            ID = Variables.ASTEROID;
             
             //init HP
             switch (level)
@@ -46,31 +45,29 @@ namespace Assets.Scripts
         {
             if(HP <= 0)
             {
-                MyDestroy();
+                IsDeleted = true;
             }
-            
-            if (path != null && nextDestinationNode < path.NodeCount())
-            {
-                Movement();
-            }
+
+            Movement();
         }
 
         void Movement()
         {
-            Vector2 destination = new Vector2(path.GetNodePosition(nextDestinationNode).x, path.GetNodePosition(nextDestinationNode).y);
-            Body.position = Vector2.Lerp(Body.position, destination, 0.1f * Time.deltaTime);
+            if (Mathf.Pow(Vector3.Distance(Body.position, path.GetNodePosition(0)), 2) >
+                Mathf.Pow(Vector3.Distance(path.GetNodePosition(1), path.GetNodePosition(0)), 2)
+                + Mathf.Pow(Vector3.Distance(Body.position, path.GetNodePosition(1)), 2))
+                IsDeleted = true;
+            
+            Vector2 direction = path.GetNodePosition(1) - path.GetNodePosition(0);
 
-            if (Vector2.Distance(Body.position, destination) < 3f)
-            {
-                nextDestinationNode++;
-            }
+            Body.position += direction * Time.deltaTime * Variables.AsteroidSpeed / 5;
+
         }
 
-        private void MyDestroy()
+        public void MyDestroy(List<Entity> EnemiesOrAsteroid)
         {
             Vector3 pos = Body.position;
 
-            Destroy(gameObject);
             
             switch (level)
             {
@@ -93,7 +90,7 @@ namespace Assets.Scripts
                     asteroid.Medium = Medium;
                     asteroid.Small = Small;
 
-                    
+                    EnemiesOrAsteroid.Add(asteroid);
 
                     asteroid = Instantiate(Medium, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -108,6 +105,8 @@ namespace Assets.Scripts
                     asteroid.level = Level.Medium;
                     asteroid.Medium = Medium;
                     asteroid.Small = Small;
+
+                    EnemiesOrAsteroid.Add(asteroid);
 
                     break;
 
@@ -129,7 +128,7 @@ namespace Assets.Scripts
                     asteroid.Medium = Medium;
                     asteroid.Small = Small;
 
-
+                    EnemiesOrAsteroid.Add(asteroid);
 
                     asteroid = Instantiate(Small, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -145,9 +144,14 @@ namespace Assets.Scripts
                     asteroid.Medium = Medium;
                     asteroid.Small = Small;
 
+                    EnemiesOrAsteroid.Add(asteroid);
 
                     break;
             }
+
+
+            //Destroy(gameObject);
+            //Destroy(path.gameObject);
 
         }
 

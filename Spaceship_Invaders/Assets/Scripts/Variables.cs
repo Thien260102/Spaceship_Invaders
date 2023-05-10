@@ -14,6 +14,7 @@ namespace Assets.Scripts
         public const int BULLET = 2;
         public const int LASER = 3;
         public const int MISSLE = 4;
+        public const int ASTEROID = 5;
 
         public const float ScreenHeight = 16.0f;
         public const float ScreenWidth = 28.4f;
@@ -77,6 +78,11 @@ namespace Assets.Scripts
         #region Missle
         public const int DAMAGE_Missle1 = 25;
         public const int Damage_Missle_Default = 25;
+
+        #endregion
+
+        #region Asteroid
+        public const float AsteroidSpeed = 0.8f;
 
         #endregion
 
