@@ -16,7 +16,12 @@ namespace Assets.Scripts
 
         public Rigidbody2D Body;
 
-        public bool IsDeleted { get; set; }
+        bool isDeleted = false;
+        public bool IsDeleted 
+        { 
+            get { return isDeleted; }
+            set { if (isDeleted != value) isDeleted = value; }
+        }
 
         public int State { get; set; }
 

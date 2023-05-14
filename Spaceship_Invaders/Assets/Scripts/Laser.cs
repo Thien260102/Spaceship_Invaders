@@ -44,7 +44,8 @@ public class Laser : Weapon
     {
         RaycastHit2D laserhit = Physics2D.Raycast(laserSpawnPoint.transform.position, Vector2.up);
         if (laserhit.collider == null)
-            length = maxLength; else 
+            length = maxLength; 
+        else 
             length = Mathf.Clamp(Vector2.Distance(laserSpawnPoint.transform.position, laserhit.point), 0f, 10f);
 
     }
@@ -68,7 +69,7 @@ public class Laser : Weapon
         if (laserhit.collider != null)
         {
             Entity entity = laserhit.collider.gameObject.GetComponent<Entity>();
-            if (entity != null)
+            if (entity != null && entity.IsDeleted == false)
             {
                 switch (entity.ID)
                 {

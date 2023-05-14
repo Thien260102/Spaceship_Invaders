@@ -14,7 +14,7 @@ public class Enemy1 : Enemy
         HP = Variables.HP_Enemy1;
         
         DeltaTime = 0;
-        maxTime = Random.Range(2, 10);
+        maxTime = Random.Range(1, 2);
         Body = GetComponent<Rigidbody2D>();
         nextDestinationNode = 1;
     }
@@ -31,7 +31,7 @@ public class Enemy1 : Enemy
         {
             DeltaTime = 0;
             Shooting();
-            maxTime = Random.Range(5, 10);
+            maxTime = Random.Range(1, 2);
         }
 
         if (nextDestinationNode < path.NodeCount())
@@ -50,10 +50,9 @@ public class Enemy1 : Enemy
     private void Shooting()
     {
         Vector2 position = new Vector2(Body.position.x, Body.position.y - Variables.Adjust);
-        Bullet Instantiate_Bullet = Instantiate(bullet as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Bullet;
-        
-        Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-        Instantiate_Bullet.Init(Variables.ByEnemy);
+        Vector2 direction = new Vector2(0, -1);
+        Shoot(position, direction);
+
     }
 
 

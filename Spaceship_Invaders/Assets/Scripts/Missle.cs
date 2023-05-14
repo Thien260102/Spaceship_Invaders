@@ -46,7 +46,7 @@ namespace Assets.Scripts
                 GameObject o = results[i].gameObject;
                 Entity e = results[i].gameObject.GetComponent<Entity>();
                 float distance = Vector2.Distance(this.transform.position, o.transform.position);
-                if (e.ID == Variables.ENEMY && distance < minDistance)
+                if ((e.ID == Variables.ENEMY || e.ID == Variables.ASTEROID) && distance < minDistance)
                 {
                     minDistance = distance;
                     target = o;
@@ -96,10 +96,11 @@ namespace Assets.Scripts
         {
             Entity entity = collision.GetComponent<Entity>();
 
-            if (entity != null)
+            if (entity != null && entity.IsDeleted == false)
             {
                 switch (entity.ID)
                 {
+                    case Variables.ASTEROID:
                     case Variables.ENEMY:
                         if (this.Type == Variables.ByPlayer)
                         {

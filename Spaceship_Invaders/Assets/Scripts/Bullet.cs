@@ -13,6 +13,8 @@ namespace Assets.Scripts
 
         public int Damage { get; set; }
 
+        public Vector2 Direction { get; set; } = new Vector2(0, -1);
+
         public GameObject Explosion;
 
         public void Init(int type = 10, int damage = Variables.Damage_Bullet_Default)
@@ -38,7 +40,7 @@ namespace Assets.Scripts
                     break;
 
                 default:
-                    Position.y += -Variables.EnemyBulletSpeed * Time.deltaTime;
+                    Position += Variables.EnemyBulletSpeed * Direction * Time.deltaTime;
                     break;
             }
 
@@ -61,8 +63,8 @@ namespace Assets.Scripts
         private void OnTriggerEnter2D(Collider2D collision)
         {
             Entity entity = collision.GetComponent<Entity>();
-
-            if(entity != null)
+            
+            if(entity != null && entity.IsDeleted == false)
             {
                 switch (entity.ID)
                 {
@@ -86,7 +88,6 @@ namespace Assets.Scripts
 
                             entity.IsDeleted = true;
                             Destroy(gameObject);
-                            Debug.Log("GameOver");
                         }
                         break;
                 }

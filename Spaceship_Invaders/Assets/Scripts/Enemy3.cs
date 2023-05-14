@@ -13,7 +13,7 @@ namespace Assets.Scripts
             HP = Variables.HP_Enemy3;
 
             DeltaTime = 0;
-            maxTime = Random.Range(2, 15);
+            maxTime = Random.Range(2, 5);
             Body = GetComponent<Rigidbody2D>();
             nextDestinationNode = 1;
         }
@@ -30,7 +30,7 @@ namespace Assets.Scripts
             {
                 DeltaTime = 0;
                 Shooting();
-                maxTime = Random.Range(5, 15);
+                maxTime = Random.Range(2, 5);
             }
 
             if (nextDestinationNode < path.NodeCount())
@@ -49,10 +49,17 @@ namespace Assets.Scripts
         private void Shooting()
         {
             Vector2 position = new Vector2(Body.position.x, Body.position.y - Variables.Adjust * 3);
-            Bullet Instantiate_Bullet = Instantiate(bullet as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Bullet;
+            Vector2 direction = new Vector2(position.x + 1, position.y - 1) - position;
 
-            Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-            Instantiate_Bullet.Init(Variables.ByEnemy);
+            Shoot(position, direction);
+
+            direction = new Vector2(position.x - 1, position.y - 1) - position;
+
+            Shoot(position, direction);
+
+            direction = new Vector2(position.x, position.y - 1) - position;
+
+            Shoot(position, direction);
         }
     }
 }

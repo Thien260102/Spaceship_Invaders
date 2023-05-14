@@ -15,6 +15,7 @@ namespace Assets.Scripts
         public const int LASER = 3;
         public const int MISSLE = 4;
         public const int ASTEROID = 5;
+        public const int ITEM = 6;
 
         public const float ScreenHeight = 16.0f;
         public const float ScreenWidth = 28.4f;
@@ -79,6 +80,16 @@ namespace Assets.Scripts
         public const int DAMAGE_Missle1 = 25;
         public const int Damage_Missle_Default = 25;
 
+        #endregion
+
+        #region
+        public enum ItemType
+        {
+            Star,
+            Fuel,
+        }
+
+        public const float ItemSpeed = 1.5f;
         #endregion
 
         #region Asteroid

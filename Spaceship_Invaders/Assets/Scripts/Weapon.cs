@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public static int Level = 1;
+
     public int ID { get; set; } //player, enemies, bullet
 
     public float RateOfFire; //How fast weapon shoot, shots per minute

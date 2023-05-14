@@ -4,9 +4,17 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
+    [System.Serializable]
+    public class Awards
+    {
+        [SerializeField] public Item item;
+        [SerializeField] public uint ratio;
+    }
+
     public class ScenarioManager : MonoBehaviour
     {
         [SerializeField] List<Wave> waves;
+        [SerializeField] List<Awards> awards;
 
         int waveIndex;// spawnSequenceIndex = 0;
 
@@ -34,14 +42,51 @@ namespace Assets.Scripts
                 {
                     EnemiesOrAsteroid.Remove(e);
 
-                    if(e.ID == Variables.ASTEROID)
+                    if (e.HP <= 0)
                     {
-                        if(e.HP <= 0)
-                            ((Asteroid)e).MyDestroy(EnemiesOrAsteroid);
+
+                        if (e is Asteroid)
+                        {
+                            Asteroid asteroid = ((Asteroid)e);
+
+                            asteroid.MyDestroy(EnemiesOrAsteroid);
+
+                            switch(asteroid.level)
+                            {
+                                case Asteroid.Level.Large:
+                                    HUD.Instance.Score += 3000;
+                                    break;
+
+                                case Asteroid.Level.Medium:
+                                    HUD.Instance.Score += 2000;
+                                    break;
+
+                                default:
+                                    HUD.Instance.Score += 1000;
+                                    break;
+                            }
+                        }
+                        else if (e is Enemy1)
+                            HUD.Instance.Score += 1000;
+                        else if (e is Enemy2)
+                            HUD.Instance.Score += 2000;
+                        else if (e is Enemy3)
+                            HUD.Instance.Score += 5000;
+
+
+                        foreach(var award in awards)
+                        {
+
+                            float ratio = Random.Range(0.0f, 1.0f);
+
+                            if (ratio <= award.ratio / 100.0f)
+                            {
+                                Instantiate(award.item, e.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+                            }
+                        }
                     }
 
                     e.Destructor();
-                    Debug.Log("Delete");
                 }
             }
         }
@@ -127,11 +172,11 @@ namespace Assets.Scripts
             }
             else
             {
-                Vector3 position = path.GetNodePosition(0);
                 for (int i = 0; i < enemySpawnInfo.quantity; i++)
                 {
-                    position.x += (i * 0.25f);
-                    position.y += (i * 0.25f);
+                    Vector3 position = path.GetNodePosition(0);
+                    position.x += (i * Random.Range(1f, 5f));
+                    position.y += (i * Random.Range(1f, 5f));
 
                     Asteroid Instantiate_Asteroid = Instantiate(enemySpawnInfo.entity, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Asteroid;
                     Instantiate_Asteroid.path = path;

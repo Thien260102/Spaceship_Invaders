@@ -43,7 +43,16 @@ namespace Assets.Scripts
             {
                 nextNode++;
             }
-        }    
+        }
 
+        protected void Shoot(Vector2 position, Vector2 direction)
+        {
+
+            Bullet Instantiate_Bullet = Instantiate(bullet as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Bullet;
+
+            Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+            Instantiate_Bullet.Init(Variables.ByEnemy);
+            Instantiate_Bullet.Direction = direction;
+        }
     }
 }
