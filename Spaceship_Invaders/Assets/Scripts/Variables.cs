@@ -16,9 +16,12 @@ namespace Assets.Scripts
         public const int MISSLE = 4;
         public const int ASTEROID = 5;
         public const int ITEM = 6;
+        public const int SKILL = 7;
 
         public const float ScreenHeight = 16.0f;
         public const float ScreenWidth = 28.4f;
+
+        public const float BackGroundSpeed = 1.3f;
 
         public const float Adjust = 0.5f;
 
@@ -36,7 +39,6 @@ namespace Assets.Scripts
         public const int Player_DESTROYED = 4;
 
         #endregion
-
 
         #region Enemy
 
@@ -60,13 +62,14 @@ namespace Assets.Scripts
 
         #endregion
 
-
         #region Bullet
         public const int ByPlayer = 10;
         public const int ByEnemy = 20;
 
         public const int DAMAGE_Bullet1 = 50;
         public const int Damage_Bullet_Default = 50;
+        public const int Damage_Bullet_Default_Level2 = 100;
+        public const int Damage_Bullet_Default_Level3 = 100;
 
         #endregion
 
@@ -82,18 +85,23 @@ namespace Assets.Scripts
 
         #endregion
 
-        #region
+        #region Item
         public enum ItemType
         {
             Star,
             Fuel,
         }
 
-        public const float ItemSpeed = 1.5f;
+        public const float ItemSpeed = 2.0f;
         #endregion
 
         #region Asteroid
         public const float AsteroidSpeed = 0.8f;
+
+        #endregion
+
+        #region Skill
+        public const int CircleShooting = 0;
 
         #endregion
 

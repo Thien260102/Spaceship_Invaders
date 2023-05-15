@@ -49,15 +49,15 @@ namespace Assets.Scripts
         private void Shooting()
         {
             Vector2 position = new Vector2(Body.position.x, Body.position.y - Variables.Adjust * 3);
-            Vector2 direction = new Vector2(position.x + 1, position.y - 1) - position;
+            Vector2 direction = new Vector2(1, -1) ;
 
             Shoot(position, direction);
 
-            direction = new Vector2(position.x - 1, position.y - 1) - position;
+            direction = new Vector2(- 1, - 1) ;
 
             Shoot(position, direction);
 
-            direction = new Vector2(position.x, position.y - 1) - position;
+            direction = new Vector2(0, - 1);
 
             Shoot(position, direction);
         }

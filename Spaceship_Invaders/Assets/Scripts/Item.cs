@@ -17,6 +17,8 @@ namespace Assets.Scripts
             Vector2 Position = Body.position;
 
             Position.y -= Variables.ItemSpeed * Time.deltaTime;
+            if(Type == Variables.ItemType.Star)
+                Position.y -= Variables.ItemSpeed * Time.deltaTime;
 
             Body.position = Position;
         }

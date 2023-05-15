@@ -47,6 +47,6 @@ public class Weapon : MonoBehaviour
 
     public virtual void Shoot() //Weapon shooting, spawn bullet and stuff, defined by individual weapon
     {
-
+        
     }
 }

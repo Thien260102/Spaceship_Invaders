@@ -4,17 +4,10 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    [System.Serializable]
-    public class Awards
-    {
-        [SerializeField] public Item item;
-        [SerializeField] public uint ratio;
-    }
-
+    
     public class ScenarioManager : MonoBehaviour
     {
         [SerializeField] List<Wave> waves;
-        [SerializeField] List<Awards> awards;
 
         int waveIndex;// spawnSequenceIndex = 0;
 
@@ -51,7 +44,7 @@ namespace Assets.Scripts
 
                             asteroid.MyDestroy(EnemiesOrAsteroid);
 
-                            switch(asteroid.level)
+                            switch (asteroid.level)
                             {
                                 case Asteroid.Level.Large:
                                     HUD.Instance.Score += 3000;
@@ -72,18 +65,10 @@ namespace Assets.Scripts
                             HUD.Instance.Score += 2000;
                         else if (e is Enemy3)
                             HUD.Instance.Score += 5000;
+                        else if (e is Boss)
+                            HUD.Instance.Score += 50000;
 
-
-                        foreach(var award in awards)
-                        {
-
-                            float ratio = Random.Range(0.0f, 1.0f);
-
-                            if (ratio <= award.ratio / 100.0f)
-                            {
-                                Instantiate(award.item, e.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
-                            }
-                        }
+                        ItemManager.Instance.RandomItem(e.transform.position);
                     }
 
                     e.Destructor();
@@ -163,12 +148,13 @@ namespace Assets.Scripts
                 for (int i = 0; i < enemySpawnInfo.quantity; i++)
                 {
                     Enemy Instantiate_Enemy = Instantiate(enemySpawnInfo.entity, path.GetNodePosition(0), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Enemy;
+                    Instantiate_Enemy.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+
                     Instantiate_Enemy.path = path;
                     Instantiate_Enemy.OrbitPath = orbitPath;
                     EnemiesOrAsteroid.Add(Instantiate_Enemy);
                     yield return new WaitForSeconds(enemySpawnInfo.delayBetweenSpawn);
                 }
-
             }
             else
             {

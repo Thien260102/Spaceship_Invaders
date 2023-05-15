@@ -37,21 +37,21 @@ public class Player : Entity
     // Update is called once per frame
     void Update()
     {
-        if (IsDeleted && State != Variables.Player_DESTROYED)
+        if (IsDeleted)
         {
-            StartCoroutine(Destroyed());
+            if(State != Variables.Player_DESTROYED)
+                StartCoroutine(Destroyed());
         }
         else 
         {
             KeyboardController();
-            if (!paused && !IsDeleted)
+            if (!paused)
             {
                 MouseController2();
             }
 
             SetState();
-        } 
-
+        }
     }
 
     void SetState()
@@ -190,15 +190,16 @@ public class Player : Entity
     }
 
 
-    IEnumerator Destroyed()
+    public IEnumerator Destroyed()
     {
         SetState();
         Body.isKinematic = true; // turn off OncollisionEnter2d
-
+        Debug.Log("Player Destroyed");
         HUD.Instance.Life--;
         Weapon.Level--;
         if (Weapon.Level < 1)
             Weapon.Level = 1;
+
         WeaponStateBar.Instance.Level = Weapon.Level;
 
         yield return new WaitForSeconds(1f);
@@ -211,6 +212,7 @@ public class Player : Entity
             IsDeleted = false;
             SetState();
 
+            FuelStateBar.Instance.RenderNewState();
         } 
             
     }

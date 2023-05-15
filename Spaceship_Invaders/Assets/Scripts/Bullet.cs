@@ -17,14 +17,11 @@ namespace Assets.Scripts
 
         public GameObject Explosion;
 
-        public void Init(int type = 10, int damage = Variables.Damage_Bullet_Default)
+        public void Init(int type = Variables.ByPlayer, int damage = Variables.Damage_Bullet_Default)
         {
             ID = Variables.BULLET;
             Type = type;
             Damage = damage;
-
-            Body = GetComponent<Rigidbody2D>();
-            Body.gravityScale = 0;
         }
 
         private void Update()
@@ -47,11 +44,13 @@ namespace Assets.Scripts
             Body.position = Position;
 
             float halfHeight = Variables.ScreenHeight / 2;
+            float halfWidth = Variables.ScreenWidth / 2;
 
             Vector2 BulletPosition = this.transform.position;
 
             //bullet out of screen, so delete it.
-            if (BulletPosition.y > halfHeight || BulletPosition.y < -halfHeight)
+            if (BulletPosition.y > halfHeight || BulletPosition.y < -halfHeight
+                || BulletPosition.x > halfWidth || BulletPosition.x < -halfWidth)
             {
                 //Debug.Log("Bullet out of screen");
                 Destroy(gameObject);
@@ -77,7 +76,9 @@ namespace Assets.Scripts
                             entity.DamageTaken(Damage);
 
                             Destroy(gameObject);
-                            //Debug.Log("Collision");
+
+                            if (entity is Boss)
+                                HUD.Instance.Score += 500;
                         }
                         break;
 

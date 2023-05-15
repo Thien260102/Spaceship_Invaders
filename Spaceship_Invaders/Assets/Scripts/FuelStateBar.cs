@@ -13,7 +13,11 @@ namespace Assets.Scripts
             private set { instance = value; }
         }
 
-        public List<GameObject> Levels = null;
+        [SerializeField]
+        Player player;
+
+        [SerializeField]
+        List<GameObject> Levels;
 
         int level = 0;
         public int Level
@@ -25,6 +29,14 @@ namespace Assets.Scripts
                 {
                     level = value > Levels.Count ? Levels.Count: value;
                     RenderNewState();
+
+                    if (level <= 0)
+                    {
+                        player.IsDeleted = true;
+                        StartCoroutine(player.Destroyed());
+
+                        level = Levels.Count;
+                    }
                 }
             }
         }
@@ -34,12 +46,12 @@ namespace Assets.Scripts
         {
             get { return distance; }
             set 
-            { 
+            {
                 distance = value;
 
                 if (distance >= 100)
                 {
-                    Level--;
+                    Level = Level <= 0 ? 0 : Level - 1;
                     distance = 0;
                 }
             }
