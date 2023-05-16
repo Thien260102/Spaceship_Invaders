@@ -6,15 +6,11 @@ namespace Assets.Scripts
 {
     public class WeaponStateBar : MonoBehaviour
     {
-        static WeaponStateBar instance = null;
-        public static WeaponStateBar Instance
-        {
-            get { return instance; }
-            private set { instance = value; }
-        }
+        [SerializeField]
+        Player player;
 
-        public List<GameObject> Levels = null;
-        public List<GameObject> Types = null;
+        List<GameObject> Levels = null;
+        List<GameObject> Types = null;
 
         int level = 0;
         public int Level
@@ -46,17 +42,30 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            if (instance == null) 
-                instance = this;
+            Levels = new List<GameObject>();
+            Types = new List<GameObject>();
+            foreach (Transform child in transform)
+            {
+                if(child.gameObject.name != "WeaponType")
+                    Levels.Add(child.gameObject);
+                else
+                {
+                    foreach (Transform e in child.transform)
+                        Types.Add(e.gameObject);
+                }
+            }
 
-            level = 1;
-            type = 0;
-            
+            level = Weapon.Level;
+            type = player.CurrentWeapon;
+
             RenderNewState();
         }
 
-
-
+        private void Update()
+        {
+            Level = Weapon.Level;
+            Type = player.CurrentWeapon;
+        }
 
         public void RenderNewState()
         {

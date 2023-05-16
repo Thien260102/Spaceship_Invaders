@@ -1061,9 +1061,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2630
-        y: 1466
-        width: 940
-        height: 130
+        y: 1475
+        width: 926
+        height: 121
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1144,10 +1144,10 @@ TextureImporter:
       name: Elements-01_36
       rect:
         serializedVersion: 2
-        x: 2652
-        y: 1368
-        width: 29
-        height: 84
+        x: 2656
+        y: 1372
+        width: 21
+        height: 74
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

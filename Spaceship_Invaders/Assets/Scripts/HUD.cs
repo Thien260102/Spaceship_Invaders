@@ -60,7 +60,7 @@ namespace Assets.Scripts
             }
         }
 
-        // Get score and Life, ...
+        // Get score and Life, ... from file
         private void Start()
         {
             if (instance == null) 

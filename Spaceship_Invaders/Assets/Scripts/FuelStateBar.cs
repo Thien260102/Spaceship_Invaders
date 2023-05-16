@@ -6,37 +6,19 @@ namespace Assets.Scripts
 {
     public class FuelStateBar : MonoBehaviour
     {
-        static FuelStateBar instance = null;
-        public static FuelStateBar Instance
+        List<GameObject> Contains;
+
+        int contain = 0;
+        public int Contain
         {
-            get { return instance; }
-            private set { instance = value; }
-        }
-
-        [SerializeField]
-        Player player;
-
-        [SerializeField]
-        List<GameObject> Levels;
-
-        int level = 0;
-        public int Level
-        {
-            get { return level; }
+            get { return contain; }
             set
             {
-                if (level != value)
+                if (contain != value)
                 {
-                    level = value > Levels.Count ? Levels.Count: value;
+                    contain = value > Contains.Count ? Contains.Count: value;
                     RenderNewState();
 
-                    if (level <= 0)
-                    {
-                        player.IsDeleted = true;
-                        StartCoroutine(player.Destroyed());
-
-                        level = Levels.Count;
-                    }
                 }
             }
         }
@@ -49,9 +31,9 @@ namespace Assets.Scripts
             {
                 distance = value;
 
-                if (distance >= 100)
+                if (distance >= 50)
                 {
-                    Level = Level <= 0 ? 0 : Level - 1;
+                    Contain = Contain <= 0 ? 0 : Contain - 1;
                     distance = 0;
                 }
             }
@@ -61,27 +43,32 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            if (instance == null)
-                instance = this;
+            Contains = new List<GameObject>();
+            foreach (Transform child in transform)
+            {
+                if (child.gameObject.name != "power")
+                    Contains.Add(child.gameObject);
+            }
 
-            level = 9;
+            Contain = Contains.Count;
+            
             RenderNewState();
         }
 
         private void Update()
         {
-            if (level <= 2)
+            if (contain <= 2)
                 RenderWarning();
         }
 
         public void RenderNewState()
         {
 
-            for (int i = 0; i < level; i++)
-                Levels[i].SetActive(true);
+            for (int i = 0; i < contain; i++)
+                Contains[i].SetActive(true);
 
-            for (int i = level; i < Levels.Count; i++)
-                Levels[i].SetActive(false);
+            for (int i = contain; i < Contains.Count; i++)
+                Contains[i].SetActive(false);
 
         }
 
@@ -94,18 +81,20 @@ namespace Assets.Scripts
 
                 if (Random.Range(0, 7) % 2 == 1)
                 {
-                    for (int i = 0; i < level; i++)
-                        Levels[i].SetActive(true);
+                    for (int i = 0; i < contain; i++)
+                        Contains[i].SetActive(true);
                 }
                 else
                 {
-                    for (int i = 0; i < level; i++)
-                        Levels[i].SetActive(false);
+                    for (int i = 0; i < contain; i++)
+                        Contains[i].SetActive(false);
                 }
 
                 DeltaTime = 0;
             }
         }
+
+        public void Fill() { contain = Contains.Count; }
 
     }
 }

@@ -8,6 +8,10 @@ public class Player : Entity
     public Camera mainCamera;
     public List<Weapon> weapons;
     int currentWeapon;
+    public int CurrentWeapon { get { return currentWeapon; } }
+
+    [SerializeField]
+    FuelStateBar fuel;
 
     public Animator animator;
     private Vector2 Velocity;
@@ -37,6 +41,12 @@ public class Player : Entity
     // Update is called once per frame
     void Update()
     {
+        if(fuel.Contain == 0)
+        {
+            IsDeleted = true;
+            fuel.Fill();
+        }
+
         if (IsDeleted)
         {
             if(State != Variables.Player_DESTROYED)
@@ -97,7 +107,7 @@ public class Player : Entity
         Body.position = newbodyPosition;
 
         // Adding distance to handle Fuel
-        FuelStateBar.Instance.Distance += Vector3.Distance(mousePosition, lastFrameMousePosition);
+        fuel.Distance += Vector3.Distance(mousePosition, lastFrameMousePosition);
 
         // pressed mouse left // Spaceship shooting
         if (Input.GetMouseButtonDown(0))
@@ -110,14 +120,14 @@ public class Player : Entity
             if (currentWeapon == weapons.Count)
                 currentWeapon = 0;
 
-            WeaponStateBar.Instance.Type = currentWeapon;
+            //WeaponStateBar.Instance.Type = currentWeapon;
         }
         else if(Input.GetMouseButtonDown(1)) // hack level weapon
         {
             Weapon.Level++;
             if (Weapon.Level > 3)
                 Weapon.Level = 3;
-            WeaponStateBar.Instance.Level = Weapon.Level;
+            //WeaponStateBar.Instance.Level = Weapon.Level;
         }
 
 
@@ -174,13 +184,13 @@ public class Player : Entity
                 Weapon.Level++;
                 if (Weapon.Level > 3)
                     Weapon.Level = 3;
-                WeaponStateBar.Instance.Level = Weapon.Level;
+                //WeaponStateBar.Instance.Level = Weapon.Level;
 
                 HUD.Instance.Score += 2000;
             }
             else if(item.Type == Variables.ItemType.Fuel)//(Object.name.Contains("Fuel"))
             {
-                FuelStateBar.Instance.Level++;
+                fuel.Contain++;
             }
 
             Destroy(Object);
@@ -200,7 +210,7 @@ public class Player : Entity
         if (Weapon.Level < 1)
             Weapon.Level = 1;
 
-        WeaponStateBar.Instance.Level = Weapon.Level;
+        //WeaponStateBar.Instance.Level = Weapon.Level;
 
         yield return new WaitForSeconds(1f);
         
@@ -212,7 +222,7 @@ public class Player : Entity
             IsDeleted = false;
             SetState();
 
-            FuelStateBar.Instance.RenderNewState();
+            fuel.RenderNewState();
         } 
             
     }

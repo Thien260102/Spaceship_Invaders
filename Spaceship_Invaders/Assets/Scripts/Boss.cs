@@ -20,7 +20,6 @@ namespace Assets.Scripts
             Body = GetComponent<Rigidbody2D>();
             nextDestinationNode = 1;
 
-            
         }
 
         protected virtual void Action()
