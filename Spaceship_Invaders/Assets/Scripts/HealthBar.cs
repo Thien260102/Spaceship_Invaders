@@ -7,7 +7,7 @@ namespace Assets.Scripts
     public class HealthBar: MonoBehaviour
     {
         [SerializeField]
-        Boss boss;
+        Entity entity;
     
         //GameObject State;
         Vector3 originalScaleY;
@@ -39,12 +39,12 @@ namespace Assets.Scripts
         {
             originalScaleY = gameObject.transform.localScale;
 
-            CurrentHP = totalHP = boss.HP;
+            CurrentHP = totalHP = entity.HP;
         }
 
         private void Update()
         {
-            CurrentHP = boss.HP;
+            CurrentHP = entity.HP;
         }
 
 

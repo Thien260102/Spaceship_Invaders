@@ -22,17 +22,36 @@ namespace Assets.Scripts
                 instance = this;
         }
 
-        public void CircleShoot(int quantity, Vector2 position)
+        public void CircleShoot(int Type, int quantity, Vector2 position, Vector2 direction)
         {
             if(Skills.Count > 0)
             {
-                Skill Instantiate_Skill = Instantiate(Skills[0] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Skill;
+                BeautifulShapeSkill Instantiate_Skill = Instantiate(Skills[0] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as BeautifulShapeSkill;
 
-                ((BeautifulShapeSkill)Instantiate_Skill).Circle(quantity, position);
-
+                Instantiate_Skill.Type = Type;
+                Instantiate_Skill.Circle(quantity, position, direction);
             }
         }
 
+        public void DivineDeparture(int Type, Vector2 position, Vector2 direction)
+        {
+            if (Skills.Count > 1) 
+            {
+                RageSkill Instantiate_Skill = Instantiate(Skills[1] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as RageSkill;
+                Instantiate_Skill.Type = Type;
+                Instantiate_Skill.DivineDeparture(direction);
+            }
+        }
+
+        public void EnergyWave(int Type, Vector2 position, Vector2 direction)
+        {
+            if (Skills.Count > 2)
+            {
+                Skill Instantiate_Skill = Instantiate(Skills[2] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Skill;
+
+                Instantiate_Skill.Init(Type, Variables.Damage_Bullet_Default, direction);
+            }
+        }
 
     }
 }

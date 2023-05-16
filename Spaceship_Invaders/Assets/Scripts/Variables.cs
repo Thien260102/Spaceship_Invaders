@@ -101,7 +101,12 @@ namespace Assets.Scripts
         #endregion
 
         #region Skill
-        public const int CircleShooting = 0;
+        public enum Skill_Type
+        {
+            CircleShooting = 0,
+            DivineDeparture = 1,
+            EnergyWave = 2,
+        }
 
         #endregion
 

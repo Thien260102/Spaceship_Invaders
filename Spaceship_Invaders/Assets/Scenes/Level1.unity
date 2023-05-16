@@ -626,6 +626,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1801614451661675022, guid: 5919a13a278892d408c503ad864a91fa, type: 3}
+      propertyPath: Skills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801614451661675022, guid: 5919a13a278892d408c503ad864a91fa, type: 3}
+      propertyPath: Skills.Array.data[1]
+      value: 
+      objectReference: {fileID: 6042002913395795748, guid: e566bb71ac084c947a2040008bd30050, type: 3}
+    - target: {fileID: 1801614451661675022, guid: 5919a13a278892d408c503ad864a91fa, type: 3}
+      propertyPath: Skills.Array.data[2]
+      value: 
+      objectReference: {fileID: 6674799402411709123, guid: d5e5d03bf6c2a514a922d1a12c1f368a, type: 3}
     - target: {fileID: 2076991354478107819, guid: 5919a13a278892d408c503ad864a91fa, type: 3}
       propertyPath: m_Name
       value: SkillManager
@@ -924,6 +936,38 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 133944736}
+    - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+      propertyPath: playerSkill.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+      propertyPath: playerSkill.Array.data[0].key
+      value: 113
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+      propertyPath: playerSkill.Array.data[1].key
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+      propertyPath: playerSkill.Array.data[2].key
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+      propertyPath: playerSkill.Array.data[3].key
+      value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+      propertyPath: playerSkill.Array.data[1].skill
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+      propertyPath: playerSkill.Array.data[2].skill
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
+      propertyPath: playerSkill.Array.data[3].skill
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3411698911964571842, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1293,7 +1337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2134380762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1308,8 +1352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 659619146}
+  - {fileID: 1899253305}
   - {fileID: 2048416343}
-  - {fileID: 659619146}
 --- !u!4 &2134380763
 Transform:
   m_ObjectHideFlags: 0

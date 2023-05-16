@@ -22,6 +22,9 @@ namespace Assets.Scripts
         [SerializeField]
         List<Items> items;
 
+        [SerializeField]
+        List<Items> SkillItems;
+
         private void Start()
         {
             if (instance == null)
