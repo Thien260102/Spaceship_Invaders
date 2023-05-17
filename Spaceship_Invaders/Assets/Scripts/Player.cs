@@ -14,7 +14,7 @@ namespace Assets.Scripts
 
     public class Player : Entity
     {
-        public Camera mainCamera;
+        private Camera mainCamera;
         public List<Weapon> weapons;
         int currentWeapon;
         public int CurrentWeapon { get { return currentWeapon; } }
@@ -48,6 +48,8 @@ namespace Assets.Scripts
             halfHeight = Variables.ScreenHeight / 2;
             halfWidth = Variables.ScreenWidth / 2;
             currentWeapon = 0;
+
+            mainCamera = Camera.main;
         }
 
         // Update is called once per frame
@@ -219,6 +221,22 @@ namespace Assets.Scripts
             Cursor.visible = false; // invisible cursor
         }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (IsDeleted)
+                return;
+
+            GameObject Object = collision.gameObject;
+
+            if (Object.tag == "Item")
+            {
+                Item item = collision.gameObject.GetComponent<Item>();
+                CollectItem(item.Type);
+
+                Destroy(Object);
+            }
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (IsDeleted)
@@ -228,29 +246,32 @@ namespace Assets.Scripts
 
             if (Object.tag == "Enemy")
                 IsDeleted = true;
-            else if (Object.tag == "Award")
+        }
+
+        private void CollectItem(Variables.ItemType ItemType)
+        {
+            switch (ItemType)
             {
-                Item item = collision.gameObject.GetComponent<Item>();
-                if (Object.name.Contains("Star"))
-                {
+                case Variables.ItemType.Star:
                     Weapon.Level++;
                     if (Weapon.Level > 3)
                         Weapon.Level = 3;
-                    //WeaponStateBar.Instance.Level = Weapon.Level;
 
                     HUD.Instance.Score += 2000;
-                }
-                else if (item.Type == Variables.ItemType.Fuel)//(Object.name.Contains("Fuel"))
-                {
-                    fuel.Contain++;
-                }
+                    
+                    break;
 
-                Destroy(Object);
+                case Variables.ItemType.Fuel:
+                    fuel.Contain++;
+                    break;
+
+                case Variables.ItemType.Coin:
+                    HUD.Instance.Coin++;
+                    break;
             }
 
-            Debug.Log("Player collide enemy");
+            Debug.Log(ItemType);
         }
-
 
         public IEnumerator Destroyed()
         {

@@ -7,7 +7,7 @@ TagManager:
   - MainMenuCanvas
   - Enemy
   - PlayerBullet
-  - Award
+  - Item
   layers:
   - Default
   - TransparentFX

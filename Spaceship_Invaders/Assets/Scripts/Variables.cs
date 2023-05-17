@@ -90,6 +90,7 @@ namespace Assets.Scripts
         {
             Star,
             Fuel,
+            Coin,
         }
 
         public const float ItemSpeed = 2.0f;

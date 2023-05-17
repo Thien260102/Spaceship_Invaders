@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 6042002913395795747}
+  isUnstoppable: 1
   Duration: 0.3
   Explosion: {fileID: 0}
 --- !u!50 &6042002913395795747

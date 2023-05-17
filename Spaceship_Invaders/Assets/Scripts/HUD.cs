@@ -17,6 +17,7 @@ namespace Assets.Scripts
 
         public TMP_Text Scores;
         public TMP_Text Lifes;
+        public TMP_Text Coins;
 
         int score = 0;
         public int Score
@@ -46,16 +47,16 @@ namespace Assets.Scripts
             }
         }
 
-        int boom = 0;
-        public int Boom
+        int coin = 0;
+        public int Coin
         {
-            get { return boom; }
+            get { return coin; }
             set
             {
-                if (boom != value)
+                if (coin != value)
                 {
-                    boom = value;
-                    
+                    coin = value;
+                    Coins.text = coin.ToString();
                 }
             }
         }

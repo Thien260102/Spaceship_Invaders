@@ -15,6 +15,9 @@ namespace Assets.Scripts
 
         protected bool isMovable = true;
 
+        [SerializeField]
+        bool isUnstoppable = false;
+
         public float Duration;
         float TotalTime = 0;
 
@@ -33,12 +36,12 @@ namespace Assets.Scripts
             Type = type;
             Damage = damage;
 
-            this.Direction = direction;
+            Direction = direction;
             float angle = Vector2.Angle(direction, new Vector2(1, 0));
-            if(direction.y < 0)
-                this.transform.rotation = Quaternion.AngleAxis(angle, -Vector3.forward);
+            if (direction.y < 0)
+                transform.rotation = Quaternion.AngleAxis(angle, -Vector3.forward);
             else
-                this.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             //Debug.Log("Angle: " + angle);
         }
 
@@ -118,7 +121,9 @@ namespace Assets.Scripts
                             if (entity is Boss)
                                 HUD.Instance.Score += Damage;
 
-                            HandleDestroy();
+
+                            if (!isUnstoppable)
+                                HandleDestroy();
                         }
                         break;
 
@@ -127,10 +132,14 @@ namespace Assets.Scripts
                         {
                             entity.IsDeleted = true;
 
-                            HandleDestroy();
+
+                            if (!isUnstoppable)
+                                HandleDestroy();
                         }
                         break;
                 }
+
+
             }
 
         }

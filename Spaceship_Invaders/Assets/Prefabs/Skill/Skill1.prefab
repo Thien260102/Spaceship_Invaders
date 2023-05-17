@@ -165,5 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 5706930047480853542}
+  isUnstoppable: 0
   Duration: 5
   Explosion: {fileID: 3546241938369737458, guid: b00df24188ea05342a07aeea675d7791, type: 3}

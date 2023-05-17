@@ -109,7 +109,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &3411698911964571847
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -154,7 +154,15 @@ MonoBehaviour:
   - {fileID: 1069222491}
   - {fileID: 382466461}
   - {fileID: 5738113763596100684}
-  playerSkill: []
+  playerSkill:
+  - key: 113
+    skill: 0
+  - key: 119
+    skill: 1
+  - key: 101
+    skill: 2
+  - key: 114
+    skill: 1
   fuel: {fileID: 0}
   animator: {fileID: 641502329}
   pauseMenu: {fileID: 0}
