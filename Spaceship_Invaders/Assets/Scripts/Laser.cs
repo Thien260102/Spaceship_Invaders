@@ -7,6 +7,7 @@ public class Laser : Weapon
 {
     LineRenderer laserLine;
     Animator animator;
+    LayerMask ignoreLayer;
 
     public GameObject laserSpawnPoint;
 
@@ -30,6 +31,7 @@ public class Laser : Weapon
         animator = this.GetComponent<Animator>();
         Init(Variables.ByPlayer);
 
+
         Debug.Log("Laser shoot");
     }
 
@@ -37,16 +39,17 @@ public class Laser : Weapon
     {
         Type = type;
         Damage = damage;
+        ignoreLayer = ((1 << 6) | (1 << 7) | (1 << 8));
     }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D laserhit = Physics2D.Raycast(laserSpawnPoint.transform.position, Vector2.up);
+        RaycastHit2D laserhit = Physics2D.Raycast(laserSpawnPoint.transform.position, Vector2.up, 20f, ~ignoreLayer);
         if (laserhit.collider == null)
             length = maxLength; 
         else 
-            length = Mathf.Clamp(Vector2.Distance(laserSpawnPoint.transform.position, laserhit.point), 0f, 10f);
+            length = Mathf.Clamp(Vector2.Distance(laserSpawnPoint.transform.position, laserhit.point), 0f, 20f);
 
     }
 
@@ -65,7 +68,7 @@ public class Laser : Weapon
         Debug.Log("Getting hit info");
         float halfHeight = Variables.ScreenHeight / 2;
         float maxDis = halfHeight - laserSpawnPoint.transform.position.y;
-        RaycastHit2D laserhit = Physics2D.Raycast(laserSpawnPoint.transform.position, Vector2.up, 10f);
+        RaycastHit2D laserhit = Physics2D.Raycast(laserSpawnPoint.transform.position, Vector2.up, 20f, ~ignoreLayer);
         if (laserhit.collider != null)
         {
             Entity entity = laserhit.collider.gameObject.GetComponent<Entity>();

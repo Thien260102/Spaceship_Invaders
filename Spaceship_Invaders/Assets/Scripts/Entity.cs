@@ -16,6 +16,8 @@ namespace Assets.Scripts
 
         public Rigidbody2D Body;
 
+        public GameObject Explosion;
+
         bool isDeleted = false;
         public bool IsDeleted 
         { 
@@ -40,6 +42,10 @@ namespace Assets.Scripts
 
         public void Destructor()
         {
+            if (Explosion != null)
+            {
+                Instantiate(Explosion, transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+            }
             Destroy(gameObject);
         }
 

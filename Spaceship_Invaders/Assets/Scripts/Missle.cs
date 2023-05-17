@@ -45,11 +45,14 @@ namespace Assets.Scripts
             {
                 GameObject o = results[i].gameObject;
                 Entity e = results[i].gameObject.GetComponent<Entity>();
-                float distance = Vector2.Distance(this.transform.position, o.transform.position);
-                if ((e.ID == Variables.ENEMY || e.ID == Variables.ASTEROID) && distance < minDistance)
+                if (e != null)
                 {
-                    minDistance = distance;
-                    target = o;
+                    float distance = Vector2.Distance(this.transform.position, o.transform.position);
+                    if ((e.ID == Variables.ENEMY || e.ID == Variables.ASTEROID) && distance < minDistance)
+                    {
+                        minDistance = distance;
+                        target = o;
+                    }
                 }
             }
 

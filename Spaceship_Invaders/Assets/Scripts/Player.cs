@@ -25,6 +25,9 @@ namespace Assets.Scripts
         [SerializeField]
         FuelStateBar fuel;
 
+        [SerializeField]
+        Exhaust exhaust;
+
         public Animator animator;
         private Vector2 Velocity;
 
@@ -271,6 +274,11 @@ namespace Assets.Scripts
             }
 
             Debug.Log(ItemType);
+        }
+
+        public void SetSmokeState(string state)
+        {
+            exhaust.SetSmokeState(state);
         }
 
         public IEnumerator Destroyed()

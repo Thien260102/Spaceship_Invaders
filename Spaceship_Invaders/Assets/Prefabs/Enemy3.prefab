@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 1288215435478263058}
+  Explosion: {fileID: 2361368940365892858, guid: c4d5d442023295a4cacca7f7f2131f1d, type: 3}
   bullet: {fileID: 1004416390338961791, guid: 097c65200d4fea84caf9e911189f1e0a, type: 3}
   path: {fileID: 0}
-  nextDestinationNode: 0
+  OrbitPath: {fileID: 0}

@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 2786836827929608496}
+  Explosion: {fileID: 8771695447643759940, guid: 2cf7ba3d5d707354d9dd8b071db9f66a, type: 3}
   bullet: {fileID: 0}
   path: {fileID: 0}
   OrbitPath: {fileID: 0}

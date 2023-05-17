@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4308942763677054373}
   - component: {fileID: 4308942763677054375}
   - component: {fileID: 1204887342}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f19108d38066154bb6868f439a8ca49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RateOfFire: 0
   laserSpawnPoint: {fileID: 529349566}
-  length: 0
+  maxLength: 0
   Explosion: {fileID: 3546241938369737458, guid: 75b62a1de6cea2c469afa518419d7eaa, type: 3}
