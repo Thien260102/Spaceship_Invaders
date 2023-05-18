@@ -11,7 +11,7 @@ namespace Assets.Scripts
 
         private void Awake()
         {
-            Debug.Log(Screen.width);
+            //Debug.Log(Screen.width);
 
             edgeCollider = gameObject.GetComponent<EdgeCollider2D>();
             CreateEdgeCollider();

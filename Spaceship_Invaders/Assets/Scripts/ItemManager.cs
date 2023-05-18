@@ -45,6 +45,20 @@ namespace Assets.Scripts
             }
         }
 
+        public void RandomItemHitBoss(Vector2 position)
+        {
+            foreach (var item in items)
+            {
+
+                float ratio = Random.Range(0.0f, 1.0f);
+
+                if (ratio <= item.ratio / 100.0f / 10.0f)
+                {
+                    Instantiate(item.item, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+                }
+            }
+        }
+
         public void CreateStar(Vector2 position)
         {
             Instantiate(items[0].item, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));

@@ -157,11 +157,8 @@ namespace Assets.Scripts
         void KeyboardController()
         {
             DictionarySkill skill = null;
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                GamePaused();
-            }
-            else if (Input.GetKeyDown(KeyCode.Q))
+            
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 skill = playerSkill.Find(x => x.key == KeyCode.Q);
             }
@@ -202,14 +199,9 @@ namespace Assets.Scripts
             }
         }
 
-        void GamePaused()
+        public void GamePaused()
         {
-            PauseMenuScript pauseMenuScript = pauseMenu.GetComponent<PauseMenuScript>();
-            pauseMenuScript.Show();
-
             paused = true;
-            Cursor.visible = true; // show cursor
-
             Time.timeScale = 0.0f;
         }
 
@@ -221,7 +213,6 @@ namespace Assets.Scripts
             Time.timeScale = 1.0f;
 
             paused = false;
-            Cursor.visible = false; // invisible cursor
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

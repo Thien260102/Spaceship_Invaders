@@ -15,7 +15,7 @@ namespace Assets.Scripts
 
         public Vector2 Direction { get; set; } = new Vector2(0, -1);
 
-        public GameObject Explosion;
+        //public GameObject Explosion;
 
         public void Init(int type = Variables.ByPlayer, int damage = Variables.Damage_Bullet_Default)
         {
@@ -78,7 +78,10 @@ namespace Assets.Scripts
                             Destroy(gameObject);
 
                             if (entity is Boss)
+                            {
                                 HUD.Instance.Score += 500;
+                                ItemManager.Instance.RandomItemHitBoss(entity.Body.position);
+                            }
                         }
                         break;
 

@@ -686,7 +686,7 @@ Transform:
   m_GameObject: {fileID: 7074896812875822010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.222, y: -7.46, z: 0}
-  m_LocalScale: {x: 0.41232735, y: 0.32786524, z: 1}
+  m_LocalScale: {x: 0.63775367, y: 0.48800004, z: 1}
   m_Children:
   - {fileID: 866951172412180007}
   - {fileID: 4204157513093502650}
@@ -765,7 +765,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  weapon: {fileID: 0}
 --- !u!1 &7494800292368086675
 GameObject:
   m_ObjectHideFlags: 0

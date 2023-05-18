@@ -17,11 +17,11 @@ namespace Assets.Scripts
 
         [SerializeField]
         bool isUnstoppable = false;
-
+        
         public float Duration;
         float TotalTime = 0;
 
-        public GameObject Explosion;
+        //public GameObject Explosion;
 
         private void Start()
         {

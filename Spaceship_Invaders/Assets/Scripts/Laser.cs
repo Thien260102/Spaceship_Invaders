@@ -84,6 +84,12 @@ public class Laser : Weapon
 
                             entity.DamageTaken(Damage);
                             Debug.Log("LaserHit");
+
+                            if (entity is Boss)
+                            {
+                                HUD.Instance.Score += 500;
+                                ItemManager.Instance.RandomItemHitBoss(entity.Body.position);
+                            }
                         }
                         break;
 

@@ -12,14 +12,40 @@ public class PauseMenuScript : MonoBehaviour
     private bool isVisible = false;
     private Player player;
 
+    bool State = false; // false: UnActive, true: Active
+
     // Start is called before the first frame update
     void Start()
     {
-        /*foreach (GameObject c in GameObject.FindGameObjectsWithTag("MainMenuCanvas"))
-        {
-            MainMenuCanvas.Add(c);
-        }*/
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            switch (State)
+            {
+                case false:
+                    Show();
+                    State = true;
+                    Cursor.visible = true; // show cursor
+                    player.GamePaused();
+                    break;
+
+                case true:
+                    Hide();
+                    State = false;
+                    Cursor.visible = false;
+                    player.GameResume();
+                    break;
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.C))
+        {
+            HUD.Instance.Coin++;
+        }
     }
 
     public void NavigateTo(int targetCanvas)
@@ -45,6 +71,7 @@ public class PauseMenuScript : MonoBehaviour
         }
         isVisible = false;
         //ResumeGame
+        Cursor.visible = false; // invisible cursor
 
         player.GameResume();
     }
@@ -60,9 +87,4 @@ public class PauseMenuScript : MonoBehaviour
         SceneManager.LoadScene(mainMenuScenePath, LoadSceneMode.Single);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

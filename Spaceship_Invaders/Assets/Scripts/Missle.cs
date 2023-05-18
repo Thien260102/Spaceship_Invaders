@@ -12,7 +12,7 @@ namespace Assets.Scripts
 
         public float RotationSpeed { get; set; }
 
-        public GameObject Explosion;
+        //public GameObject Explosion;
 
         GameObject target;
 
@@ -112,7 +112,11 @@ namespace Assets.Scripts
                             entity.DamageTaken(Damage);
 
                             Destroy(this.gameObject);
-                            //Debug.Log("Collision");
+                            if (entity is Boss)
+                            {
+                                HUD.Instance.Score += 500;
+                                ItemManager.Instance.RandomItemHitBoss(entity.Body.position);
+                            }
                         }
                         break;
 

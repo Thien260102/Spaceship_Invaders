@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-    private string[] scenePaths = {"Assets/Scenes/LevelTest.unity"};
+    private string[] scenePaths = {"Assets/Scenes/Level1.unity"};
     public List<GameObject> MainMenuCanvas= new List<GameObject>();
 
     // Start is called before the first frame update
