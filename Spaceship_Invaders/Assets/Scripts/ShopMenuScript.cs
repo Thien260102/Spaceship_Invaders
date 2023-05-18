@@ -65,7 +65,7 @@ namespace Assets.Scripts
                 for (int i = 0; i < fuel.Contain; i++)
                     EnergyStates[i].SetActive(true);
 
-                for (int i = fuel.Contain; i < EnergyStates.Count; i++)
+                for (int i = (int)fuel.Contain; i < EnergyStates.Count; i++)
                     EnergyStates[i].SetActive(false);
             }
         }

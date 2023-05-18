@@ -12,7 +12,33 @@ public class MissleLauncher : Weapon
     public override void Shoot()
     {
         Missle Instantiate_Missle = Instantiate(Missle, MissleSpawnPoint1.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Missle;
-
         Instantiate_Missle = Instantiate(Missle, MissleSpawnPoint2.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Missle;
+
+        switch (Level)
+        {
+            case 1:
+                {
+                    currentRateOfFire = RateOfFire * 1f;
+                    Instantiate_Missle.Init(Variables.ByPlayer, Variables.Damage_Missle_Default);
+                    return;
+                }
+            case 2:
+                {
+                    currentRateOfFire = RateOfFire * 1.25f;
+                    Instantiate_Missle.Init(Variables.ByPlayer, Variables.Damage_Bullet_Default_Level2);
+                    return;
+                }
+            case 3:
+                {
+                    currentRateOfFire = RateOfFire * 1.5f;
+                    Instantiate_Missle.Init(Variables.ByPlayer, Variables.Damage_Bullet_Default_Level3);
+                    return;
+                }
+            default:
+                {
+                    currentRateOfFire = RateOfFire * 1f;
+                    return;
+                }
+        }
     }
 }

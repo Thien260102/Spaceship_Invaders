@@ -8,8 +8,8 @@ namespace Assets.Scripts
     {
         List<GameObject> Contains;
 
-        int contain = 0;
-        public int Contain
+        float contain = 0;
+        public float Contain
         {
             get { return contain; }
             set
@@ -67,7 +67,7 @@ namespace Assets.Scripts
             for (int i = 0; i < contain; i++)
                 Contains[i].SetActive(true);
 
-            for (int i = contain; i < Contains.Count; i++)
+            for (int i = (int)contain; i < Contains.Count; i++)
                 Contains[i].SetActive(false);
 
         }

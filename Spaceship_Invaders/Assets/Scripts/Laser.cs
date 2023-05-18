@@ -31,7 +31,6 @@ public class Laser : Weapon
         animator = this.GetComponent<Animator>();
         Init(Variables.ByPlayer);
 
-
         Debug.Log("Laser shoot");
     }
 
@@ -43,8 +42,9 @@ public class Laser : Weapon
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
+        base.Update();
         RaycastHit2D laserhit = Physics2D.Raycast(laserSpawnPoint.transform.position, Vector2.up, 20f, ~ignoreLayer);
         if (laserhit.collider == null)
             length = maxLength; 
@@ -60,7 +60,40 @@ public class Laser : Weapon
         newposition.y += length;
         laserLine.SetPosition(1, newposition);
 
-        animator.SetTrigger("Shoot");
+        switch (Level)
+        {
+            case 1:
+            {
+                Damage = Variables.Damage_Laser_Default;
+                laserLine.startColor = Color.white;
+                laserLine.endColor = Color.white;
+                animator.SetTrigger("Shoot");
+                return;
+            }
+            case 2:
+            {
+                Damage = Variables.Damage_Laser_Default_Level2;
+                laserLine.startColor = Color.yellow;
+                laserLine.endColor = Color.yellow;
+                animator.SetTrigger("ShootLv2");
+                return;
+            }
+            case 3:
+            {
+                Damage = Variables.Damage_Laser_Default_Level3;
+                laserLine.startColor = Color.red;
+                laserLine.endColor = Color.red;
+                animator.SetTrigger("ShootLv3");
+                return;
+            }
+            default:
+            {
+                laserLine.startColor = Color.white;
+                laserLine.endColor = Color.white;
+                animator.SetTrigger("Shoot");
+                return;
+            }
+        }
     }
 
     public void GetHitInfo()

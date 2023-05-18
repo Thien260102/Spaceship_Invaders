@@ -37,6 +37,10 @@ namespace Assets.Scripts
         private Vector3 lastFrameMousePosition;
         public float sensitivity = 1.0f;
 
+        public float MaximumSpeed;
+        public float MinimumSpeed;
+        private float SpeedCap;
+
         float halfHeight;
         float halfWidth;
 
@@ -53,16 +57,22 @@ namespace Assets.Scripts
             currentWeapon = 0;
 
             mainCamera = Camera.main;
+            SpeedCap = MaximumSpeed;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (fuel.Contain == 0)
+            SpeedCap = MaximumSpeed;
+            if (fuel.Contain <= 1)
+            {
+                SpeedCap = MinimumSpeed;
+            }
+            /*if (fuel.Contain == 0)
             {
                 IsDeleted = true;
                 fuel.Fill();
-            }
+            }*/
 
             if (IsDeleted)
             {
@@ -101,6 +111,8 @@ namespace Assets.Scripts
             //get mouse position
             Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             Vector3 mouseMovement = mousePosition - lastFrameMousePosition;
+            mouseMovement = mouseMovement * SpeedCap;
+            Debug.Log(mouseMovement.magnitude.ToString());
             Vector3 newbodyPosition = new Vector3(Body.position.x, Body.position.y, mousePosition.z);
             newbodyPosition += mouseMovement * sensitivity;
 
@@ -125,6 +137,10 @@ namespace Assets.Scripts
 
             // Adding distance to handle Fuel
             fuel.Distance += Vector3.Distance(mousePosition, lastFrameMousePosition);
+            if (Vector3.Distance(mousePosition, lastFrameMousePosition) <= 25)
+            {
+                fuel.Contain += 0.25f * Time.deltaTime;
+            }
 
             // pressed mouse left // Spaceship shooting
             if (Input.GetMouseButtonDown(0))
@@ -141,9 +157,7 @@ namespace Assets.Scripts
             }
             else if (Input.GetMouseButtonDown(1)) // hack level weapon
             {
-                Weapon.Level++;
-                if (Weapon.Level > 3)
-                    Weapon.Level = 3;
+                WeaponLevelUp(1);
                 //WeaponStateBar.Instance.Level = Weapon.Level;
             }
 
@@ -247,9 +261,7 @@ namespace Assets.Scripts
             switch (ItemType)
             {
                 case Variables.ItemType.Star:
-                    Weapon.Level++;
-                    if (Weapon.Level > 3)
-                        Weapon.Level = 3;
+                    WeaponLevelUp(1);
 
                     HUD.Instance.Score += 2000;
                     
@@ -270,6 +282,12 @@ namespace Assets.Scripts
         public void SetSmokeState(string state)
         {
             exhaust.SetSmokeState(state);
+        }
+
+        private void WeaponLevelUp(int amount)
+        {
+            Weapon.Level += amount;
+            Weapon.Level = Mathf.Clamp(Weapon.Level, 1, 3);
         }
 
         public IEnumerator Destroyed()

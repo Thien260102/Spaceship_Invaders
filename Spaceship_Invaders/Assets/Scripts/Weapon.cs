@@ -10,16 +10,21 @@ public class Weapon : MonoBehaviour
 
     public float RateOfFire; //How fast weapon shoot, shots per minute
 
+    //for upgradeing purposes
+    protected float currentRateOfFire;
+
     protected float DelayBetweenShots; //Reload between each shot, defined by RateOfFire
 
     protected float DelayTimer; //timer
 
     protected void Start()
     {
-        if (RateOfFire != 0)
+        currentRateOfFire = RateOfFire;
+        if (currentRateOfFire != 0)
         {
-            DelayBetweenShots = 1.0f / (RateOfFire / 60.0f);
-        } else
+            DelayBetweenShots = 1.0f / (currentRateOfFire / 60.0f);
+        }
+        else
         {
             DelayBetweenShots = 0.0f;
         }
@@ -28,8 +33,18 @@ public class Weapon : MonoBehaviour
         //Debug.Log("Weapon shoot");
     }
 
-    void Update()
+    protected void Update()
     {
+        //recalculate rate of fire for switching weapon
+        if (currentRateOfFire != 0)
+        {
+            DelayBetweenShots = 1.0f / (currentRateOfFire / 60.0f);
+        }
+        else
+        {
+            DelayBetweenShots = 0.0f;
+        }
+
         if (DelayTimer >= 0f)
         {
             DelayTimer -= Time.deltaTime;
