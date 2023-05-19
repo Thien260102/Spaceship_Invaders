@@ -33,10 +33,14 @@ namespace Assets.Scripts
         public GameObject pauseMenu;
         private bool paused = false;
 
+        public GameObject animationSpriteHolder;
+        public GameObject spawnPoint;
+
         private Vector3 lastFrameMousePosition;
         public float sensitivity = 1.0f;
 
-        public bool invincible = false;
+        private bool invincible = false;
+        private bool controlEnable = true;    
 
         public float MaximumSpeed;
         public float MinimumSpeed;
@@ -63,6 +67,7 @@ namespace Assets.Scripts
             HP = Variables.PlayerHPDefault;
 
             Cursor.lockState = CursorLockMode.Confined;
+            animator.SetTrigger("Spawn");
             StartCoroutine(SetInvincible(3.0f));
         }
 
@@ -88,7 +93,7 @@ namespace Assets.Scripts
             else
             {
                 KeyboardController();
-                if (!paused)
+                if (!paused && controlEnable)
                 {
                     MouseController2();
                 }
@@ -103,6 +108,27 @@ namespace Assets.Scripts
             SkillManager.Instance.Invincible(Variables.ByPlayer, Body.position, new Vector2(0, 1), gameObject);
             yield return new WaitForSeconds(duration);
             invincible = false;
+        }
+
+        public void ResetPosition()
+        {
+            Body.position = spawnPoint.transform.position;
+        }
+
+        public void ResetPositionAnimation()
+        {
+            Body.position = animationSpriteHolder.transform.position;
+        }
+
+        public void EnableControl(int state)
+        {
+            if (state == 0)
+            {
+                controlEnable = false;
+            } else
+            {
+                controlEnable = true;
+            }
         }
 
         public override void DamageTaken(int dame)
@@ -351,6 +377,7 @@ namespace Assets.Scripts
                 SetState();
 
                 fuel.RenderNewState();
+                animator.SetTrigger("Spawn");
                 StartCoroutine(SetInvincible(3.0f));
             }
 
