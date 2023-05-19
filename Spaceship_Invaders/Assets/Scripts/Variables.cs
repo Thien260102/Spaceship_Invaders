@@ -26,6 +26,7 @@ namespace Assets.Scripts
         public const float Adjust = 0.5f;
 
         #region Player
+        public const int PlayerHPDefault = 100;
 
         public const float PlayerBulletSpeed = 15.0f;
         public const float PlayerMissleSpeed = 10.0f;
@@ -111,6 +112,7 @@ namespace Assets.Scripts
             CircleShooting = 0,
             DivineDeparture = 1,
             EnergyWave = 2,
+            Invincible = 3,
         }
 
         #endregion

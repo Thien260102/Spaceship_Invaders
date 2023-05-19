@@ -131,7 +131,7 @@ public class Laser : Weapon
                         {
                             Instantiate(Explosion, laserhit.collider.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
 
-                            entity.IsDeleted = true;
+                            entity.DamageTaken(9999);
                             Debug.Log("GameOver");
                         }
                         break;

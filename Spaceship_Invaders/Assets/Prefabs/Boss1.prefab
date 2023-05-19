@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: OrbitPath
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3377282830142786560, guid: 8672f466fd058e14497b856dc67a59ba, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3377282830142786561, guid: 8672f466fd058e14497b856dc67a59ba, type: 3}
       propertyPath: m_RootOrder
       value: 0

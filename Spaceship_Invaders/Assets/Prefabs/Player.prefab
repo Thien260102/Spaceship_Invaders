@@ -9812,17 +9812,18 @@ MonoBehaviour:
   - {fileID: 5738113763596100684}
   playerSkill:
   - key: 113
-    skill: 0
+    skill: 3
   - key: 119
-    skill: 1
+    skill: 0
   - key: 101
-    skill: 2
+    skill: 1
   fuel: {fileID: 0}
   exhaust: {fileID: 1082090590}
   animator: {fileID: 641502329}
   pauseMenu: {fileID: 0}
   sensitivity: 1
-  MaximumSpeed: 100
+  invincible: 0
+  MaximumSpeed: 50
   MinimumSpeed: 10
 --- !u!95 &641502329
 Animator:

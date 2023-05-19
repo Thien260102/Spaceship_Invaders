@@ -53,5 +53,18 @@ namespace Assets.Scripts
             }
         }
 
+        public void Invincible(int Type, Vector2 position, Vector2 direction, GameObject parent)
+        {
+            if(Skills.Count > 3)
+            {
+                Skill Instantiate_Skill = Instantiate(Skills[3] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Skill;
+
+                Instantiate_Skill.isMovable = false;
+                Instantiate_Skill.SetParent(parent);
+                Instantiate_Skill.Init(Type, Variables.Damage_Bullet_Default, direction);
+
+            }
+        }
+
     }
 }

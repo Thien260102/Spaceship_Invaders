@@ -60,6 +60,8 @@ namespace Assets.Scripts
             mainCamera = Camera.main;
             SpeedCap = MaximumSpeed;
 
+            HP = Variables.PlayerHPDefault;
+
             Cursor.lockState = CursorLockMode.Confined;
             StartCoroutine(SetInvincible(3.0f));
         }
@@ -97,7 +99,8 @@ namespace Assets.Scripts
 
         public IEnumerator SetInvincible(float duration)
         {
-            invincible = true;
+            invincible = true; 
+            SkillManager.Instance.Invincible(Variables.ByPlayer, Body.position, new Vector2(0, 1), gameObject);
             yield return new WaitForSeconds(duration);
             invincible = false;
         }
@@ -129,10 +132,10 @@ namespace Assets.Scripts
 
         void MouseController2()
         {
-            //get mouse position
-            Vector3 mousePosition = lastFrameMousePosition;
+            Vector3 mousePosition = Body.position;
             mousePosition.x += Input.GetAxis("Mouse X") * sensitivity * SpeedCap * Time.deltaTime;
             mousePosition.y += Input.GetAxis("Mouse Y") * sensitivity * SpeedCap * Time.deltaTime;
+
 
             // Adding distance to handle Fuel
             fuel.Distance += Vector3.Distance(mousePosition, lastFrameMousePosition);
@@ -145,6 +148,7 @@ namespace Assets.Scripts
             Velocity = (mousePosition - lastFrameMousePosition) / Time.deltaTime;
 
             Body.position = mousePosition;
+            // limit it on main Screen
             Body.position = new Vector3(
                 Mathf.Clamp(Body.position.x, -Variables.ScreenWidth / 2 + Variables.Adjust, Variables.ScreenWidth / 2 - Variables.Adjust),
                 Mathf.Clamp(Body.position.y, -Variables.ScreenHeight / 2 + Variables.Adjust, Variables.ScreenHeight / 2 - Variables.Adjust),
@@ -155,27 +159,15 @@ namespace Assets.Scripts
 
             Debug.Log(lastFrameMousePosition);
 
-            // limit moving area of player
-            //if (mousePosition.x < -halfWidth + Variables.Adjust)
-            //    newbodyPosition.x = -halfWidth + Variables.Adjust;
-            //else if (mousePosition.x > halfWidth - Variables.Adjust)
-            //    newbodyPosition.x = halfWidth - Variables.Adjust;
-            //else
-            //    newbodyPosition.x = mousePosition.x;
-
-            //if (mousePosition.y < -halfHeight + Variables.Adjust)
-            //    newbodyPosition.y = -halfHeight + Variables.Adjust;
-            //else if (mousePosition.y > halfHeight - Variables.Adjust)
-            //    newbodyPosition.y = halfHeight - Variables.Adjust;
-            //else
-            //    newbodyPosition.y = mousePosition.y;
-            //Body.position = newbodyPosition;
-
-            
             // pressed mouse left // Spaceship shooting
             if (Input.GetMouseButtonDown(0))
             {
                 weapons[currentWeapon].Trigger();
+            }
+            else if (Input.GetMouseButtonDown(1)) // hack level weapon
+            {
+                WeaponLevelUp(1);
+                //WeaponStateBar.Instance.Level = Weapon.Level;
             }
             else if (Input.GetMouseButtonDown(2))
             {
@@ -185,17 +177,10 @@ namespace Assets.Scripts
 
                 //WeaponStateBar.Instance.Type = currentWeapon;
             }
-            else if (Input.GetMouseButtonDown(1)) // hack level weapon
-            {
-                WeaponLevelUp(1);
-                //WeaponStateBar.Instance.Level = Weapon.Level;
-            }
 
 
             Cursor.visible = false; // invisible cursor
             Cursor.lockState = CursorLockMode.Confined;// block cursor into Game screen
-
-            //lastFrameMousePosition = mainCamera.ScreenToWorldPoint(newbodyPosition); ;
         }
 
         void KeyboardController()
@@ -218,6 +203,22 @@ namespace Assets.Scripts
             {
                 skill = playerSkill.Find(x => x.key == KeyCode.R);
             }
+            else if(Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                MaximumSpeed += 10;
+
+            }
+            else if(Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                MaximumSpeed -= 10;
+
+                if (MaximumSpeed < MinimumSpeed)
+                    MaximumSpeed = MinimumSpeed;
+            }
+            else if(Input.GetKeyDown(KeyCode.U))
+            {
+                HUD.Instance.Life++;
+            }
 
             if (skill != null)
                 ActiveSkill(skill.skill);
@@ -236,9 +237,13 @@ namespace Assets.Scripts
                 case Variables.Skill_Type.DivineDeparture:
                     SkillManager.Instance.DivineDeparture(Variables.ByPlayer, position, new Vector2(0, 1));
                     break;
-
+                    
                 case Variables.Skill_Type.EnergyWave:
                     SkillManager.Instance.EnergyWave(Variables.ByPlayer, position, new Vector2(0, 1));
+                    break;
+
+                case Variables.Skill_Type.Invincible:
+                    StartCoroutine(SetInvincible(3.0f));
                     break;
             }
         }

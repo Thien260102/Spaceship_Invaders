@@ -13,7 +13,7 @@ namespace Assets.Scripts
 
         public int Effect { get; set; } // Stun, Slow, Ignite, ...
 
-        protected bool isMovable = true;
+        public bool isMovable = true;
 
         [SerializeField]
         bool isUnstoppable = false;
@@ -76,6 +76,11 @@ namespace Assets.Scripts
             Effect = effect;
             Duration = duration;
             //Debug.Log("Angle: " + angle);
+        }
+
+        public void SetParent(GameObject parent)
+        {
+            gameObject.transform.parent = parent.transform;
         }
 
         private void Update()
