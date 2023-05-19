@@ -806,18 +806,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 382466461, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: RateOfFire
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 1069222491, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: RateOfFire
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 1318575372, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.38
-      objectReference: {fileID: 0}
     - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: fuel
       value: 
@@ -828,11 +816,11 @@ PrefabInstance:
       objectReference: {fileID: 287876539}
     - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: MaximumSpeed
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2553441028253840345, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: MinimumSpeed
-      value: 0.0005
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3411698911964571842, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_RootOrder
@@ -844,7 +832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3411698911964571842, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.36
+      value: -6.64
       objectReference: {fileID: 0}
     - target: {fileID: 3411698911964571842, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -882,38 +870,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4308942765035557652, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4308942765035557654, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: m_Parameters.colorGradient.ctime0
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4308942765035557654, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0.48490566
-      objectReference: {fileID: 0}
-    - target: {fileID: 4308942765035557654, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0.759669
-      objectReference: {fileID: 0}
-    - target: {fileID: 4308942765035557654, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: m_Parameters.colorGradient.key0.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4308942765035557654, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.b
-      value: 0.48490566
-      objectReference: {fileID: 0}
-    - target: {fileID: 4308942765035557654, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: m_Parameters.colorGradient.key1.g
-      value: 0.759669
-      objectReference: {fileID: 0}
-    - target: {fileID: 5738113763596100684, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
-      propertyPath: Missle
-      value: 
-      objectReference: {fileID: 1836859035388971953, guid: 5886115ef6fab0747a4c697e2c66dd4f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88a1484ca4e03904da675484c59ee38a, type: 3}
 --- !u!1001 &1512704224

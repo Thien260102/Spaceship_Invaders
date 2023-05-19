@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6674799402411709124}
   - component: {fileID: 6674799402411709123}
   - component: {fileID: 5974410996531683172}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnergyWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,9 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 1114683867503637989}
+  Explosion: {fileID: 0}
   isUnstoppable: 1
   Duration: 5
-  Explosion: {fileID: 0}
 --- !u!60 &5974410996531683172
 PolygonCollider2D:
   m_ObjectHideFlags: 0

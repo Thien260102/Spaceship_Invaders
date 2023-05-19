@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.Scripts;
 
 namespace Assets.Scripts
 {
@@ -109,31 +108,9 @@ namespace Assets.Scripts
         void MouseController2()
         {
             //get mouse position
-            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 mouseMovement = mousePosition - lastFrameMousePosition;
-            mouseMovement = mouseMovement * SpeedCap;
-            Debug.Log(mouseMovement.magnitude.ToString());
-            Vector3 newbodyPosition = new Vector3(Body.position.x, Body.position.y, mousePosition.z);
-            newbodyPosition += mouseMovement * sensitivity;
-
-            Velocity = mouseMovement / Time.deltaTime;
-
-
-            // limit moving area of player
-            if (mousePosition.x < -halfWidth + Variables.Adjust)
-                newbodyPosition.x = -halfWidth + Variables.Adjust;
-            else if (mousePosition.x > halfWidth - Variables.Adjust)
-                newbodyPosition.x = halfWidth - Variables.Adjust;
-            else
-                newbodyPosition.x = mousePosition.x;
-
-            if (mousePosition.y < -halfHeight + Variables.Adjust)
-                newbodyPosition.y = -halfHeight + Variables.Adjust;
-            else if (mousePosition.y > halfHeight - Variables.Adjust)
-                newbodyPosition.y = halfHeight - Variables.Adjust;
-            else
-                newbodyPosition.y = mousePosition.y;
-            Body.position = newbodyPosition;
+            Vector3 mousePosition = lastFrameMousePosition;
+            mousePosition.x += Input.GetAxis("Mouse X") * sensitivity * SpeedCap * Time.deltaTime;
+            mousePosition.y += Input.GetAxis("Mouse Y") * sensitivity * SpeedCap * Time.deltaTime;
 
             // Adding distance to handle Fuel
             fuel.Distance += Vector3.Distance(mousePosition, lastFrameMousePosition);
@@ -142,6 +119,37 @@ namespace Assets.Scripts
                 fuel.Contain += 0.25f * Time.deltaTime;
             }
 
+
+            Velocity = (mousePosition - lastFrameMousePosition) / Time.deltaTime;
+
+            Body.position = mousePosition;
+            Body.position = new Vector3(
+                Mathf.Clamp(Body.position.x, -Variables.ScreenWidth / 2 + Variables.Adjust, Variables.ScreenWidth / 2 - Variables.Adjust),
+                Mathf.Clamp(Body.position.y, -Variables.ScreenHeight / 2 + Variables.Adjust, Variables.ScreenHeight / 2 - Variables.Adjust),
+                0f
+            );
+
+            lastFrameMousePosition = Body.position;
+
+            Debug.Log(lastFrameMousePosition);
+
+            // limit moving area of player
+            //if (mousePosition.x < -halfWidth + Variables.Adjust)
+            //    newbodyPosition.x = -halfWidth + Variables.Adjust;
+            //else if (mousePosition.x > halfWidth - Variables.Adjust)
+            //    newbodyPosition.x = halfWidth - Variables.Adjust;
+            //else
+            //    newbodyPosition.x = mousePosition.x;
+
+            //if (mousePosition.y < -halfHeight + Variables.Adjust)
+            //    newbodyPosition.y = -halfHeight + Variables.Adjust;
+            //else if (mousePosition.y > halfHeight - Variables.Adjust)
+            //    newbodyPosition.y = halfHeight - Variables.Adjust;
+            //else
+            //    newbodyPosition.y = mousePosition.y;
+            //Body.position = newbodyPosition;
+
+            
             // pressed mouse left // Spaceship shooting
             if (Input.GetMouseButtonDown(0))
             {
@@ -165,7 +173,7 @@ namespace Assets.Scripts
             Cursor.visible = false; // invisible cursor
             Cursor.lockState = CursorLockMode.Confined;// block cursor into Game screen
 
-            lastFrameMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            //lastFrameMousePosition = mainCamera.ScreenToWorldPoint(newbodyPosition); ;
         }
 
         void KeyboardController()

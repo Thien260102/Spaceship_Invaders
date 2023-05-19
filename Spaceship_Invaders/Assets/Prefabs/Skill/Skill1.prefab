@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -3567417740518076293}
   - component: {fileID: 5706930047480853542}
   - component: {fileID: 2291334106736372252}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,6 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 5706930047480853542}
+  Explosion: {fileID: 3546241938369737458, guid: b00df24188ea05342a07aeea675d7791, type: 3}
   isUnstoppable: 0
   Duration: 5
-  Explosion: {fileID: 3546241938369737458, guid: b00df24188ea05342a07aeea675d7791, type: 3}

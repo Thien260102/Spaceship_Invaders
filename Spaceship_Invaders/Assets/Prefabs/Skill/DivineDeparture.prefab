@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6042002913395795747}
   - component: {fileID: 6042002913395795768}
   - component: {fileID: 6042002913395795751}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DivineDeparture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 6042002913395795747}
+  Explosion: {fileID: 0}
   isUnstoppable: 1
   Duration: 0.3
-  Explosion: {fileID: 0}
 --- !u!50 &6042002913395795747
 Rigidbody2D:
   serializedVersion: 4

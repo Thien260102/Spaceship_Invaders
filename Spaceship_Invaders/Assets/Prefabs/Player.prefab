@@ -9817,13 +9817,13 @@ MonoBehaviour:
     skill: 1
   - key: 101
     skill: 2
-  - key: 114
-    skill: 1
   fuel: {fileID: 0}
   exhaust: {fileID: 1082090590}
   animator: {fileID: 641502329}
   pauseMenu: {fileID: 0}
   sensitivity: 1
+  MaximumSpeed: 100
+  MinimumSpeed: 10
 --- !u!95 &641502329
 Animator:
   serializedVersion: 3
@@ -9905,7 +9905,7 @@ PrefabInstance:
     - target: {fileID: 5738113762974337188, guid: b6d488dd58ef7eb43b897196aa3a5cf3, type: 3}
       propertyPath: Missle
       value: 
-      objectReference: {fileID: 3202464207523047188, guid: 5886115ef6fab0747a4c697e2c66dd4f, type: 3}
+      objectReference: {fileID: 1836859035388971953, guid: 5886115ef6fab0747a4c697e2c66dd4f, type: 3}
     - target: {fileID: 5738113762974337188, guid: b6d488dd58ef7eb43b897196aa3a5cf3, type: 3}
       propertyPath: RateOfFire
       value: 150
@@ -9945,7 +9945,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 529349567, guid: f7dc0d29a9600894e84d9a3543e96b53, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6718552
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 529349567, guid: f7dc0d29a9600894e84d9a3543e96b53, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9954,6 +9954,10 @@ PrefabInstance:
     - target: {fileID: 1204887342, guid: f7dc0d29a9600894e84d9a3543e96b53, type: 3}
       propertyPath: maxLength
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204887342, guid: f7dc0d29a9600894e84d9a3543e96b53, type: 3}
+      propertyPath: RateOfFire
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4308942763677054372, guid: f7dc0d29a9600894e84d9a3543e96b53, type: 3}
       propertyPath: m_RootOrder
@@ -9998,6 +10002,22 @@ PrefabInstance:
     - target: {fileID: 4308942763677054372, guid: f7dc0d29a9600894e84d9a3543e96b53, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308942763677054373, guid: f7dc0d29a9600894e84d9a3543e96b53, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.48490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308942763677054373, guid: f7dc0d29a9600894e84d9a3543e96b53, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.759669
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308942763677054373, guid: f7dc0d29a9600894e84d9a3543e96b53, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.48490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308942763677054373, guid: f7dc0d29a9600894e84d9a3543e96b53, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.759669
       objectReference: {fileID: 0}
     - target: {fileID: 4308942763677054394, guid: f7dc0d29a9600894e84d9a3543e96b53, type: 3}
       propertyPath: m_Name
