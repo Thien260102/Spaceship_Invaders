@@ -89,8 +89,8 @@ namespace Assets.Scripts
                         if (this.Type == Variables.ByEnemy)
                         {
                             Instantiate(Explosion, collision.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
-
-                            entity.IsDeleted = true;
+                            //destroy, but take player invincible into consideration
+                            entity.DamageTaken(9999);
                             Destroy(gameObject);
                         }
                         break;

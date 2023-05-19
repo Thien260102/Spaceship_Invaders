@@ -36,6 +36,8 @@ namespace Assets.Scripts
         private Vector3 lastFrameMousePosition;
         public float sensitivity = 1.0f;
 
+        public bool invincible = false;
+
         public float MaximumSpeed;
         public float MinimumSpeed;
         private float SpeedCap;
@@ -57,6 +59,9 @@ namespace Assets.Scripts
 
             mainCamera = Camera.main;
             SpeedCap = MaximumSpeed;
+
+            Cursor.lockState = CursorLockMode.Confined;
+            StartCoroutine(SetInvincible(3.0f));
         }
 
         // Update is called once per frame
@@ -87,6 +92,23 @@ namespace Assets.Scripts
                 }
 
                 SetState();
+            }
+        }
+
+        public IEnumerator SetInvincible(float duration)
+        {
+            invincible = true;
+            yield return new WaitForSeconds(duration);
+            invincible = false;
+        }
+
+        public override void DamageTaken(int dame)
+        {
+            if (!invincible)
+            {
+                HP -= dame;
+                if (HP <= 0)
+                    IsDeleted = true;
             }
         }
 
@@ -260,8 +282,11 @@ namespace Assets.Scripts
 
             GameObject Object = collision.gameObject;
 
-            if (Object.tag == "Enemy")
-                IsDeleted = true;
+            if (!invincible)
+            {
+                if (Object.tag == "Enemy")
+                    IsDeleted = true;
+            }
         }
 
         private void CollectItem(Variables.ItemType ItemType)
@@ -321,6 +346,7 @@ namespace Assets.Scripts
                 SetState();
 
                 fuel.RenderNewState();
+                StartCoroutine(SetInvincible(3.0f));
             }
 
         }

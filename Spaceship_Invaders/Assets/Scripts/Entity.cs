@@ -33,7 +33,7 @@ namespace Assets.Scripts
             //Debug.Log("Constructor");
         }
 
-        public void DamageTaken(int dame)
+        public virtual void DamageTaken(int dame)
         {
             HP -= dame;
             if (HP <= 0)

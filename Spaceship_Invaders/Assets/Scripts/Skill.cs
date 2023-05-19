@@ -130,8 +130,7 @@ namespace Assets.Scripts
                     case Variables.PLAYER:
                         if (this.Type == Variables.ByEnemy)
                         {
-                            entity.IsDeleted = true;
-
+                            entity.DamageTaken(9999);
 
                             if (!isUnstoppable)
                                 HandleDestroy();
