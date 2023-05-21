@@ -42,13 +42,14 @@ namespace Assets.Scripts
         #endregion
 
         #region Enemy
+        public const float EnemyFlySpeed = 1.0f;
 
         public const float EnemyBulletSpeed = 5.0f;
         public const float EnemyMissleSpeed = 5.0f;
 
-        public const int HP_Enemy1 = 100; //1000
-        public const int HP_Enemy2 = 200;  //2000
-        public const int HP_Enemy3 = 300;  //5000
+        public const int HP_Enemy1 = 200; //1000
+        public const int HP_Enemy2 = 1000;  //2000
+        public const int HP_Enemy3 = 3000;  //5000
         public const int HP_Enemy4 = 10000;
         public const int HP_Enemy5 = 20000;
         public const int HP_Enemy6 = 200000;
@@ -68,25 +69,25 @@ namespace Assets.Scripts
         public const int ByEnemy = 20;
 
         public const int DAMAGE_Bullet1 = 50;
-        public const int Damage_Bullet_Default = 50;
-        public const int Damage_Bullet_Default_Level2 = 100;
-        public const int Damage_Bullet_Default_Level3 = 100;
+        public const int Damage_Bullet_Default = 100;
+        public const int Damage_Bullet_Default_Level2 = 200;
+        public const int Damage_Bullet_Default_Level3 = 500;
 
         #endregion
 
         #region Laser
         public const int DAMAGE_Laser1 = 200;
         public const int Damage_Laser_Default = 200;
-        public const int Damage_Laser_Default_Level2 = 250;
-        public const int Damage_Laser_Default_Level3 = 300;
+        public const int Damage_Laser_Default_Level2 = 400;
+        public const int Damage_Laser_Default_Level3 = 1000;
 
         #endregion
 
         #region Missle
         public const int DAMAGE_Missle1 = 50;
-        public const int Damage_Missle_Default = 50;
-        public const int Damage_Missle_Default_Level2 = 100;
-        public const int Damage_Missle_Default_Level3 = 150;
+        public const int Damage_Missle_Default = 100;
+        public const int Damage_Missle_Default_Level2 = 200;
+        public const int Damage_Missle_Default_Level3 = 500;
 
         #endregion
 
@@ -117,11 +118,6 @@ namespace Assets.Scripts
 
         #endregion
 
-        public const float DistanceBetweenTwoEnemies = 0.8f;
 
-        public const float ExplosionTime = 0.4f;
-
-
-        public const float EnemyFlySpeed = 1.0f;
     }
 }

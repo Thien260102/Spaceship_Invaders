@@ -109,17 +109,19 @@ namespace Assets.Scripts
 
                 while (index < wave.spawnSequences.Count)
                 {
-                    yield return new WaitForSeconds(wave.spawnSequences[index].delayPostSequence);
+                    //yield return new WaitForSeconds(wave.spawnSequences[index].delayPostSequence);
 
                     while (index < wave.spawnSequences.Count &&
                         wave.spawnSequences[index].WaitType == WaitBetweenSequenceType.Parallel)
                     {
+                        yield return new WaitForSeconds(wave.spawnSequences[index].delayPostSequence);
                         StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
                         index++;
                     }
 
                     if (EnemiesOrAsteroid.Count == 0 && index < wave.spawnSequences.Count)
                     {
+                        yield return new WaitForSeconds(wave.spawnSequences[index].delayPostSequence);
                         StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
                         index++;
                     }

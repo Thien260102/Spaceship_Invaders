@@ -31,7 +31,7 @@ namespace Assets.Scripts
             {
                 distance = value;
 
-                if (distance >= 50)
+                if (distance >= 30)
                 {
                     Contain = Contain <= 0 ? 0 : Contain - 1;
                     distance = 0;

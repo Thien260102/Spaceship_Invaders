@@ -9,6 +9,8 @@ namespace Assets.Scripts
         //maybe will add some methods or properties of Enemy in the future 
 
         public Bullet bullet;
+        [SerializeField]
+        protected float MaxTimeRandom;
 
         public Path path;
         public int nextDestinationNode { get; set; }

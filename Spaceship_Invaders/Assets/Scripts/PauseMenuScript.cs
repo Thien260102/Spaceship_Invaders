@@ -10,6 +10,9 @@ public class PauseMenuScript : MonoBehaviour
     public List<GameObject> PauseMenuCanvas= new List<GameObject>();
 
     private bool isVisible = false;
+    [SerializeField]
+    GameObject playerObject;
+
     private Player player;
 
     bool State = false; // false: UnActive, true: Active
@@ -45,6 +48,14 @@ public class PauseMenuScript : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.C))
         {
             HUD.Instance.Coin++;
+        }
+        else if (Input.GetKeyDown(KeyCode.U))
+        {
+            if(HUD.Instance.Life <= 0)
+            {
+                HUD.Instance.Life++;
+                player.gameObject.SetActive(true);
+            }
         }
     }
 

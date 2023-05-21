@@ -183,7 +183,7 @@ namespace Assets.Scripts
 
             lastFrameMousePosition = Body.position;
 
-            Debug.Log(lastFrameMousePosition);
+            //Debug.Log(lastFrameMousePosition);
 
             // pressed mouse left // Spaceship shooting
             if (Input.GetMouseButtonDown(0))
@@ -269,7 +269,8 @@ namespace Assets.Scripts
                     break;
 
                 case Variables.Skill_Type.Invincible:
-                    StartCoroutine(SetInvincible(3.0f));
+                    if(!invincible)
+                        StartCoroutine(SetInvincible(3.0f));
                     break;
             }
         }
@@ -313,11 +314,10 @@ namespace Assets.Scripts
 
             GameObject Object = collision.gameObject;
 
-            if (!invincible)
-            {
-                if (Object.tag == "Enemy")
-                    IsDeleted = true;
-            }
+
+            if (Object.tag == "Enemy")
+                DamageTaken(9999);
+
         }
 
         private void CollectItem(Variables.ItemType ItemType)
@@ -356,6 +356,7 @@ namespace Assets.Scripts
 
         public IEnumerator Destroyed()
         {
+            Instantiate(Explosion, transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
             SetState();
             Body.isKinematic = true; // turn off OncollisionEnter2d
             Debug.Log("Player Destroyed");

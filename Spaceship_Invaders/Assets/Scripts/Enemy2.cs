@@ -14,7 +14,7 @@ namespace Assets.Scripts
             HP = Variables.HP_Enemy2;
 
             DeltaTime = 0;
-            maxTime = Random.Range(2, 4);
+            maxTime = Random.Range(2, MaxTimeRandom);
             Body = GetComponent<Rigidbody2D>();
             nextDestinationNode = 1;
         }
@@ -31,7 +31,7 @@ namespace Assets.Scripts
             {
                 DeltaTime = 0;
                 Shooting();
-                maxTime = Random.Range(2, 4);
+                maxTime = Random.Range(2, MaxTimeRandom);
             }
 
             if (nextDestinationNode < path.NodeCount())

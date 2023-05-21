@@ -38,7 +38,9 @@ namespace Assets.Scripts
 
                 RaycastHit2D[] hit2Ds = Physics2D.RaycastAll(collision.transform.position, collidingRB.velocity);
 
-                Vector2 contactPoint = hit2Ds[1].point;
+                Vector2 contactPoint = new Vector2(-14.2f, 0);
+                if (hit2Ds.Length > 1)
+                    contactPoint = hit2Ds[1].point;
 
                 Vector2 normal = Vector2.Perpendicular(contactPoint - GetClosestPoint(collision.transform.position)).normalized;
 

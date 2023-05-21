@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7475306524053981490}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.71, y: 5.42, z: 0}
-  m_LocalScale: {x: 1.8717709, y: 1.6340077, z: 1}
+  m_LocalScale: {x: 2.722865, y: 2.4567306, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -145,4 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Body: {fileID: 7475306524053981484}
+  Explosion: {fileID: 0}
   bullet: {fileID: 4974306614864712385, guid: 3bd2649f1c8673b4aac7f1c3119824fe, type: 3}
+  MaxTimeRandom: 8
+  path: {fileID: 0}
+  OrbitPath: {fileID: 0}

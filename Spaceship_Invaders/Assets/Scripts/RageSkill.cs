@@ -11,7 +11,7 @@ namespace Assets.Scripts
             this.isMovable = false;
         }
 
-        protected override void HandleDestroy()
+        public override void HandleDestroy()
         {
             SkillManager.Instance.EnergyWave(Type, gameObject.transform.position, Direction);
 

@@ -66,7 +66,7 @@ namespace Assets.Scripts
         {
             if (instance == null) 
                 instance = this;
-
+            Life = 30;
         }
 
     }

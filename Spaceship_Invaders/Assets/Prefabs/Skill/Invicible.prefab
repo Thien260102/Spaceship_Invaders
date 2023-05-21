@@ -50,7 +50,7 @@ MonoBehaviour:
   Body: {fileID: 510428529564133770}
   Explosion: {fileID: 0}
   isMovable: 0
-  isUnstoppable: 0
+  isUnstoppable: 1
   Duration: 3
 --- !u!50 &510428529564133770
 Rigidbody2D:

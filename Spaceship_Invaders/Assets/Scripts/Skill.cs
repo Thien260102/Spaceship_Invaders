@@ -148,7 +148,7 @@ namespace Assets.Scripts
 
         }
 
-        protected virtual void HandleDestroy()
+        public virtual void HandleDestroy()
         {
             if(Explosion != null)
                 Instantiate(Explosion, transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));

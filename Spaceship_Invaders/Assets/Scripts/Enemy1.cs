@@ -14,7 +14,7 @@ public class Enemy1 : Enemy
         HP = Variables.HP_Enemy1;
         
         DeltaTime = 0;
-        maxTime = Random.Range(1, 2);
+        maxTime = Random.Range(1, MaxTimeRandom);
         Body = GetComponent<Rigidbody2D>();
         nextDestinationNode = 1;
     }
@@ -31,7 +31,7 @@ public class Enemy1 : Enemy
         {
             DeltaTime = 0;
             Shooting();
-            maxTime = Random.Range(1, 2);
+            maxTime = Random.Range(1, MaxTimeRandom);
         }
 
         if (nextDestinationNode < path.NodeCount())
