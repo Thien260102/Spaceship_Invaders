@@ -33,7 +33,7 @@ public class Weapon : MonoBehaviour
         //Debug.Log("Weapon shoot");
     }
 
-    protected void Update()
+    void Update()
     {
         //recalculate rate of fire for switching weapon
         if (currentRateOfFire != 0)
@@ -49,6 +49,13 @@ public class Weapon : MonoBehaviour
         {
             DelayTimer -= Time.deltaTime;
         }
+
+        ChildUpdate();
+    }
+
+    protected virtual void ChildUpdate()
+    {
+
     }
 
     public void Trigger() //Attempt to shoot the weapon

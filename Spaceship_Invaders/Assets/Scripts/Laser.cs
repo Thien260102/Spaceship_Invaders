@@ -22,7 +22,6 @@ public class Laser : Weapon
     public GameObject Explosion;
 
 
-
     // Start is called before the first frame update
     new void Start()
     {
@@ -41,25 +40,23 @@ public class Laser : Weapon
         ignoreLayer = ((1 << 6) | (1 << 7) | (1 << 8));
     }
 
-    // Update is called once per frame
-    new void Update()
+    
+    protected override void ChildUpdate()
     {
-        base.Update();
-        RaycastHit2D laserhit = Physics2D.Raycast(laserSpawnPoint.transform.position, Vector2.up, 20f, ~ignoreLayer);
-        if (laserhit.collider == null)
-            length = maxLength; 
-        else 
-            length = Mathf.Clamp(Vector2.Distance(laserSpawnPoint.transform.position, laserhit.point), 0f, 20f);
+        //base.Update();
+        //RaycastHit2D laserhit = Physics2D.Raycast(laserSpawnPoint.transform.position, Vector2.up, 20f, ~ignoreLayer);
+        //if (laserhit.collider == null)
+        //length = maxLength; 
+        //else 
+        //length = Mathf.Clamp(Vector2.Distance(laserSpawnPoint.transform.position, laserhit.point), 0f, 20f);
 
     }
 
+    public void Nothing() { }
+
     public override void Shoot()
     {
-        laserLine.SetPosition(0, laserSpawnPoint.transform.position);
-        Vector2 newposition = laserSpawnPoint.transform.position;
-        newposition.y += length;
-        laserLine.SetPosition(1, newposition);
-
+        GetHitInfo();
         switch (Level)
         {
             case 1:
@@ -95,16 +92,19 @@ public class Laser : Weapon
             }
         }
     }
-
+    
     public void GetHitInfo()
     {
         Debug.Log("Getting hit info");
-        float halfHeight = Variables.ScreenHeight / 2;
-        float maxDis = halfHeight - laserSpawnPoint.transform.position.y;
+        //float halfHeight = Variables.ScreenHeight / 2;
+        //float maxDis = halfHeight - laserSpawnPoint.transform.position.y;
         RaycastHit2D laserhit = Physics2D.Raycast(laserSpawnPoint.transform.position, Vector2.up, 20f, ~ignoreLayer);
+        
         if (laserhit.collider != null)
         {
+            length = Mathf.Clamp(Vector2.Distance(laserSpawnPoint.transform.position, laserhit.point), 0f, 20f);
             Entity entity = laserhit.collider.gameObject.GetComponent<Entity>();
+            
             if (entity != null && entity.IsDeleted == false)
             {
                 switch (entity.ID)
@@ -138,5 +138,20 @@ public class Laser : Weapon
                 }
             }
         }
+        else
+            length = maxLength;
+
+        Render();
     }
+
+    public void Render()
+    {
+        Vector2 position = laserSpawnPoint.transform.position;
+        laserLine.SetPosition(0, position);
+        position.y += length;
+        laserLine.SetPosition(1, position);
+
+    }
+
+
 }

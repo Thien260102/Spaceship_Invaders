@@ -3923,9 +3923,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
+  - {fileID: 2003945436}
   - {fileID: 2048416343}
   - {fileID: 837156922}
-  - {fileID: 2003945436}
   - {fileID: 1384824205}
   - {fileID: 411842361}
   - {fileID: 2135931222}
