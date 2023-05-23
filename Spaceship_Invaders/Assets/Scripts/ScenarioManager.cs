@@ -48,25 +48,40 @@ namespace Assets.Scripts
                             {
                                 case Asteroid.Level.Large:
                                     HUD.Instance.Score += 3000;
+                                    HUD.Instance.DisplayFloatingText("3000", e.transform.position);
                                     break;
 
                                 case Asteroid.Level.Medium:
                                     HUD.Instance.Score += 2000;
+                                    HUD.Instance.DisplayFloatingText("2000", e.transform.position);
                                     break;
 
                                 default:
                                     HUD.Instance.Score += 1000;
+                                    HUD.Instance.DisplayFloatingText("1000", e.transform.position);
                                     break;
                             }
                         }
                         else if (e is Enemy1)
+                        {
                             HUD.Instance.Score += 1000;
+                            HUD.Instance.DisplayFloatingText("1000", e.transform.position);
+                        }
                         else if (e is Enemy2)
+                        {
                             HUD.Instance.Score += 2000;
+                            HUD.Instance.DisplayFloatingText("2000", e.transform.position);
+                        }
                         else if (e is Enemy3)
+                        {
                             HUD.Instance.Score += 5000;
+                            HUD.Instance.DisplayFloatingText("5000", e.transform.position);
+                        }
                         else if (e is Boss)
+                        {
                             HUD.Instance.Score += 50000;
+                            HUD.Instance.DisplayFloatingText("50000", e.transform.position);
+                        }
 
                         ItemManager.Instance.RandomItem(e.transform.position);
                     }

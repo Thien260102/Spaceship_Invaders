@@ -244,6 +244,7 @@ namespace Assets.Scripts
             else if(Input.GetKeyDown(KeyCode.U))
             {
                 HUD.Instance.Life++;
+                HUD.Instance.DisplayFloatingText("Life +1", Body.position);
             }
 
             if (skill != null)
@@ -328,15 +329,17 @@ namespace Assets.Scripts
                     WeaponLevelUp(1);
 
                     HUD.Instance.Score += 2000;
-                    
+                    HUD.Instance.DisplayFloatingText("2000", Body.position);
                     break;
 
                 case Variables.ItemType.Fuel:
                     fuel.Contain++;
+                    HUD.Instance.DisplayFloatingText("Fuel Refilled", Body.position);
                     break;
 
                 case Variables.ItemType.Coin:
                     HUD.Instance.Coin++;
+                    HUD.Instance.DisplayFloatingText("Coin +1", Body.position);
                     break;
             }
 
@@ -352,6 +355,7 @@ namespace Assets.Scripts
         {
             Weapon.Level += amount;
             Weapon.Level = Mathf.Clamp(Weapon.Level, 1, 3);
+            HUD.Instance.DisplayFloatingText("Weapon Level Up", Body.position);
         }
 
         public IEnumerator Destroyed()

@@ -9,6 +9,9 @@ namespace Assets.Scripts
     {
         static HUD instance = null;
 
+        public GameObject floatingText;
+        public GameObject Canvas;
+
         public static HUD Instance
         {
             get { return instance; }
@@ -59,6 +62,13 @@ namespace Assets.Scripts
                     Coins.text = coin.ToString();
                 }
             }
+        }
+
+        public void DisplayFloatingText(string displayText, Vector2 position)
+        {
+            GameObject text = Instantiate(floatingText, Camera.main.WorldToScreenPoint(position), new Quaternion(0,0,0,0));
+            text.transform.SetParent(Canvas.transform);
+            text.GetComponentInChildren<Text>().text = displayText;
         }
 
         // Get score and Life, ... from file
