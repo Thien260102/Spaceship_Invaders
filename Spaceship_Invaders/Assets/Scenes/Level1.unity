@@ -3923,9 +3923,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - {fileID: 2003945436}
+  - {fileID: 659619146}
   - {fileID: 2048416343}
   - {fileID: 837156922}
+  - {fileID: 2003945436}
   - {fileID: 1384824205}
   - {fileID: 411842361}
   - {fileID: 2135931222}
@@ -3934,7 +3935,6 @@ MonoBehaviour:
   - {fileID: 1692527258}
   - {fileID: 473024571}
   - {fileID: 1869774860}
-  - {fileID: 659619146}
 --- !u!4 &2134380763
 Transform:
   m_ObjectHideFlags: 0

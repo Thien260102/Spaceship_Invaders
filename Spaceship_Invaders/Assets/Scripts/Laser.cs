@@ -30,7 +30,7 @@ public class Laser : Weapon
         animator = this.GetComponent<Animator>();
         Init(Variables.ByPlayer);
 
-        Debug.Log("Laser shoot");
+        //Debug.Log("Laser shoot");
     }
 
     public void Init(int type = 10, int damage = Variables.Damage_Laser_Default)
@@ -60,36 +60,36 @@ public class Laser : Weapon
         switch (Level)
         {
             case 1:
-            {
-                Damage = Variables.Damage_Laser_Default;
-                laserLine.startColor = Color.white;
-                laserLine.endColor = Color.white;
-                animator.SetTrigger("Shoot");
-                return;
-            }
+                {
+                    Damage = Variables.Damage_Laser_Default;
+                    laserLine.startColor = Color.white;
+                    laserLine.endColor = Color.white;
+                    animator.SetTrigger("Shoot");
+                    break;
+                }
             case 2:
-            {
-                Damage = Variables.Damage_Laser_Default_Level2;
-                laserLine.startColor = Color.yellow;
-                laserLine.endColor = Color.yellow;
-                animator.SetTrigger("ShootLv2");
-                return;
-            }
+                {
+                    Damage = Variables.Damage_Laser_Default_Level2;
+                    laserLine.startColor = Color.yellow;
+                    laserLine.endColor = Color.yellow;
+                    animator.SetTrigger("ShootLv2");
+                    break;
+                }
             case 3:
-            {
-                Damage = Variables.Damage_Laser_Default_Level3;
-                laserLine.startColor = Color.red;
-                laserLine.endColor = Color.red;
-                animator.SetTrigger("ShootLv3");
-                return;
-            }
+                {
+                    Damage = Variables.Damage_Laser_Default_Level3;
+                    laserLine.startColor = Color.red;
+                    laserLine.endColor = Color.red;
+                    animator.SetTrigger("ShootLv3");
+                    break;
+                }
             default:
-            {
-                laserLine.startColor = Color.white;
-                laserLine.endColor = Color.white;
-                animator.SetTrigger("Shoot");
-                return;
-            }
+                {
+                    laserLine.startColor = Color.white;
+                    laserLine.endColor = Color.white;
+                    animator.SetTrigger("Shoot");
+                    break;
+                }
         }
     }
     
@@ -103,6 +103,7 @@ public class Laser : Weapon
         if (laserhit.collider != null)
         {
             length = Mathf.Clamp(Vector2.Distance(laserSpawnPoint.transform.position, laserhit.point), 0f, 20f);
+            Render();
             Entity entity = laserhit.collider.gameObject.GetComponent<Entity>();
             
             if (entity != null && entity.IsDeleted == false)
@@ -139,9 +140,11 @@ public class Laser : Weapon
             }
         }
         else
+        {
             length = maxLength;
 
-        Render();
+            Render();
+        }
     }
 
     public void Render()
