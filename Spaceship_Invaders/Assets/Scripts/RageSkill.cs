@@ -7,7 +7,7 @@ namespace Assets.Scripts
 
         public void DivineDeparture(Vector2 direction)
         {
-            this.Init(Type, Variables.Damage_Bullet_Default, direction);
+            this.Init(Type, Damage, direction);
             this.isMovable = false;
         }
 

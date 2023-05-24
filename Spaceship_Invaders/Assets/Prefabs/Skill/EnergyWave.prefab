@@ -140,6 +140,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 1114683867503637989}
   Explosion: {fileID: 0}
+  Damage: 100
+  Effect:
+    effect: 0
+    duration: 0
+  isMovable: 1
   isUnstoppable: 1
   Duration: 5
 --- !u!60 &5974410996531683172

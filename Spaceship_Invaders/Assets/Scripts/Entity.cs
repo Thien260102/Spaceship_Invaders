@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 using UnityEngine;
 using Assets.Scripts;
 
@@ -17,6 +13,8 @@ namespace Assets.Scripts
         public Rigidbody2D Body;
 
         public GameObject Explosion;
+
+        public Variables.Skill_Effect isEffecting { get; set; }
 
         bool isDeleted = false;
         public bool IsDeleted 
@@ -38,6 +36,32 @@ namespace Assets.Scripts
             HP -= dame;
             if (HP <= 0)
                 IsDeleted = true;
+        }
+
+        public virtual void EffectTaken(float time, Variables.Skill_Effect effect)
+        {
+            isEffecting = effect;
+            Debug.Log("Effect: " + effect);
+
+            switch(effect)
+            {
+                case Variables.Skill_Effect.None:
+
+                    break;
+
+                case Variables.Skill_Effect.OppositeDirection:
+
+                    break;
+            }
+
+            Invoke("EndEffect", time);
+        }
+
+        protected void EndEffect()
+        {
+            isEffecting = Variables.Skill_Effect.None;
+
+            Debug.Log("End effect");
         }
 
         public void Destructor()

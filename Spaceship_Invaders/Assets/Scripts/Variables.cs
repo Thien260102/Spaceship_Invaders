@@ -116,6 +116,12 @@ namespace Assets.Scripts
             Invincible = 3,
         }
 
+        public enum Skill_Effect
+        {
+            None = 0,
+            OppositeDirection = 1,
+        }
+
         #endregion
 
 

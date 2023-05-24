@@ -2,16 +2,24 @@
 
 namespace Assets.Scripts
 {
+    [System.Serializable]
+    public class SkillEffect
+    {
+        [SerializeField] public Variables.Skill_Effect effect;
+        [SerializeField] public float duration;
+    }
+
+
     public class Skill : Entity
     {
 
         public int Type { get; set; }
 
-        public int Damage { get; set; }
+        public int Damage;
 
         public Vector2 Direction { get; set; } = new Vector2(0, -1);
 
-        public int Effect { get; set; } // Stun, Slow, Ignite, ...
+        public SkillEffect Effect; // Stun, Slow, Ignite, ...
 
         public bool isMovable = true;
 
@@ -32,7 +40,6 @@ namespace Assets.Scripts
 
         public void Init(int type, int damage, Vector2 direction)
         {
-            Effect = 0;
             Type = type;
             Damage = damage;
 
@@ -47,7 +54,6 @@ namespace Assets.Scripts
 
         public void Init(int type, int damage, Vector2 direction, int duration)
         {
-            Effect = 0;
             Type = type;
             Damage = damage;
             Duration = duration;
@@ -61,7 +67,7 @@ namespace Assets.Scripts
             //Debug.Log("Angle: " + angle);
         }
 
-        public void Init(int type, int damage, Vector2 direction, int effect, int duration)
+        public void Init(int type, int damage, Vector2 direction, SkillEffect effect, int duration)
         {
             Type = type;
             Damage = damage;
@@ -135,7 +141,8 @@ namespace Assets.Scripts
                     case Variables.PLAYER:
                         if (this.Type == Variables.ByEnemy)
                         {
-                            entity.DamageTaken(9999);
+                            entity.DamageTaken(Damage);
+                            entity.EffectTaken(Effect.duration, Effect.effect);
 
                             if (!isUnstoppable)
                                 HandleDestroy();

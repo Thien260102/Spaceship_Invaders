@@ -141,6 +141,28 @@ namespace Assets.Scripts
             }
         }
 
+        public override void EffectTaken(float time, Variables.Skill_Effect effect)
+        {
+            if (invincible)
+                return;
+
+            isEffecting = effect;
+            Debug.Log("Effect: " + effect);
+
+            switch (effect)
+            {
+                case Variables.Skill_Effect.None:
+
+                    break;
+
+                case Variables.Skill_Effect.OppositeDirection:
+
+                    break;
+            }
+
+            Invoke("EndEffect", time);
+        }
+
         void SetState()
         {
             if (IsDeleted)
@@ -158,9 +180,13 @@ namespace Assets.Scripts
 
         void MouseController2()
         {
+            int direction = 1;
+            if (isEffecting == Variables.Skill_Effect.OppositeDirection)
+                direction = -1;
+
             Vector3 mousePosition = Body.position;
-            mousePosition.x += Input.GetAxis("Mouse X") * sensitivity * SpeedCap * Time.deltaTime;
-            mousePosition.y += Input.GetAxis("Mouse Y") * sensitivity * SpeedCap * Time.deltaTime;
+            mousePosition.x += Input.GetAxis("Mouse X") * sensitivity * SpeedCap * Time.deltaTime * direction;
+            mousePosition.y += Input.GetAxis("Mouse Y") * sensitivity * SpeedCap * Time.deltaTime * direction;
 
 
             // Adding distance to handle Fuel
@@ -381,6 +407,7 @@ namespace Assets.Scripts
                 IsDeleted = false;
                 SetState();
 
+                HP = Variables.PlayerHPDefault;
                 fuel.RenderNewState();
                 animator.SetTrigger("Spawn");
                 StartCoroutine(SetInvincible(3.0f));

@@ -9,7 +9,7 @@ namespace Assets.Scripts
         {
             float angle = 360.0f / quantity;
             Vector2 xAxis = new Vector2(1, 0);
-            this.Init(Type, Variables.Damage_Bullet_Default, direction);
+            this.Init(Type, Damage, direction);
 
             float originalAngle = Vector3.Angle(direction, xAxis);
 
@@ -21,7 +21,7 @@ namespace Assets.Scripts
                 
                 direction = Quaternion.Euler(0, 0, angle * i + originalAngle) * xAxis;
 
-                Instantiate_Skill.Init(Type, Variables.Damage_Bullet_Default, direction);
+                Instantiate_Skill.Init(Type, Damage, direction);
             }
         }
 
