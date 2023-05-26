@@ -66,7 +66,12 @@ namespace Assets.Scripts
 
         public void DisplayFloatingText(string displayText, Vector2 position)
         {
-            GameObject text = Instantiate(floatingText, Camera.main.WorldToScreenPoint(position), new Quaternion(0,0,0,0));
+            int randomCoorX = Random.Range(1, 9);
+            int randomCoorY = Random.Range(1, 9);
+            Vector2 location = Camera.main.WorldToScreenPoint(position);
+            location.x += -0.5f + randomCoorX * 0.1f;
+            location.y += -0.5f + randomCoorY * 0.1f;
+            GameObject text = Instantiate(floatingText, location, new Quaternion(0,0,0,0));
             text.transform.SetParent(Canvas.transform);
             text.GetComponentInChildren<Text>().text = displayText;
         }

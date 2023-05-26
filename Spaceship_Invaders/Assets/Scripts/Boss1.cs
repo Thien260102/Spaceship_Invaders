@@ -43,6 +43,7 @@ namespace Assets.Scripts
             }
             else
                 BurstTime += Time.deltaTime;
+            UpdateStatusEffect();
         }
 
 

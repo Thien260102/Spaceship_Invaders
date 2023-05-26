@@ -45,6 +45,7 @@ public class Enemy1 : Enemy
             else
                 nextNode = 0;
         }
+        UpdateStatusEffect();
     }
 
     private void Shooting()

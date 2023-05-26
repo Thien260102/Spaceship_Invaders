@@ -124,6 +124,11 @@ public class Laser : Weapon
                                 HUD.Instance.Score += 500;
                                 ItemManager.Instance.RandomItemHitBoss(entity.Body.position);
                             }
+                            int r = Random.Range(0, 100);
+                            if (r <= 50 )
+                            {
+                                StatusEffectManager.InflictStatusEffect(entity, StatusEffectTypes.Burn, 3.0f);
+                            }
                         }
                         break;
 

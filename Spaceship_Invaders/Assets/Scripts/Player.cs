@@ -100,6 +100,8 @@ namespace Assets.Scripts
 
                 SetState();
             }
+
+            UpdateStatusEffect();
         }
 
         public IEnumerator SetInvincible(float duration)

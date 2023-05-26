@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts;
 
@@ -16,6 +18,8 @@ namespace Assets.Scripts
 
         public Variables.Skill_Effect isEffecting { get; set; }
 
+        public List<StatusEffect> statusEffects;
+
         bool isDeleted = false;
         public bool IsDeleted 
         { 
@@ -28,7 +32,24 @@ namespace Assets.Scripts
         public Entity()
         {
             IsDeleted = false;
+            statusEffects = new List<StatusEffect>();
             //Debug.Log("Constructor");
+        }
+
+        public void UpdateStatusEffect()
+        {
+            foreach (StatusEffect effect in statusEffects.ToList())
+            {
+                effect.remainingDuration -= Time.deltaTime;
+                if (effect.remainingDuration <= 0)
+                {
+                    effect.OnEnd();
+                    statusEffects.Remove(effect);
+                } else
+                {
+                    effect.OnUpdate();
+                }
+            }
         }
 
         public virtual void DamageTaken(int dame)

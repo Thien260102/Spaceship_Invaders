@@ -44,6 +44,7 @@ namespace Assets.Scripts
                 else
                     nextNode = 0;
             }
+            UpdateStatusEffect();
         }
 
         private void Shooting()
