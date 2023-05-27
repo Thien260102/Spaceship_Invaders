@@ -5,7 +5,7 @@ namespace Assets.Scripts
     [System.Serializable]
     public class SkillEffect
     {
-        [SerializeField] public Variables.Skill_Effect effect;
+        [SerializeField] public StatusEffectTypes effect;
         [SerializeField] public float duration;
     }
 
@@ -142,7 +142,9 @@ namespace Assets.Scripts
                         if (this.Type == Variables.ByEnemy)
                         {
                             entity.DamageTaken(Damage);
-                            entity.EffectTaken(Effect.duration, Effect.effect);
+
+                            StatusEffectManager.InflictStatusEffect(entity, Effect.effect, Effect.duration, 0);
+                            //entity.EffectTaken(Effect.duration, Effect.effect);
 
                             if (!isUnstoppable)
                                 HandleDestroy();

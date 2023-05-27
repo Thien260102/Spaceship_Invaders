@@ -166,9 +166,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 5706930047480853542}
   Explosion: {fileID: 3546241938369737458, guid: b00df24188ea05342a07aeea675d7791, type: 3}
+  Ratio: 1
   Damage: 50
   Effect:
-    effect: 1
+    effect: 3
     duration: 3
   isMovable: 1
   isUnstoppable: 0

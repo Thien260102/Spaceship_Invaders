@@ -16,9 +16,11 @@ namespace Assets.Scripts
 
         public GameObject Explosion;
 
-        public Variables.Skill_Effect isEffecting { get; set; }
+        public float Ratio = 1;
 
-        public List<StatusEffect> statusEffects;
+        //public Variables.Skill_Effect isEffecting { get; set; }
+
+        public Dictionary<StatusEffectTypes, StatusEffect> statusEffects;
 
         bool isDeleted = false;
         public bool IsDeleted 
@@ -32,23 +34,15 @@ namespace Assets.Scripts
         public Entity()
         {
             IsDeleted = false;
-            statusEffects = new List<StatusEffect>();
+            statusEffects = new Dictionary<StatusEffectTypes, StatusEffect>();
             //Debug.Log("Constructor");
         }
 
         public void UpdateStatusEffect()
         {
-            foreach (StatusEffect effect in statusEffects.ToList())
+            foreach (var effect in statusEffects)
             {
-                effect.remainingDuration -= Time.deltaTime;
-                if (effect.remainingDuration <= 0)
-                {
-                    effect.OnEnd();
-                    statusEffects.Remove(effect);
-                } else
-                {
-                    effect.OnUpdate();
-                }
+                 effect.Value.OnUpdate();
             }
         }
 
@@ -59,31 +53,31 @@ namespace Assets.Scripts
                 IsDeleted = true;
         }
 
-        public virtual void EffectTaken(float time, Variables.Skill_Effect effect)
-        {
-            isEffecting = effect;
-            Debug.Log("Effect: " + effect);
+        //public virtual void EffectTaken(float time, Variables.Skill_Effect effect)
+        //{
+        //    isEffecting = effect;
+        //    Debug.Log("Effect: " + effect);
 
-            switch(effect)
-            {
-                case Variables.Skill_Effect.None:
+        //    switch(effect)
+        //    {
+        //        case Variables.Skill_Effect.None:
 
-                    break;
+        //            break;
 
-                case Variables.Skill_Effect.OppositeDirection:
+        //        case Variables.Skill_Effect.OppositeDirection:
 
-                    break;
-            }
+        //            break;
+        //    }
 
-            Invoke("EndEffect", time);
-        }
+        //    Invoke("EndEffect", time);
+        //}
 
-        protected void EndEffect()
-        {
-            isEffecting = Variables.Skill_Effect.None;
+        //protected void EndEffect()
+        //{
+        //    isEffecting = Variables.Skill_Effect.None;
 
-            Debug.Log("End effect");
-        }
+        //    Debug.Log("End effect");
+        //}
 
         public void Destructor()
         {

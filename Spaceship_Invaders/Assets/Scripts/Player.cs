@@ -39,7 +39,7 @@ namespace Assets.Scripts
         private Vector3 lastFrameMousePosition;
         public float sensitivity = 1.0f;
 
-        private bool invincible = false;
+        public bool invincible = false;
         private bool controlEnable = true;    
 
         public float MaximumSpeed;
@@ -143,27 +143,27 @@ namespace Assets.Scripts
             }
         }
 
-        public override void EffectTaken(float time, Variables.Skill_Effect effect)
-        {
-            if (invincible)
-                return;
+        //public override void EffectTaken(float time, Variables.Skill_Effect effect)
+        //{
+        //    if (invincible)
+        //        return;
 
-            isEffecting = effect;
-            Debug.Log("Effect: " + effect);
+        //    isEffecting = effect;
+        //    Debug.Log("Effect: " + effect);
 
-            switch (effect)
-            {
-                case Variables.Skill_Effect.None:
+        //    switch (effect)
+        //    {
+        //        case Variables.Skill_Effect.None:
 
-                    break;
+        //            break;
 
-                case Variables.Skill_Effect.OppositeDirection:
+        //        case Variables.Skill_Effect.OppositeDirection:
 
-                    break;
-            }
+        //            break;
+        //    }
 
-            Invoke("EndEffect", time);
-        }
+        //    Invoke("EndEffect", time);
+        //}
 
         void SetState()
         {
@@ -182,13 +182,9 @@ namespace Assets.Scripts
 
         void MouseController2()
         {
-            int direction = 1;
-            if (isEffecting == Variables.Skill_Effect.OppositeDirection)
-                direction = -1;
-
             Vector3 mousePosition = Body.position;
-            mousePosition.x += Input.GetAxis("Mouse X") * sensitivity * SpeedCap * Time.deltaTime * direction;
-            mousePosition.y += Input.GetAxis("Mouse Y") * sensitivity * SpeedCap * Time.deltaTime * direction;
+            mousePosition.x += Input.GetAxis("Mouse X") * sensitivity * SpeedCap * Time.deltaTime * Ratio;
+            mousePosition.y += Input.GetAxis("Mouse Y") * sensitivity * SpeedCap * Time.deltaTime * Ratio;
 
 
             // Adding distance to handle Fuel

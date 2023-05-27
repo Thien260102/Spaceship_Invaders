@@ -18,16 +18,30 @@ public class Burn : StatusEffect
 
     public override void OnInflicted()
     {
+        remainingDuration = duration;
+        isEnd = false;
         HUD.Instance.DisplayFloatingText("Burn!", entity.transform.position);
     }
 
     public override void OnUpdate()
     {
-        delay -= Time.deltaTime;
-        if (Condition())
+        if (isEnd) return;
+
+        remainingDuration -= Time.deltaTime;
+        if (remainingDuration <= 0)
         {
-            OnConditionalUpdate();
+            OnEnd();
         }
+        else
+        {
+
+            delay -= Time.deltaTime;
+            if (Condition())
+            {
+                OnConditionalUpdate();
+            }
+        }
+
     }
 
     public override void OnConditionalUpdate()
@@ -40,6 +54,7 @@ public class Burn : StatusEffect
     public override void OnEnd()
     {
         HUD.Instance.DisplayFloatingText("Burn over", entity.transform.position);
+        isEnd = true;
     }
 
     public override bool Condition()
