@@ -297,6 +297,14 @@ namespace Assets.Scripts
                     if(!invincible)
                         StartCoroutine(SetInvincible(3.0f));
                     break;
+
+                case Variables.Skill_Type.ElectricShooting:
+                    SkillManager.Instance.ElectricShooting(Variables.ByPlayer, position, new Vector2(0, 1));
+                    break;
+
+                case Variables.Skill_Type.SectorShooting:
+                    SkillManager.Instance.SectorShooting(Variables.ByPlayer, 5, position, new Vector2(0, 1));
+                    break;
             }
         }
 

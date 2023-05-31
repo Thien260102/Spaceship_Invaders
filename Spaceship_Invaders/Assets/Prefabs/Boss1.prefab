@@ -115,10 +115,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 2786836827929608496}
   Explosion: {fileID: 8771695447643759940, guid: 2cf7ba3d5d707354d9dd8b071db9f66a, type: 3}
+  Ratio: 1
   bullet: {fileID: 0}
+  MaxTimeRandom: 1
   path: {fileID: 0}
   OrbitPath: {fileID: 0}
-  Skills: 000000000100000002000000
+  Skills: 00000000010000000200000005000000
 --- !u!1001 &5364092264367229879
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -114,6 +114,8 @@ namespace Assets.Scripts
             DivineDeparture = 1,
             EnergyWave = 2,
             Invincible = 3,
+            ElectricShooting = 4,
+            SectorShooting = 5,
         }
 
         public enum Skill_Effect

@@ -26,7 +26,6 @@ public static class StatusEffectManager
         {
             case StatusEffectTypes.Burn:
                 {
-
                     Burn b = new Burn(duration, e, damage);
                     e.statusEffects[type] = b;
                     b.OnInflicted();
@@ -34,8 +33,15 @@ public static class StatusEffectManager
                 }
             case StatusEffectTypes.OppositeDirection:
                 {
-
                     OppositeDirection effect = new OppositeDirection(2.0f, e);
+                    e.statusEffects[type] = effect;
+                    effect.OnInflicted();
+
+                    return;
+                }
+            case StatusEffectTypes.Stun:
+                {
+                    Stun effect = new Stun(2.0f, e);
                     e.statusEffects[type] = effect;
                     effect.OnInflicted();
 

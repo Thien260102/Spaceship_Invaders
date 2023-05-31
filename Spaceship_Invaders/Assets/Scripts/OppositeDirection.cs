@@ -40,15 +40,16 @@ namespace Assets.Scripts
 
         public override void OnConditionalUpdate()
         {
-            entity.Ratio = -1;
+            if(entity.Ratio != 0 && !(entity as Enemy))
+                entity.Ratio = -1;
+
             if (entity as Player && ((Player)entity).invincible == true)
                 entity.Ratio = 1;
         }
 
         public override void OnEnd()
         {
-            if (entity as Player)
-                entity.Ratio = 1;
+            entity.Ratio = 1;
             isEnd = true;
             HUD.Instance.DisplayFloatingText("Opposite Direction over", entity.transform.position);
         }

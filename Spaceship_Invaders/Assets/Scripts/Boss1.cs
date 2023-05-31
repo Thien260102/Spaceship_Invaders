@@ -62,7 +62,7 @@ namespace Assets.Scripts
             else
             {
                 int rd = Random.Range(0, Skills.Count);
-                rd = 0;
+                rd = 3;
 
                 switch (Skills[rd])
                 {
@@ -84,6 +84,13 @@ namespace Assets.Scripts
                         TotalTime = 0.1f;
                         position.y -= Body.transform.localScale.y / 2;
                         StartCoroutine(EnergyWave(0, position));
+                        break;
+
+                    case Variables.Skill_Type.SectorShooting:
+                        TotalTime = CIRCLE_SHOOTING_TIME;
+
+                        StartCoroutine(SectorShoot(CIRCLE_SHOOTING_TIME, position, 5));
+
                         break;
                 }
             }

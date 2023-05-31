@@ -127,7 +127,8 @@ namespace Assets.Scripts
                     case Variables.ENEMY:
                         if (this.Type == Variables.ByPlayer)
                         {
-                            entity.DamageTaken(Damage);
+                            entity.DamageTaken(Damage); 
+                            StatusEffectManager.InflictStatusEffect(entity, Effect.effect, Effect.duration, Damage);
 
                             if (entity is Boss)
                                 HUD.Instance.Score += Damage;
@@ -143,9 +144,9 @@ namespace Assets.Scripts
                         {
                             entity.DamageTaken(Damage);
 
-                            StatusEffectManager.InflictStatusEffect(entity, Effect.effect, Effect.duration, 0);
+                            StatusEffectManager.InflictStatusEffect(entity, Effect.effect, Effect.duration, Damage);
                             //entity.EffectTaken(Effect.duration, Effect.effect);
-
+                            
                             if (!isUnstoppable)
                                 HandleDestroy();
                         }

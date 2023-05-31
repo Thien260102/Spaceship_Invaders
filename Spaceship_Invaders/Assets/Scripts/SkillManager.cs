@@ -22,11 +22,23 @@ namespace Assets.Scripts
                 instance = this;
         }
 
+        int getIndex(Variables.Skill_Type name)
+        {
+            int value = (int)name;
+            var enumDisplayStatus = (Variables.Skill_Type)value;
+            string stringValue = enumDisplayStatus.ToString();
+
+            int index = Skills.FindIndex(e => e.name == stringValue);
+
+            return index;
+        }
+
         public void CircleShoot(int Type, int quantity, Vector2 position, Vector2 direction)
         {
-            if(Skills.Count > 0)
+            int index = getIndex(Variables.Skill_Type.CircleShooting);
+            if(index != -1)
             {
-                BeautifulShapeSkill Instantiate_Skill = Instantiate(Skills[0] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as BeautifulShapeSkill;
+                BeautifulShapeSkill Instantiate_Skill = Instantiate(Skills[index] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as BeautifulShapeSkill;
 
                 Instantiate_Skill.Type = Type;
                 Instantiate_Skill.Circle(quantity, position, direction);
@@ -35,9 +47,10 @@ namespace Assets.Scripts
 
         public void DivineDeparture(int Type, Vector2 position, Vector2 direction)
         {
-            if (Skills.Count > 1) 
+            int index = getIndex(Variables.Skill_Type.DivineDeparture);
+            if (index != -1)
             {
-                RageSkill Instantiate_Skill = Instantiate(Skills[1] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as RageSkill;
+                RageSkill Instantiate_Skill = Instantiate(Skills[index] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as RageSkill;
                 Instantiate_Skill.Type = Type;
                 Instantiate_Skill.DivineDeparture(direction);
             }
@@ -45,9 +58,10 @@ namespace Assets.Scripts
 
         public void EnergyWave(int Type, Vector2 position, Vector2 direction)
         {
-            if (Skills.Count > 2)
+            int index = getIndex(Variables.Skill_Type.EnergyWave);
+            if (index != -1)
             {
-                Skill Instantiate_Skill = Instantiate(Skills[2] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Skill;
+                Skill Instantiate_Skill = Instantiate(Skills[index] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Skill;
 
                 Instantiate_Skill.Init(Type, Variables.Damage_Bullet_Default, direction);
             }
@@ -55,14 +69,39 @@ namespace Assets.Scripts
 
         public void Invincible(int Type, Vector2 position, Vector2 direction, GameObject parent)
         {
-            if(Skills.Count > 3)
+            int index = getIndex(Variables.Skill_Type.Invincible);
+            if (index != -1)
             {
-                Skill Instantiate_Skill = Instantiate(Skills[3] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Skill;
+                Skill Instantiate_Skill = Instantiate(Skills[index] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Skill;
 
                 Instantiate_Skill.isMovable = false;
                 Instantiate_Skill.SetParent(parent);
                 Instantiate_Skill.Init(Type, Variables.Damage_Bullet_Default, direction);
 
+            }
+        }
+
+        public void ElectricShooting(int Type, Vector2 position, Vector2 direction)
+        {
+            int index = getIndex(Variables.Skill_Type.ElectricShooting);
+            if (index != -1)
+            {
+                Skill Instantiate_Skill = Instantiate(Skills[index] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Skill;
+
+                Instantiate_Skill.Init(Type, Variables.Damage_Bullet_Default, direction);
+            }
+        }
+
+        public void SectorShooting(int Type, int quantity, Vector2 position, Vector2 direction)
+        {
+            int index = getIndex(Variables.Skill_Type.SectorShooting);
+            Debug.Log("Sector shooting index: " + index);
+            if (index != -1)
+            {
+                BeautifulShapeSkill Instantiate_Skill = Instantiate(Skills[index] as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as BeautifulShapeSkill;
+
+                Instantiate_Skill.Type = Type;
+                Instantiate_Skill.Sector(quantity, position, direction);
             }
         }
 

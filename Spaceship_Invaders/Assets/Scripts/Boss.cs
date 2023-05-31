@@ -24,7 +24,7 @@ namespace Assets.Scripts
             HP = Variables.HP_Enemy5;
 
             DeltaTime = 0;
-            maxTime = Random.Range(2.5f, 5);
+            maxTime = Random.Range(MaxTimeRandom / 2, MaxTimeRandom);
             Body = GetComponent<Rigidbody2D>();
             nextDestinationNode = 1;
 
@@ -54,6 +54,17 @@ namespace Assets.Scripts
             SkillManager.Instance.EnergyWave(Variables.ByEnemy, position, new Vector2(0, -1));
         }
 
+        protected IEnumerator ElectricShoot(float delayTime, Vector2 position)
+        {
+            yield return new WaitForSeconds(delayTime);
+            SkillManager.Instance.ElectricShooting(Variables.ByEnemy, position, new Vector2(0, -1));
+        }
+
+        protected IEnumerator SectorShoot(float delayTime, Vector2 position, int quantity)
+        {
+            yield return new WaitForSeconds(delayTime);
+            SkillManager.Instance.SectorShooting(Variables.ByEnemy, quantity, position, new Vector2(0, -1));
+        }
 
     }
 }
