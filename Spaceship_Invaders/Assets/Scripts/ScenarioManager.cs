@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.DataPersistence;
 
 namespace Assets.Scripts
 {
@@ -8,7 +9,7 @@ namespace Assets.Scripts
     public class ScenarioManager : MonoBehaviour
     {
         [SerializeField] List<Wave> waves;
-
+        [SerializeField] PauseMenuScript pauseMenuScript;
         int waveIndex;// spawnSequenceIndex = 0;
 
         bool waveDoneSpawning;
@@ -97,7 +98,7 @@ namespace Assets.Scripts
             {
                 waveDoneSpawning = false;
                 yield return new WaitForSeconds(waves[waveIndex].delayBeforeSpawn);
-                Debug.Log("Spawning wave: " + waveIndex.ToString());
+                //Debug.Log("Spawning wave: " + waveIndex.ToString());
                 StartCoroutine(SpawnWave(waves[waveIndex]));
 
                 //wait until wave down spawning and all enemies are dead, check every 0.2 sec
@@ -111,6 +112,8 @@ namespace Assets.Scripts
             }
             //level is done, do stuff
             Debug.Log("level complete ");
+
+            pauseMenuScript.NavigateTo(pauseMenuScript.PauseMenuCanvas.Count - 1);
         }
 
         public IEnumerator SpawnWave(Wave wave)
@@ -150,7 +153,7 @@ namespace Assets.Scripts
 
         public IEnumerator SpawnSpawnSequence(SpawnSequence spawnSequence, int i)
         {
-            Debug.Log("Spawning Sequence: " + i.ToString());
+            //Debug.Log("Spawning Sequence: " + i.ToString());
             foreach (EnemySpawnInfo enemySpawnInfo in spawnSequence.enemySpawnInfos)
             {
                 StartCoroutine(SpawnEnemies(enemySpawnInfo, spawnSequence.path, spawnSequence.OrbitPath));

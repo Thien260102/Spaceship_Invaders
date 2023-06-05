@@ -32,6 +32,7 @@ namespace Assets.Scripts
                 {
                     score = value;
                     Scores.text = string.Format("{0: 000,000}", score);
+                    DataPersistence.DataPersistenceManager.Instance.gameData.Score = value;
                 }
             }
         }
@@ -46,6 +47,7 @@ namespace Assets.Scripts
                 {
                     life = value;
                     Lifes.text = life.ToString();
+                    DataPersistence.DataPersistenceManager.Instance.gameData.Life = value;
                 }
             }
         }
@@ -60,6 +62,7 @@ namespace Assets.Scripts
                 {
                     coin = value;
                     Coins.text = coin.ToString();
+                    DataPersistence.DataPersistenceManager.Instance.gameData.Coin = value;
                 }
             }
         }
@@ -81,7 +84,11 @@ namespace Assets.Scripts
         {
             if (instance == null) 
                 instance = this;
-            Life = 30;
+            //Life = 30;
+
+            Score = DataPersistence.DataPersistenceManager.Instance.gameData.Score;
+            Life = DataPersistence.DataPersistenceManager.Instance.gameData.Life;
+            Coin = DataPersistence.DataPersistenceManager.Instance.gameData.Coin;
         }
 
     }

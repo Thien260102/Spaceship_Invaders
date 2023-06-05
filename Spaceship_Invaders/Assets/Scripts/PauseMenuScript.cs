@@ -6,7 +6,7 @@ using Assets.Scripts;
 
 public class PauseMenuScript : MonoBehaviour
 {
-    private string mainMenuScenePath = "Assets/Scenes/MainMenu.unity";
+    //private string mainMenuScenePath = "Assets/Scenes/MainMenu.unity";
     public List<GameObject> PauseMenuCanvas= new List<GameObject>();
 
     private bool isVisible = false;
@@ -94,8 +94,18 @@ public class PauseMenuScript : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        Debug.Log("Returning...");
-        SceneManager.LoadScene(mainMenuScenePath, LoadSceneMode.Single);
+        player.GameResume();
+        Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.SaveData();
+
+        GameManager.Instance.MainMenu();
+    }
+
+    public void NextLevel()
+    {
+        player.GameResume();
+        Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.SaveData();
+
+        GameManager.Instance.NextLevel();
     }
 
 }

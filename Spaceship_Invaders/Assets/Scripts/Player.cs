@@ -51,6 +51,8 @@ namespace Assets.Scripts
 
         private void Start()
         {
+            DataPersistence.DataPersistenceManager.Instance.LoadData();
+
             Body = GetComponent<Rigidbody2D>();
             lastFrameMousePosition = Body.position;
 
@@ -387,6 +389,7 @@ namespace Assets.Scripts
         {
             Weapon.Level += amount;
             Weapon.Level = Mathf.Clamp(Weapon.Level, 1, 3);
+            DataPersistence.DataPersistenceManager.Instance.gameData.LevelBullet = Weapon.Level;
             HUD.Instance.DisplayFloatingText("Weapon Level Up", Body.position);
         }
 
@@ -400,6 +403,7 @@ namespace Assets.Scripts
             Weapon.Level--;
             if (Weapon.Level < 1)
                 Weapon.Level = 1;
+            DataPersistence.DataPersistenceManager.Instance.gameData.LevelBullet = Weapon.Level;
 
             //WeaponStateBar.Instance.Level = Weapon.Level;
 

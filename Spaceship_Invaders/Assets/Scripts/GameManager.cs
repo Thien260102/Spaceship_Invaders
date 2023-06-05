@@ -12,11 +12,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
-
         // this will exist throughout all scenes
         DontDestroyOnLoad(this);
+
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
     }
 
     public void MainMenu()
@@ -26,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LoadLevel(SceneManager.GetActiveScene().buildIndex);
     }
     public void CompleteLevel()
     {
@@ -36,12 +39,15 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void LoadLevel(int level)
     {
-        SceneManager.LoadScene(level);
+        Debug.Log(SceneManager.sceneCountInBuildSettings);
+        if(level < SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(level);
+        
     }
 
     public void QuitGame()

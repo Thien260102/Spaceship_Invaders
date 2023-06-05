@@ -53,12 +53,16 @@ namespace Assets.Scripts
             Contain = Contains.Count;
             
             RenderNewState();
+
+            Contain = Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.gameData.Energy;
         }
 
         private void Update()
         {
             if (contain <= 2)
                 RenderWarning();
+
+            DataPersistence.DataPersistenceManager.Instance.gameData.Energy = (int)contain;
         }
 
         public void RenderNewState()
