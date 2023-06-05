@@ -12,6 +12,7 @@ namespace Assets.Scripts
         [SerializeField] PauseMenuScript pauseMenuScript;
         int waveIndex;// spawnSequenceIndex = 0;
 
+        [SerializeField]
         bool waveDoneSpawning;
 
         List<Entity> EnemiesOrAsteroid = new List<Entity>();
@@ -99,7 +100,7 @@ namespace Assets.Scripts
                 waveDoneSpawning = false;
                 yield return new WaitForSeconds(waves[waveIndex].delayBeforeSpawn);
                 //Debug.Log("Spawning wave: " + waveIndex.ToString());
-                StartCoroutine(SpawnWave(waves[waveIndex]));
+                yield return StartCoroutine(SpawnWave(waves[waveIndex]));
 
                 //wait until wave down spawning and all enemies are dead, check every 0.2 sec
                 while (!waveDoneSpawning || EnemiesOrAsteroid.Count != 0)
@@ -107,7 +108,6 @@ namespace Assets.Scripts
                     yield return new WaitForSeconds(0.2f);
                 }
 
-                waveDoneSpawning = false;
                 waveIndex++;
             }
             //level is done, do stuff
@@ -122,7 +122,7 @@ namespace Assets.Scripts
             {
                 int index = 0;
 
-                StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
+                yield return StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
                 index++;
 
                 while (index < wave.spawnSequences.Count)
@@ -133,22 +133,20 @@ namespace Assets.Scripts
                         wave.spawnSequences[index].WaitType == WaitBetweenSequenceType.Parallel)
                     {
                         yield return new WaitForSeconds(wave.spawnSequences[index].delayPostSequence);
-                        StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
+                        yield return StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
                         index++;
                     }
 
                     if (EnemiesOrAsteroid.Count == 0 && index < wave.spawnSequences.Count)
                     {
                         yield return new WaitForSeconds(wave.spawnSequences[index].delayPostSequence);
-                        StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
+                        yield return StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
                         index++;
                     }
-
-                    
                 }
+
+                waveDoneSpawning = true;
             }
-            
-            waveDoneSpawning = true;
         }
 
         public IEnumerator SpawnSpawnSequence(SpawnSequence spawnSequence, int i)
@@ -156,7 +154,7 @@ namespace Assets.Scripts
             //Debug.Log("Spawning Sequence: " + i.ToString());
             foreach (EnemySpawnInfo enemySpawnInfo in spawnSequence.enemySpawnInfos)
             {
-                StartCoroutine(SpawnEnemies(enemySpawnInfo, spawnSequence.path, spawnSequence.OrbitPath));
+                yield return StartCoroutine(SpawnEnemies(enemySpawnInfo, spawnSequence.path, spawnSequence.OrbitPath));
             }
             yield return new WaitForSeconds(0);
         }

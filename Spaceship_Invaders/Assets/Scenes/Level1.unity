@@ -2906,9 +2906,9 @@ MonoBehaviour:
   - path: {fileID: 1976202880}
     OrbitPath: {fileID: 331783584}
     enemySpawnInfos:
-    - entity: {fileID: 4402568336884997738, guid: 68d60ba34419679499c01b7823c7820a, type: 3}
+    - entity: {fileID: 140117644, guid: 701aa779029e51a4d87b0c60a94005b1, type: 3}
       quantity: 5
-      delayBetweenSpawn: 1
+      delayBetweenSpawn: 2
     WaitType: 0
     delayPostSequence: 0
 --- !u!4 &837156923
@@ -5265,7 +5265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1482211340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5281,6 +5281,7 @@ MonoBehaviour:
   waves:
   - {fileID: 1708942866}
   pauseMenuScript: {fileID: 287876541}
+  waveDoneSpawning: 0
 --- !u!4 &1482211341
 Transform:
   m_ObjectHideFlags: 0
@@ -7844,7 +7845,7 @@ MonoBehaviour:
     - entity: {fileID: 4402568336884997738, guid: 68d60ba34419679499c01b7823c7820a, type: 3}
       quantity: 5
       delayBetweenSpawn: 1
-    WaitType: 0
+    WaitType: 1
     delayPostSequence: 0
   - path: {fileID: 862453985}
     OrbitPath: {fileID: 1505593025}
@@ -7993,7 +7994,7 @@ MonoBehaviour:
       quantity: 1
       delayBetweenSpawn: 1
     WaitType: 0
-    delayPostSequence: 0
+    delayPostSequence: 3
 --- !u!4 &2048416344
 Transform:
   m_ObjectHideFlags: 0
@@ -8347,7 +8348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2134380762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8374,6 +8375,7 @@ MonoBehaviour:
   - {fileID: 1869774860}
   - {fileID: 659619146}
   pauseMenuScript: {fileID: 287876541}
+  waveDoneSpawning: 0
 --- !u!4 &2134380763
 Transform:
   m_ObjectHideFlags: 0

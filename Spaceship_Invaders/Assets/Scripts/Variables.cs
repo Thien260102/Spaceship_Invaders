@@ -51,7 +51,7 @@ namespace Assets.Scripts
         public const int HP_Enemy2 = 1000;  //2000
         public const int HP_Enemy3 = 3000;  //5000
         public const int HP_Enemy4 = 10000;
-        public const int HP_Enemy5 = 20000;
+        public const int HP_Enemy5 = 1000;
         public const int HP_Enemy6 = 200000;
 
 

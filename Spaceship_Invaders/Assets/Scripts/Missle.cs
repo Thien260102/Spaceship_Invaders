@@ -18,7 +18,7 @@ namespace Assets.Scripts
 
         void Start()
         {
-            Init(Variables.ByPlayer);
+            
         }
 
         public void Init(int type = 10, int damage = Variables.Damage_Missle_Default)
@@ -48,10 +48,16 @@ namespace Assets.Scripts
                 if (e != null)
                 {
                     float distance = Vector2.Distance(this.transform.position, o.transform.position);
-                    if ((e.ID == Variables.ENEMY || e.ID == Variables.ASTEROID) && distance < minDistance)
+                    if ((e.ID == Variables.ENEMY || e.ID == Variables.ASTEROID) && (distance < minDistance) && (Type == Variables.ByPlayer))
                     {
                         minDistance = distance;
                         target = o;
+                    } else
+                    if ((e.ID == Variables.PLAYER) && (distance < minDistance) && (Type == Variables.ByEnemy))
+                    {
+                        minDistance = distance;
+                        target = o;
+                        break;
                     }
                 }
             }

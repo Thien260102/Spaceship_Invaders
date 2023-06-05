@@ -27,23 +27,29 @@ namespace Assets.Scripts
 
         protected void Movement()
         {
-            Vector2 destination = new Vector2(path.GetNodePosition(nextDestinationNode).x, path.GetNodePosition(nextDestinationNode).y);
-            Body.position = Vector2.Lerp(Body.position, destination, Variables.EnemyFlySpeed * Time.deltaTime * Ratio);
-
-            if (Vector2.Distance(Body.position, destination) < 3f)
+            if (path.GetNodePosition(nextDestinationNode) != null)
             {
-                nextDestinationNode++;
+                Vector2 destination = new Vector2(path.GetNodePosition(nextDestinationNode).x, path.GetNodePosition(nextDestinationNode).y);
+                Body.position = Vector2.Lerp(Body.position, destination, Variables.EnemyFlySpeed * Time.deltaTime * Ratio);
+
+                if (Vector2.Distance(Body.position, destination) < 3f)
+                {
+                    nextDestinationNode++;
+                }
             }
         }
 
         protected void OrbitMovement()
         {
-            Vector2 destination = new Vector2(OrbitPath.GetNodePosition(nextNode).x, OrbitPath.GetNodePosition(nextNode).y);
-            Body.position = Vector2.Lerp(Body.position, destination, Variables.EnemyFlySpeed / 2 * Time.deltaTime * Ratio);
-
-            if (Vector2.Distance(Body.position, destination) < 3f)
+            if (OrbitPath.GetNodePosition(nextNode) != null)
             {
-                nextNode++;
+                Vector2 destination = new Vector2(OrbitPath.GetNodePosition(nextNode).x, OrbitPath.GetNodePosition(nextNode).y);
+                Body.position = Vector2.Lerp(Body.position, destination, Variables.EnemyFlySpeed / 2 * Time.deltaTime * Ratio);
+
+                if (Vector2.Distance(Body.position, destination) < 3f)
+                {
+                    nextNode++;
+                }
             }
         }
 
