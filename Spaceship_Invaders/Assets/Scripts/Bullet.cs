@@ -62,6 +62,10 @@ namespace Assets.Scripts
         private void OnTriggerEnter2D(Collider2D collision)
         {
             Entity entity = collision.GetComponent<Entity>();
+            if (entity == null && collision.GetComponentInParent<Entity>() != null)
+            {
+                entity = collision.GetComponentInParent<Entity>();
+            }
             
             if(entity != null && entity.IsDeleted == false)
             {

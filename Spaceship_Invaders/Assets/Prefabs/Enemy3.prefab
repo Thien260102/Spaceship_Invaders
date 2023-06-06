@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1288215435478263058}
   - component: {fileID: 1288215435478263057}
   - component: {fileID: 569658467}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 1288215435478263058}
   Explosion: {fileID: 2361368940365892858, guid: c4d5d442023295a4cacca7f7f2131f1d, type: 3}
+  Ratio: 1
   bullet: {fileID: 1004416390338961791, guid: 097c65200d4fea84caf9e911189f1e0a, type: 3}
   MaxTimeRandom: 10
   path: {fileID: 0}

@@ -45,6 +45,11 @@ namespace Assets.Scripts
             {
                 GameObject o = results[i].gameObject;
                 Entity e = results[i].gameObject.GetComponent<Entity>();
+                if (e == null && results[i].gameObject.GetComponentInParent<Entity>() != null)
+                {
+                    e = results[i].gameObject.GetComponentInParent<Entity>();
+                }
+
                 if (e != null)
                 {
                     float distance = Vector2.Distance(this.transform.position, o.transform.position);
@@ -104,6 +109,10 @@ namespace Assets.Scripts
         private void OnTriggerEnter2D(Collider2D collision)
         {
             Entity entity = collision.GetComponent<Entity>();
+            if (entity == null && collision.GetComponentInParent<Entity>() != null)
+            {
+                entity = collision.GetComponentInParent<Entity>();
+            }
 
             if (entity != null && entity.IsDeleted == false)
             {

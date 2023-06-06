@@ -104,7 +104,12 @@ public class Laser : Weapon
         {
             length = Mathf.Clamp(Vector2.Distance(laserSpawnPoint.transform.position, laserhit.point), 0f, 20f);
             Render();
-            Entity entity = laserhit.collider.gameObject.GetComponent<Entity>();
+
+            Entity entity = laserhit.collider.GetComponent<Entity>();
+            if (entity == null && laserhit.collider.GetComponentInParent<Entity>() != null)
+            {
+                entity = laserhit.collider.GetComponentInParent<Entity>();
+            }
             
             if (entity != null && entity.IsDeleted == false)
             {

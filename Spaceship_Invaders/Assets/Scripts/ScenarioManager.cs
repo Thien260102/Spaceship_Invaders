@@ -173,8 +173,17 @@ namespace Assets.Scripts
                     EnemiesOrAsteroid.Add(Instantiate_Enemy);
                     yield return new WaitForSeconds(enemySpawnInfo.delayBetweenSpawn);
                 }
-            }
-            else
+            } else
+            if ((enemySpawnInfo.entity as Tentacle) != null)
+            {
+                for (int i = 0; i < enemySpawnInfo.quantity; i++)
+                {
+                    Tentacle Instantiate_Enemy = Instantiate(enemySpawnInfo.entity, path.GetNodePosition(0), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Tentacle;
+
+                    EnemiesOrAsteroid.Add(Instantiate_Enemy);
+                    yield return new WaitForSeconds(enemySpawnInfo.delayBetweenSpawn);
+                }
+            } else
             {
                 for (int i = 0; i < enemySpawnInfo.quantity; i++)
                 {
