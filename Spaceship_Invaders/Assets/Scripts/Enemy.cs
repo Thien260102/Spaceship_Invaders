@@ -66,5 +66,10 @@ namespace Assets.Scripts
             Instantiate_Bullet.Init(Variables.ByEnemy);
             Instantiate_Bullet.Direction = direction;
         }
+
+        private void OnDestroy()
+        {
+            AudioManager.Instance.PlayEnemyExplosion();
+        }
     }
 }

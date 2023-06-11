@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
+using Assets.Scripts;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -12,10 +11,7 @@ public class MainMenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*foreach (GameObject c in GameObject.FindGameObjectsWithTag("MainMenuCanvas"))
-        {
-            MainMenuCanvas.Add(c);
-        }*/
+        AudioManager.Instance.PlayMenuAudioBackGround();
     }
 
     public void NavigateTo(int targetCanvas)

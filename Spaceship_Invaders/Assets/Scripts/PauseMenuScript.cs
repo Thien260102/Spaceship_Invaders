@@ -31,22 +31,28 @@ public class PauseMenuScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.P))
         {
-            switch (State)
+            GameObject winning = PauseMenuCanvas.Find(e => e.name == "WinningScene");
+            // player cannot pause while winning scene showing.
+            if(winning == null ||(winning != null && winning.activeSelf == false)) 
             {
-                case false:
-                    Show();
-                    State = true;
-                    Cursor.visible = true; // show cursor
-                    player.GamePaused();
-                    break;
+                switch (State)
+                {
+                    case false:
+                        Show();
+                        State = true;
+                        Cursor.visible = true; // show cursor
+                        player.GamePaused();
+                        break;
 
-                case true:
-                    Hide();
-                    State = false;
-                    Cursor.visible = false;
-                    player.GameResume();
-                    break;
+                    case true:
+                        Hide();
+                        State = false;
+                        Cursor.visible = false;
+                        player.GameResume();
+                        break;
+                }
             }
+            
         }
         else if(Input.GetKeyDown(KeyCode.C))
         {
@@ -116,4 +122,8 @@ public class PauseMenuScript : MonoBehaviour
         player.sensitivity = sensitivity.value;
     }
 
+    public void SettingVolume(float volume)
+    {
+        AudioManager.Instance.SettingVolume(volume);
+    }
 }

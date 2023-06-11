@@ -64,6 +64,7 @@ public class Weapon : MonoBehaviour
         if (DelayTimer <= 0f)
         {
             Shoot();
+            Assets.Scripts.AudioManager.Instance.PlayPlayerShooting();
             DelayTimer = DelayBetweenShots;
         }
     }
