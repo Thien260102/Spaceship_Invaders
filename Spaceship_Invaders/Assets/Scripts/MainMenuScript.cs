@@ -25,6 +25,7 @@ public class MainMenuScript : MonoBehaviour
             canvas.SetActive(false);
         }
         MainMenuCanvas[targetCanvas].SetActive(true);
+        Debug.Log(targetCanvas);
     }
 
     public void LoadLevel(int i)

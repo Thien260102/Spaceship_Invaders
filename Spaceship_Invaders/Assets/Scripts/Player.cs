@@ -76,7 +76,7 @@ namespace Assets.Scripts
         // Update is called once per frame
         void Update()
         {
-            SpeedCap = MaximumSpeed;
+            //SpeedCap = MaximumSpeed;
             if (fuel.Contain <= 1)
             {
                 SpeedCap = MinimumSpeed;
@@ -257,15 +257,16 @@ namespace Assets.Scripts
             }
             else if(Input.GetKeyDown(KeyCode.UpArrow))
             {
-                MaximumSpeed += 10;
-
+                SpeedCap += 10;
+                if (SpeedCap > MaximumSpeed)
+                    SpeedCap = MaximumSpeed;
             }
             else if(Input.GetKeyDown(KeyCode.DownArrow))
             {
-                MaximumSpeed -= 10;
+                SpeedCap -= 10;
 
-                if (MaximumSpeed < MinimumSpeed)
-                    MaximumSpeed = MinimumSpeed;
+                if (SpeedCap < MinimumSpeed)
+                    SpeedCap = MinimumSpeed;
             }
             else if(Input.GetKeyDown(KeyCode.U))
             {

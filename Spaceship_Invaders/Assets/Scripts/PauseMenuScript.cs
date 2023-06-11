@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Assets.Scripts;
 
 public class PauseMenuScript : MonoBehaviour
@@ -10,8 +10,10 @@ public class PauseMenuScript : MonoBehaviour
     public List<GameObject> PauseMenuCanvas= new List<GameObject>();
 
     private bool isVisible = false;
+    //[SerializeField]
+    //GameObject playerObject;
     [SerializeField]
-    GameObject playerObject;
+    Slider sensitivity;
 
     private Player player;
 
@@ -21,6 +23,7 @@ public class PauseMenuScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        sensitivity.value = player.sensitivity;
     }
 
     // Update is called once per frame
@@ -106,6 +109,11 @@ public class PauseMenuScript : MonoBehaviour
         Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.SaveData();
 
         GameManager.Instance.NextLevel();
+    }
+
+    public void SetSensitivity()
+    {
+        player.sensitivity = sensitivity.value;
     }
 
 }
