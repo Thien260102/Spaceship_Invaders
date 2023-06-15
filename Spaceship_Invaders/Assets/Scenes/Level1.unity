@@ -3110,8 +3110,8 @@ MonoBehaviour:
   - path: {fileID: 1918212467}
     OrbitPath: {fileID: 1828060516}
     enemySpawnInfos:
-    - entity: {fileID: 3867525406218183559, guid: 775ae631bd724dd4ba2ff055eea30442, type: 3}
-      quantity: 1
+    - entity: {fileID: 4402568336884997738, guid: 68d60ba34419679499c01b7823c7820a, type: 3}
+      quantity: 5
       delayBetweenSpawn: 1
     WaitType: 0
     delayPostSequence: 0

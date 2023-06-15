@@ -315,6 +315,8 @@ namespace Assets.Scripts
         {
             paused = true;
             Time.timeScale = 0.0f;
+            Cursor.visible = true; // invisible cursor
+            Cursor.lockState = CursorLockMode.None;// block cursor into Game screen
         }
 
         public void GameResume()

@@ -6,6 +6,11 @@ namespace Assets.Scripts
 {
     public class Boss1 : Boss
     {
+
+        private void Start()
+        {
+            HP = Variables.HP_Enemy4;
+        }
         // Update is called once per frame
         void Update()
         {

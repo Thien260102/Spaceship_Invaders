@@ -75,6 +75,10 @@ public class PauseMenuScript : MonoBehaviour
             canvas.SetActive(false);
         }
         PauseMenuCanvas[targetCanvas].SetActive(true);
+        if(PauseMenuCanvas[targetCanvas].name == "WinningScene")
+        {
+            player.GamePaused();
+        }
     }
 
     public void Show()
