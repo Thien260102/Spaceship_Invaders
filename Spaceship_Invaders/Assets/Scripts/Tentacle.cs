@@ -21,6 +21,7 @@ public class Tentacle : Entity
 
     [SerializeField] GameObject target;
     [SerializeField] GameObject rootBone;
+    [SerializeField] GameObject lastBone;
     [SerializeField] Laser_Tentacle laser;
 
     Player player;
@@ -39,8 +40,7 @@ public class Tentacle : Entity
 
         HP = 1000;
 
-        rootBone.transform.position = this.transform.position;
-        this.transform.rotation = Quaternion.Euler(0, 0, 270);
+        //rootBone.transform.position = this.transform.position;
 
         animator = GetComponent<Animator>();
     }
@@ -48,7 +48,8 @@ public class Tentacle : Entity
     // Update is called once per frame
     void Update()
     {
-        direction = target.transform.position - this.transform.position;
+        //direction = target.transform.position - this.transform.position;
+        direction = lastBone.transform.right;
 
         if (isFollowingPlayer && player)
         {
@@ -62,7 +63,6 @@ public class Tentacle : Entity
             DeltaTime += Time.deltaTime;
         else
         {
-            Debug.Log("AAAAAAAAAAAAAAAAAAA");
             DeltaTime = 0;
             Shooting();
         }

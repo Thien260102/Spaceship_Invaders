@@ -55,16 +55,18 @@ namespace Assets.Scripts
 
         protected void Shoot(Vector2 position, Vector2 direction)
         {
+            if (bullet != null)
+            {
+                Bullet Instantiate_Bullet = Instantiate(bullet as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Bullet;
+                //Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
 
-            Bullet Instantiate_Bullet = Instantiate(bullet as Object, position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Bullet;
-            //Instantiate_Bullet.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+                float angle = Vector2.Angle(direction, new Vector2(1, 0));
+                Instantiate_Bullet.transform.rotation = Quaternion.AngleAxis(angle, -Vector3.forward);
+                //Debug.Log(angle);
 
-            float angle = Vector2.Angle(direction, new Vector2(1, 0));
-            Instantiate_Bullet.transform.rotation = Quaternion.AngleAxis(angle, -Vector3.forward);
-            //Debug.Log(angle);
-
-            Instantiate_Bullet.Init(Variables.ByEnemy);
-            Instantiate_Bullet.Direction = direction;
+                Instantiate_Bullet.Init(Variables.ByEnemy);
+                Instantiate_Bullet.Direction = direction;
+            }
         }
 
         private void OnDestroy()

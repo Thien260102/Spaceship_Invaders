@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2726080011091203171}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New CCDSolver2D_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2726080011091203180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.979, y: 0.479, z: 0}
+  m_LocalPosition: {x: -0.915, y: -0.239, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2726080011120892505}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2726080011120892505}
   - component: {fileID: 2726080011120892506}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New CCDSolver2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
     - {x: 0, y: 0, z: 0, w: 0}
     - {x: 0, y: 0, z: 0, w: 0}
     - {x: 0, y: 0, z: 0, w: 0}
-  m_Iterations: 5
+  m_Iterations: 10
   m_Tolerance: 0.1
   m_Velocity: 0.5
 --- !u!1 &2726080011350867046
@@ -111,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2726080011350867045}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2726080011350867046}
-  m_LocalRotation: {x: 0, y: 0, z: 0.07799394, w: 0.99695385}
+  m_LocalRotation: {x: 0, y: 0, z: -0.14926308, w: 0.98879755}
   m_LocalPosition: {x: 0.19593015, y: 0.0000015229137, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2726080011757824784}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TentacleEffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,13 +157,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2726080011757824785}
-  m_LocalRotation: {x: -0, y: -0, z: -0.93202055, w: -0.36240557}
+  m_LocalRotation: {x: -0, y: -0, z: -0.8941599, w: -0.44774777}
   m_LocalPosition: {x: 0.15, y: 0.001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2726080011350867045}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 137.504}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -233.199}
 --- !u!1 &2726080011819723241
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2726080011819723240}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2726080011819723241}
-  m_LocalRotation: {x: 0, y: 0, z: 0.23540258, w: 0.97189796}
+  m_LocalRotation: {x: 0, y: 0, z: 0.35758117, w: 0.93388206}
   m_LocalPosition: {x: 0.19447884, y: -0.000000053311222, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2726080011971039323}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,9 @@ GameObject:
   - component: {fileID: 2726080012039512842}
   - component: {fileID: 2726080012039512843}
   - component: {fileID: 2726080012039512840}
-  m_Layer: 0
+  - component: {fileID: 5761003476181468948}
+  - component: {fileID: 5761003476181468949}
+  m_Layer: 9
   m_Name: Enemy_Tentacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,6 +349,116 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!120 &5761003476181468948
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2726080012039512853}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Positions: []
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 0
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 0.936254, b: 0.5226415, a: 1}
+      key1: {r: 1, g: 0.936254, b: 0.5226415, a: 1}
+      key2: {r: 1, g: 1, b: 1, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 65535
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_UseWorldSpace: 1
+  m_Loop: 0
+--- !u!114 &5761003476181468949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2726080012039512853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d39f1c8739462b74680a6d3987c23083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLength: 20
+  Explosion: {fileID: 3546241938369737458, guid: 75b62a1de6cea2c469afa518419d7eaa, type: 3}
 --- !u!1 &2726080012209220450
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2726080012209220449}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +482,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2726080012209220450}
-  m_LocalRotation: {x: 0, y: 0, z: 0.2605271, w: 0.96546656}
+  m_LocalRotation: {x: 0, y: 0, z: 0.11502237, w: 0.9933629}
   m_LocalPosition: {x: 0.19157088, y: -0.00000004723638, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -391,7 +503,8 @@ GameObject:
   - component: {fileID: 2726080012455716894}
   - component: {fileID: 2726080012455716895}
   - component: {fileID: 2726080012325775680}
-  m_Layer: 0
+  - component: {fileID: 5761003475155994512}
+  m_Layer: 9
   m_Name: Tentacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2726080012455716888}
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 26.22, y: 5.39, z: 0}
+  m_LocalPosition: {x: -0.22, y: 13.16, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 2726080011971039323}
@@ -485,8 +598,8 @@ MonoBehaviour:
   - {fileID: 2726080012209220449}
   - {fileID: 2726080011350867045}
   m_Bounds:
-    m_Center: {x: 0.413544, y: -0.6373468, z: 0}
-    m_Extent: {x: 0.4338569, y: 0.15082498, z: 0}
+    m_Center: {x: 0.31638238, y: -0.4229018, z: 0}
+    m_Extent: {x: 0.33669528, y: 0.2800678, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &2726080012455716895
@@ -524,11 +637,35 @@ MonoBehaviour:
   Body: {fileID: 2726080012039512840}
   Explosion: {fileID: 2361368940365892858, guid: c4d5d442023295a4cacca7f7f2131f1d, type: 3}
   Ratio: 1
-  MaxTimeRandom: 5
+  MaxTimeRandom: 10
+  DeltaTime: 0
+  maxTime: 0
   followSpeed: 5
-  isFollowingPlayer: 0
+  isFollowingPlayer: 1
+  isShooting: 0
   target: {fileID: 2726080011091203180}
   rootBone: {fileID: 2726080011971039268}
+  lastBone: {fileID: 2726080011350867046}
+  laser: {fileID: 5761003476181468949}
+--- !u!95 &5761003475155994512
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2726080012455716888}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6507827fafe85b94db821ce42b34f166, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2726080012466327965
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,7 +675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2726080012466327964}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -552,7 +689,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2726080012466327965}
-  m_LocalRotation: {x: 0, y: 0, z: 0.18323147, w: 0.98306984}
+  m_LocalRotation: {x: 0, y: 0, z: 0.5019163, w: 0.8649162}
   m_LocalPosition: {x: 0.25687912, y: -0.00000006191948, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

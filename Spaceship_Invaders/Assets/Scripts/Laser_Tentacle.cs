@@ -30,7 +30,7 @@ public class Laser_Tentacle : MonoBehaviour
 
     public void GetHitInfo(Vector3 direction)
     {
-        Debug.Log("Getting hit info");
+        //Debug.Log("Getting hit info");
         //float halfHeight = Variables.ScreenHeight / 2;
         //float maxDis = halfHeight - laserSpawnPoint.transform.position.y;
         RaycastHit2D laserhit = Physics2D.Raycast(this.transform.position, direction, 20f, ~ignoreLayer);
@@ -72,6 +72,8 @@ public class Laser_Tentacle : MonoBehaviour
 
     public void Render(Vector2 direction)
     {
+        laserLine.enabled = true;
+        //Debug.Log("Shooting");
         Vector2 position = this.transform.position;
         laserLine.positionCount = 2;
         laserLine.SetPosition(0, position);
@@ -81,6 +83,7 @@ public class Laser_Tentacle : MonoBehaviour
 
     public void Reset()
     {
-        
+        Debug.Log("Done");
+        laserLine.enabled = false;
     }
 }

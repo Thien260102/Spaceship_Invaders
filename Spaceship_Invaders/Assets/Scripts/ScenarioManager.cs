@@ -161,6 +161,28 @@ namespace Assets.Scripts
 
         public IEnumerator SpawnEnemies(EnemySpawnInfo enemySpawnInfo, Path path, Path orbitPath)
         {
+            if ((enemySpawnInfo.entity as Tentacle) != null || (enemySpawnInfo.entity as TentacleBoss) != null)
+            {
+                for (int i = 0; i < enemySpawnInfo.quantity; i++)
+                {
+                    if ((enemySpawnInfo.entity as Tentacle) != null)
+                    {
+                        Tentacle Instantiate_Enemy = Instantiate(enemySpawnInfo.entity, path.GetNodePosition(0), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Tentacle;
+                        EnemiesOrAsteroid.Add(Instantiate_Enemy);
+                    } else
+                    if ((enemySpawnInfo.entity as TentacleBoss) != null)
+                    {
+                        TentacleBoss Instantiate_Enemy = Instantiate(enemySpawnInfo.entity, path.GetNodePosition(0), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as TentacleBoss;
+                        EnemiesOrAsteroid.Add(Instantiate_Enemy);
+                        foreach (Tentacle t in Instantiate_Enemy.tentacles)
+                        {
+                            EnemiesOrAsteroid.Add(t);
+                        }
+                    }
+
+                    yield return new WaitForSeconds(enemySpawnInfo.delayBetweenSpawn);
+                }
+            } else
             if ((enemySpawnInfo.entity as Enemy) != null)
             {
                 for (int i = 0; i < enemySpawnInfo.quantity; i++)
@@ -170,16 +192,6 @@ namespace Assets.Scripts
 
                     Instantiate_Enemy.path = path;
                     Instantiate_Enemy.OrbitPath = orbitPath;
-                    EnemiesOrAsteroid.Add(Instantiate_Enemy);
-                    yield return new WaitForSeconds(enemySpawnInfo.delayBetweenSpawn);
-                }
-            } else
-            if ((enemySpawnInfo.entity as Tentacle) != null)
-            {
-                for (int i = 0; i < enemySpawnInfo.quantity; i++)
-                {
-                    Tentacle Instantiate_Enemy = Instantiate(enemySpawnInfo.entity, path.GetNodePosition(0), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)) as Tentacle;
-
                     EnemiesOrAsteroid.Add(Instantiate_Enemy);
                     yield return new WaitForSeconds(enemySpawnInfo.delayBetweenSpawn);
                 }
