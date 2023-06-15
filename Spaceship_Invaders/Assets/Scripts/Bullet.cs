@@ -75,7 +75,7 @@ namespace Assets.Scripts
                     case Variables.ENEMY:
                         if (this.Type == Variables.ByPlayer)
                         {
-                            Instantiate(Explosion, collision.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+                            GameObject explosion =  Instantiate(Explosion, collision.ClosestPoint(transform.position), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
 
                             entity.DamageTaken(Damage);
 
@@ -92,7 +92,7 @@ namespace Assets.Scripts
                     case Variables.PLAYER:
                         if (this.Type == Variables.ByEnemy)
                         {
-                            Instantiate(Explosion, collision.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+                            GameObject explosion = Instantiate(Explosion, collision.ClosestPoint(transform.position), new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
                             //destroy, but take player invincible into consideration
                             entity.DamageTaken(9999);
                             Destroy(gameObject);

@@ -53,7 +53,7 @@ public class Laser_Tentacle : MonoBehaviour
                     case Variables.PLAYER:
                         if (this.Type == Variables.ByEnemy)
                         {
-                            Instantiate(Explosion, laserhit.collider.transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+                            GameObject explosion = Instantiate(Explosion, laserhit.point, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
 
                             entity.DamageTaken(9999);
                             Debug.Log("GameOver");
