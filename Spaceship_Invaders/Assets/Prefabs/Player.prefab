@@ -9889,6 +9889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 3411698911964571840}
   Explosion: {fileID: 8771695447643759940, guid: 2cf7ba3d5d707354d9dd8b071db9f66a, type: 3}
+  Ratio: 1
   weapons:
   - {fileID: 1069222491}
   - {fileID: 382466461}
@@ -9903,10 +9904,11 @@ MonoBehaviour:
   fuel: {fileID: 0}
   exhaust: {fileID: 1082090590}
   animator: {fileID: 641502329}
-  pauseMenu: {fileID: 81348710506984574, guid: e730c37fa66df0549a43a331046198df, type: 3}
+  pauseMenu: {fileID: 81348710506984572, guid: e730c37fa66df0549a43a331046198df, type: 3}
   animationSpriteHolder: {fileID: 1707351147}
   spawnPoint: {fileID: 45503548971928306, guid: 5c914bab251cf9340a09196c75245667, type: 3}
   sensitivity: 1
+  invincible: 0
   MaximumSpeed: 50
   MinimumSpeed: 10
 --- !u!95 &641502329

@@ -81,6 +81,13 @@ public class PauseMenuScript : MonoBehaviour
         }
     }
 
+    public int FindCanvasByName(string name)
+    {
+        int index = PauseMenuCanvas.FindIndex(e => e.name == name);
+
+        return index;
+    }
+
     public void Show()
     {
         PauseMenuCanvas[0].SetActive(true);
@@ -119,6 +126,15 @@ public class PauseMenuScript : MonoBehaviour
         Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.SaveData();
 
         GameManager.Instance.NextLevel();
+    }
+
+    public void TryAgain()
+    {
+        player.GameResume();
+
+        GameManager.Instance.Restart();
+        Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.NewData();
+        Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.SaveData();
     }
 
     public void SetSensitivity()

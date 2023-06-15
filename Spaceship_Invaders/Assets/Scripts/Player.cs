@@ -30,7 +30,7 @@ namespace Assets.Scripts
         public Animator animator;
         private Vector2 Velocity;
 
-        public GameObject pauseMenu;
+        public PauseMenuScript pauseMenu;
         private bool paused = false;
 
         public GameObject animationSpriteHolder;
@@ -52,6 +52,7 @@ namespace Assets.Scripts
         private void Start()
         {
             DataPersistence.DataPersistenceManager.Instance.LoadData();
+            fuel.Contain = DataPersistence.DataPersistenceManager.Instance.gameData.Energy;
 
             Body = GetComponent<Rigidbody2D>();
             lastFrameMousePosition = Body.position;
@@ -315,8 +316,8 @@ namespace Assets.Scripts
         {
             paused = true;
             Time.timeScale = 0.0f;
-            Cursor.visible = true; // invisible cursor
-            Cursor.lockState = CursorLockMode.None;// block cursor into Game screen
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void GameResume()
@@ -398,32 +399,41 @@ namespace Assets.Scripts
 
         public IEnumerator Destroyed()
         {
-            Instantiate(Explosion, transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
-            SetState();
-            Body.isKinematic = true; // turn off OncollisionEnter2d
-            Debug.Log("Player Destroyed");
-            HUD.Instance.Life--;
-            Weapon.Level--;
-            if (Weapon.Level < 1)
-                Weapon.Level = 1;
-            DataPersistence.DataPersistenceManager.Instance.gameData.LevelBullet = Weapon.Level;
-
-            //WeaponStateBar.Instance.Level = Weapon.Level;
-
-            yield return new WaitForSeconds(1f);
-
-            if (HUD.Instance.Life <= 0)
-                gameObject.SetActive(false);
+            if(HUD.Instance.Life == 0)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                pauseMenu.NavigateTo(pauseMenu.FindCanvasByName("GameOverScene"));
+            }
             else
             {
-                Body.isKinematic = false; // turn on OncollisionEnter2d
-                IsDeleted = false;
+                Instantiate(Explosion, transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
                 SetState();
+                Body.isKinematic = true; // turn off OncollisionEnter2d
+                Debug.Log("Player Destroyed");
+                HUD.Instance.Life--;
+                Weapon.Level--;
+                if (Weapon.Level < 1)
+                    Weapon.Level = 1;
+                DataPersistence.DataPersistenceManager.Instance.gameData.LevelBullet = Weapon.Level;
 
-                HP = Variables.PlayerHPDefault;
-                fuel.RenderNewState();
-                animator.SetTrigger("Spawn");
-                StartCoroutine(SetInvincible(3.0f));
+                //WeaponStateBar.Instance.Level = Weapon.Level;
+
+                yield return new WaitForSeconds(1f);
+
+                if (HUD.Instance.Life <= 0)
+                    gameObject.SetActive(false);
+                else
+                {
+                    Body.isKinematic = false; // turn on OncollisionEnter2d
+                    IsDeleted = false;
+                    SetState();
+
+                    HP = Variables.PlayerHPDefault;
+                    fuel.RenderNewState();
+                    animator.SetTrigger("Spawn");
+                    StartCoroutine(SetInvincible(3.0f));
+                }
             }
 
         }
