@@ -71,7 +71,8 @@ namespace Assets.Scripts
 
         private void OnDestroy()
         {
-            AudioManager.Instance.PlayEnemyExplosion();
+            if(HP <= 0)
+                AudioManager.Instance.PlayEnemyExplosion();
         }
     }
 }

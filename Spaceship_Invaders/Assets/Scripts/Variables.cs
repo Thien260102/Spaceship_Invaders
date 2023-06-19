@@ -50,9 +50,13 @@ namespace Assets.Scripts
         public const int HP_Enemy1 = 200; //1000
         public const int HP_Enemy2 = 1000;  //2000
         public const int HP_Enemy3 = 3000;  //5000
-        public const int HP_Enemy4 = 10000;
-        public const int HP_Enemy5 = 100000;
-        public const int HP_Enemy6 = 200000;
+        public const int HP_Enemy4 = 5000;
+        public const int HP_Enemy5 = 8000;
+        public const int HP_Enemy6 = 10000;
+
+        public const int HP_Boss1 = 10000;
+        public const int HP_Boss2 = 100000;
+        public const int HP_Boss3 = 200000;
 
 
         public const int Enemy1 = 0;

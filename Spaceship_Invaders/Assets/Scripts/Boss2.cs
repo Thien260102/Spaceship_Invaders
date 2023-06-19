@@ -23,8 +23,8 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            HP = Variables.HP_Enemy6;
-            maxHP = Variables.HP_Enemy6;
+            HP = Variables.HP_Boss2;
+            maxHP = Variables.HP_Boss2;
             animator =  GetComponent<Animator>();
             ignoreLayer = ((1 << 6) | (1 << 7) | (1 << 9));
 

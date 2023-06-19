@@ -27,11 +27,13 @@ namespace Assets.Scripts
             DontDestroyOnLoad(this);
 
             if (instance == null)
+            {
                 instance = this;
+                PlayMenuAudioBackGround();
+            }
             else
                 Destroy(gameObject);
 
-            PlayMenuAudioBackGround();
         }
 
         public void SettingVolume(float volume)

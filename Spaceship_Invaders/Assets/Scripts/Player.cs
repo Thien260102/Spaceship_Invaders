@@ -46,22 +46,19 @@ namespace Assets.Scripts
         public float MinimumSpeed;
         private float SpeedCap;
 
-        float halfHeight;
-        float halfWidth;
+        //float halfHeight;
+        //float halfWidth;
 
         private void Start()
         {
-            DataPersistence.DataPersistenceManager.Instance.LoadData();
-            fuel.Contain = DataPersistence.DataPersistenceManager.Instance.gameData.Energy;
-
             Body = GetComponent<Rigidbody2D>();
             lastFrameMousePosition = Body.position;
 
             Body.isKinematic = false; // turn on OncollisionEnter2d
             Body.gravityScale = 0.0f;
 
-            halfHeight = Variables.ScreenHeight / 2;
-            halfWidth = Variables.ScreenWidth / 2;
+            //halfHeight = Variables.ScreenHeight / 2;
+            //halfWidth = Variables.ScreenWidth / 2;
             currentWeapon = 0;
 
             mainCamera = Camera.main;
@@ -82,11 +79,8 @@ namespace Assets.Scripts
             {
                 SpeedCap = MinimumSpeed;
             }
-            /*if (fuel.Contain == 0)
-            {
-                IsDeleted = true;
-                fuel.Fill();
-            }*/
+            else
+                SpeedCap = MaximumSpeed;
 
             if (IsDeleted)
             {
@@ -393,49 +387,47 @@ namespace Assets.Scripts
         {
             Weapon.Level += amount;
             Weapon.Level = Mathf.Clamp(Weapon.Level, 1, 3);
-            DataPersistence.DataPersistenceManager.Instance.gameData.LevelBullet = Weapon.Level;
             HUD.Instance.DisplayFloatingText("Weapon Level Up", Body.position);
         }
 
         public IEnumerator Destroyed()
         {
-            if(HUD.Instance.Life == 0)
+            Instantiate(Explosion, transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+            SetState();
+            Body.isKinematic = true; // turn off OncollisionEnter2d
+            Debug.Log("Player Destroyed");
+            HUD.Instance.Life--;
+            Weapon.Level--;
+            if (Weapon.Level < 1)
+                Weapon.Level = 1;
+
+            yield return new WaitForSeconds(0f);
+            if (!IsGameOver())
+            {
+                Body.isKinematic = false; // turn on OncollisionEnter2d
+                IsDeleted = false;
+                SetState();
+
+                HP = Variables.PlayerHPDefault;
+                fuel.RenderNewState();
+                animator.SetTrigger("Spawn");
+                StartCoroutine(SetInvincible(3.0f));
+            }
+        }
+
+        public bool IsGameOver()
+        {
+            if (HUD.Instance.Life <= 0)
             {
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 pauseMenu.NavigateTo(pauseMenu.FindCanvasByName("GameOverScene"));
-            }
-            else
-            {
-                Instantiate(Explosion, transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
-                SetState();
-                Body.isKinematic = true; // turn off OncollisionEnter2d
-                Debug.Log("Player Destroyed");
-                HUD.Instance.Life--;
-                Weapon.Level--;
-                if (Weapon.Level < 1)
-                    Weapon.Level = 1;
-                DataPersistence.DataPersistenceManager.Instance.gameData.LevelBullet = Weapon.Level;
 
-                //WeaponStateBar.Instance.Level = Weapon.Level;
-
-                yield return new WaitForSeconds(1f);
-
-                if (HUD.Instance.Life <= 0)
-                    gameObject.SetActive(false);
-                else
-                {
-                    Body.isKinematic = false; // turn on OncollisionEnter2d
-                    IsDeleted = false;
-                    SetState();
-
-                    HP = Variables.PlayerHPDefault;
-                    fuel.RenderNewState();
-                    animator.SetTrigger("Spawn");
-                    StartCoroutine(SetInvincible(3.0f));
-                }
+                return true;
             }
 
+            return false;
         }
+
     }
 }

@@ -9,7 +9,7 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            HP = Variables.HP_Enemy4;
+            HP = Variables.HP_Boss1;
         }
         // Update is called once per frame
         void Update()

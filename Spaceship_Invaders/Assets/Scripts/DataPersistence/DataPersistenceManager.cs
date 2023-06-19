@@ -47,7 +47,7 @@ namespace Assets.Scripts.DataPersistence
         {
             dataHandler.Load(ref gameData);
 
-            if (this.gameData == null)
+            if (this.gameData == null || (gameData != null && gameData.Life <= 0))
             {
                 NewData();
             }

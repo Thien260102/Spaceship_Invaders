@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public static int Level = 1;
+    static int level = 1;
+    public static int Level 
+    {
+        get { return level; }
+        set 
+        { 
+            level = value;
+            Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.gameData.LevelBullet = value; 
+        } 
+    }
 
     public int ID { get; set; } //player, enemies, bullet
 

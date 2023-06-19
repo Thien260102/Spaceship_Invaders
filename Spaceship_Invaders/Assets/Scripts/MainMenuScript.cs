@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts;
+using Assets.Scripts.DataPersistence;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class MainMenuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         AudioManager.Instance.PlayMenuAudioBackGround();
     }
 
@@ -26,13 +29,6 @@ public class MainMenuScript : MonoBehaviour
 
     public void LoadLevel(int i)
     {
-        //Debug.Log("Scene loading: " + scenePaths[i]);
-        //if (scenePaths[i] != null)
-        //{
-        //    SceneManager.LoadScene(scenePaths[i], LoadSceneMode.Single);
-        //} else{
-        //    Debug.Log("scene not found!");
-        //}
         GameManager.Instance.LoadLevel(i);
     }
 

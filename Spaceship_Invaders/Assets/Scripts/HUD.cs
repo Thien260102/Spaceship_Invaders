@@ -28,12 +28,9 @@ namespace Assets.Scripts
             get { return score; }
             set
             {
-                if (score != value)
-                {
-                    score = value;
-                    Scores.text = string.Format("{0: 000,000}", score);
-                    DataPersistence.DataPersistenceManager.Instance.gameData.Score = value;
-                }
+                score = value;
+                Scores.text = string.Format("{0: 000,000}", score);
+                DataPersistence.DataPersistenceManager.Instance.gameData.Score = value;
             }
         }
 
@@ -43,12 +40,9 @@ namespace Assets.Scripts
             get { return life; }
             set
             {
-                if (life != value)
-                {
-                    life = value;
-                    Lifes.text = life.ToString();
-                    DataPersistence.DataPersistenceManager.Instance.gameData.Life = value;
-                }
+                life = value;
+                Lifes.text = life.ToString();
+                DataPersistence.DataPersistenceManager.Instance.gameData.Life = value;
             }
         }
 
@@ -58,12 +52,9 @@ namespace Assets.Scripts
             get { return coin; }
             set
             {
-                if (coin != value)
-                {
-                    coin = value;
-                    Coins.text = coin.ToString();
-                    DataPersistence.DataPersistenceManager.Instance.gameData.Coin = value;
-                }
+                coin = value;
+                Coins.text = coin.ToString();
+                DataPersistence.DataPersistenceManager.Instance.gameData.Coin = value;
             }
         }
 
@@ -89,6 +80,7 @@ namespace Assets.Scripts
             Score = DataPersistence.DataPersistenceManager.Instance.gameData.Score;
             Life = DataPersistence.DataPersistenceManager.Instance.gameData.Life;
             Coin = DataPersistence.DataPersistenceManager.Instance.gameData.Coin;
+            Debug.Log(string.Format("Load HUD: Score: {0}, Life: {1}, Coin: {2}", score, life, coin));
         }
 
     }

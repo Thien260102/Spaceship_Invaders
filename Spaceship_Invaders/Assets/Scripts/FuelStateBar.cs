@@ -54,7 +54,6 @@ namespace Assets.Scripts
             
             RenderNewState();
 
-            Contain = Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.gameData.Energy;
         }
 
         private void Update()

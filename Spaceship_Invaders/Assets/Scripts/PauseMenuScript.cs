@@ -115,7 +115,6 @@ public class PauseMenuScript : MonoBehaviour
     public void ReturnToMainMenu()
     {
         player.GameResume();
-        Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.SaveData();
 
         GameManager.Instance.MainMenu();
     }
@@ -123,7 +122,6 @@ public class PauseMenuScript : MonoBehaviour
     public void NextLevel()
     {
         player.GameResume();
-        Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.SaveData();
 
         GameManager.Instance.NextLevel();
     }
@@ -133,8 +131,6 @@ public class PauseMenuScript : MonoBehaviour
         player.GameResume();
 
         GameManager.Instance.Restart();
-        Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.NewData();
-        Assets.Scripts.DataPersistence.DataPersistenceManager.Instance.SaveData();
     }
 
     public void SetSensitivity()

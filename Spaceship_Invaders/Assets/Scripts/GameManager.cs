@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.DataPersistence;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,11 +25,14 @@ public class GameManager : MonoBehaviour
 
     public void MainMenu()
     {
+        DataPersistenceManager.Instance.SaveData();
         SceneManager.LoadScene(0);
     }
 
     public void Restart()
     {
+        DataPersistenceManager.Instance.NewData();
+        DataPersistenceManager.Instance.SaveData();
         LoadLevel(SceneManager.GetActiveScene().buildIndex);
     }
     public void CompleteLevel()
@@ -39,19 +43,23 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        DataPersistenceManager.Instance.SaveData();
         LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void LoadLevel(int level)
     {
-        Debug.Log(SceneManager.sceneCountInBuildSettings);
-        if(level < SceneManager.sceneCountInBuildSettings)
+        DataPersistenceManager.Instance.LoadData();
+
+        if (level < SceneManager.sceneCountInBuildSettings)
             SceneManager.LoadScene(level);
         
     }
 
     public void QuitGame()
     {
+        Debug.Log("Quit game");
+        DataPersistenceManager.Instance.SaveData();
         Application.Quit();
     }
 }
