@@ -17,6 +17,8 @@ public class Tentacle : Entity
     public bool isFollowingPlayer;
     public bool isShooting = false;
 
+    [SerializeField] bool useStartingRootBonerotation;
+
     Animator animator;
 
     [SerializeField] GameObject target;
@@ -38,9 +40,21 @@ public class Tentacle : Entity
         maxTime = Random.Range(5, MaxTimeRandom);
         target.transform.position = this.transform.position;
 
-        HP = 1000;
+        HP = Variables.HP_Enemy3;
 
-        //rootBone.transform.position = this.transform.position;
+        if (useStartingRootBonerotation == false)
+        {
+            Vector3 rotation = rootBone.transform.rotation.eulerAngles;
+            if (this.transform.position.x < 0)
+            {
+                rotation.z = 225;
+                rootBone.transform.eulerAngles = rotation;
+            } else
+            {
+                rotation.z = -45;
+                rootBone.transform.eulerAngles = rotation;           
+            }
+        }
 
         animator = GetComponent<Animator>();
     }
@@ -57,7 +71,9 @@ public class Tentacle : Entity
         }
 
         if (HP <= 0)
+        {
             IsDeleted = true;
+        }
 
         if (DeltaTime < maxTime)
             DeltaTime += Time.deltaTime;
