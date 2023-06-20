@@ -10,10 +10,6 @@ public class PauseMenuScript : MonoBehaviour
     public List<GameObject> PauseMenuCanvas= new List<GameObject>();
 
     private bool isVisible = false;
-    //[SerializeField]
-    //GameObject playerObject;
-    [SerializeField]
-    Slider sensitivity;
 
     private Player player;
 
@@ -23,7 +19,7 @@ public class PauseMenuScript : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        sensitivity.value = player.sensitivity;
+        player.sensitivity = GameManager.Instance.Sensitivity;
     }
 
     // Update is called once per frame
@@ -79,6 +75,17 @@ public class PauseMenuScript : MonoBehaviour
         {
             player.GamePaused();
         }
+        else if(PauseMenuCanvas[targetCanvas].name == "AudioMenuCanvas")
+        {
+            AudioManager.Instance.GetComponentAudioVolume();
+        }
+        else if(PauseMenuCanvas[targetCanvas].name == "ControlMenuCanvas")
+        {
+            Slider Sensitivity = GameObject.Find("SensitivitySlider").GetComponent<Slider>();
+            Debug.Log(string.Format("sensitivity: {0}, {1}", GameManager.Instance.Sensitivity, Sensitivity.name));
+            if(Sensitivity != null)
+                Sensitivity.value = GameManager.Instance.Sensitivity;
+        }
     }
 
     public int FindCanvasByName(string name)
@@ -133,9 +140,10 @@ public class PauseMenuScript : MonoBehaviour
         GameManager.Instance.Restart();
     }
 
-    public void SetSensitivity()
+    public void SetSensitivity(float sensitivity)
     {
-        player.sensitivity = sensitivity.value;
+        GameManager.Instance.Sensitivity = sensitivity;
+        player.sensitivity = sensitivity;
     }
 
     public void SettingVolume(float volume)

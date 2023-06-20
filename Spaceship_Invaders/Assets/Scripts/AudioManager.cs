@@ -21,6 +21,10 @@ namespace Assets.Scripts
         [SerializeField]
         List<AudioClip> Audios;
 
+        public Slider AudioVolume;
+
+        float volume = 0.5f;
+
         private void Awake()
         {
             // this will exist throughout all scenes
@@ -36,8 +40,17 @@ namespace Assets.Scripts
 
         }
 
+        public void GetComponentAudioVolume()
+        {
+            AudioVolume = GameObject.Find("VolumeSlider").GetComponent<Slider>();
+            Debug.Log(AudioVolume); 
+            if (AudioVolume != null)
+                AudioVolume.value = volume;
+        }
+
         public void SettingVolume(float volume)
         {
+            this.volume = volume;
             BackGroundMusic.volume = volume / 2.0f;
             EffectMusic.volume = volume;
         }
@@ -50,6 +63,7 @@ namespace Assets.Scripts
                 BackGroundMusic.Play();
             }
         }
+
 
         public void PlayPlayerShooting()
         {

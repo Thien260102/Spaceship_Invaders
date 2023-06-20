@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
         private set { instance = value; }
     }
 
+    public float Sensitivity;
+
     private void Awake()
     {
         // this will exist throughout all scenes
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
 
+        Sensitivity = 1;
     }
 
     public void MainMenu()

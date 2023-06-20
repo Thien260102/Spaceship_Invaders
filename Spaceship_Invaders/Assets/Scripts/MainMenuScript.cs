@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts;
 using Assets.Scripts.DataPersistence;
+using UnityEngine.UI;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class MainMenuScript : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         AudioManager.Instance.PlayMenuAudioBackGround();
+
+
     }
 
     public void NavigateTo(int targetCanvas)
@@ -24,7 +27,17 @@ public class MainMenuScript : MonoBehaviour
             canvas.SetActive(false);
         }
         MainMenuCanvas[targetCanvas].SetActive(true);
-        Debug.Log(targetCanvas);
+
+        if (MainMenuCanvas[targetCanvas].name == "AudioMenuCanvas")
+        {
+            AudioManager.Instance.GetComponentAudioVolume();
+        }
+        else if (MainMenuCanvas[targetCanvas].name == "ControlMenuCanvas")
+        {
+            Slider Sensitivity = GameObject.Find("SensitivitySlider").GetComponent<Slider>();
+            if (Sensitivity != null)
+                Sensitivity.value = GameManager.Instance.Sensitivity;
+        }
     }
 
     public void LoadLevel(int i)
@@ -37,9 +50,8 @@ public class MainMenuScript : MonoBehaviour
         GameManager.Instance.QuitGame();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetSensitivity(float sensitivity)
     {
-        
+        GameManager.Instance.Sensitivity = sensitivity;
     }
 }
