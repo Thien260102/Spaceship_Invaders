@@ -23,7 +23,7 @@ namespace Assets.Scripts
 
         public Slider AudioVolume;
 
-        float volume = 0.5f;
+        float volume = 1f;
 
         private void Awake()
         {
@@ -60,7 +60,8 @@ namespace Assets.Scripts
             if (Audios.Count > 0 && BackGroundMusic)
             {
                 BackGroundMusic.clip = Audios[0];
-                BackGroundMusic.Play();
+                if(!BackGroundMusic.isPlaying)
+                    BackGroundMusic.Play();
             }
         }
 

@@ -14,6 +14,7 @@ namespace Assets.Scripts.DataPersistence
         public int Coin;
         public int LevelBullet;
         public int Energy;
+        public int Level;
 
         // When not have data to load
         public GameData()
@@ -23,6 +24,7 @@ namespace Assets.Scripts.DataPersistence
             Coin = 0;
             LevelBullet = 1;
             Energy = 9;
+            Level = 1;
         }
     }
 }

@@ -26,10 +26,23 @@ public class GameManager : MonoBehaviour
         Sensitivity = 1;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+            NextLevel();
+    }
+
     public void MainMenu()
     {
         DataPersistenceManager.Instance.SaveData();
         SceneManager.LoadScene(0);
+    }
+
+    public void NewGame()
+    {
+        DataPersistenceManager.Instance.NewData();
+        DataPersistenceManager.Instance.SaveData();
+        SceneManager.LoadScene(1);
     }
 
     public void Restart()
@@ -53,9 +66,12 @@ public class GameManager : MonoBehaviour
     public void LoadLevel(int level)
     {
         DataPersistenceManager.Instance.LoadData();
-
+        
         if (level < SceneManager.sceneCountInBuildSettings)
+        {
+            DataPersistenceManager.Instance.gameData.Level = level;
             SceneManager.LoadScene(level);
+        }
         
     }
 

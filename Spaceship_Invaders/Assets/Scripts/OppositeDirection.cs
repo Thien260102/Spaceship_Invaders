@@ -23,7 +23,8 @@ namespace Assets.Scripts
         {
             remainingDuration = duration;
             isEnd = false;
-            HUD.Instance.DisplayFloatingText("Opposite Direction!", entity.transform.position);
+            if(entity is Player)
+                HUD.Instance.DisplayFloatingText("Opposite Direction!", entity.transform.position);
         }
 
         public override void OnUpdate()

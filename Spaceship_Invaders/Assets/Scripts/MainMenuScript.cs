@@ -40,6 +40,16 @@ public class MainMenuScript : MonoBehaviour
         }
     }
 
+    public void NewGame()
+    {
+        GameManager.Instance.NewGame();
+    }
+
+    public void ContinueGame()
+    {
+        GameManager.Instance.LoadLevel(DataPersistenceManager.Instance.gameData.Level);
+    }
+
     public void LoadLevel(int i)
     {
         GameManager.Instance.LoadLevel(i);
