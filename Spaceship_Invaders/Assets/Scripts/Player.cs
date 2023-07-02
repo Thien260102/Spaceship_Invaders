@@ -341,6 +341,10 @@ namespace Assets.Scripts
 
                 Destroy(Object);
             }
+            else if (Object.tag == "Enemy")
+            {
+                DamageTaken(9999);
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -395,6 +399,8 @@ namespace Assets.Scripts
 
         public IEnumerator Destroyed()
         {
+            AudioManager.Instance.PlayPlayerExplosion();
+
             Instantiate(Explosion, transform.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
             SetState();
             Body.isKinematic = true; // turn off OncollisionEnter2d

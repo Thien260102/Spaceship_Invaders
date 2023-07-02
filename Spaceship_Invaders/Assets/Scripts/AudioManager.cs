@@ -93,5 +93,14 @@ namespace Assets.Scripts
             }
         }
 
+        public void PlayPlayerExplosion()
+        {
+            if (Audios.Count > 4 && EffectMusic)
+            {
+                EffectMusic.clip = Audios[4];
+                EffectMusic.PlayOneShot(Audios[4]);
+            }
+        }    
+
     }
 }

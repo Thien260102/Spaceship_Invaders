@@ -298,6 +298,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1638}
     - Class: 114
+      Script: {instanceID: 1678}
+    - Class: 114
       Script: {instanceID: 1820}
     - Class: 114
       Script: {instanceID: 2082}
@@ -970,7 +972,7 @@ ScriptsOnlyBuild:
     className: ContentSizeFitter
   - hash:
       serializedVersion: 2
-      Hash: 1cd7efeccde51660b074edf463e2a6a7
+      Hash: beadbd05578b59915a268923e37747ca
     assemblyName: Assembly-CSharp.dll
     namespaceName: Assets.Scripts.DataPersistence
     className: DataPersistenceManager
@@ -1748,4 +1750,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level1.unity
   - Assets/Scenes/Level2.unity
   - Assets/Scenes/Level3.unity
-  playerPath: E:/Study/MajorProject1/Build/Spaceship_Invaders.exe
+  playerPath: D:/Major project 1 report/SpaceshipInvaders/Spaceship_Invaders.exe
