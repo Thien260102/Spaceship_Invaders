@@ -40,7 +40,7 @@ public class Tentacle : Entity
         maxTime = Random.Range(5, MaxTimeRandom);
         target.transform.position = this.transform.position;
 
-        HP = Variables.HP_Enemy3;
+        HP = 10000;
 
         if (useStartingRootBonerotation == false)
         {

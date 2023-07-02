@@ -122,7 +122,13 @@ namespace Assets.Scripts
             {
                 int index = 0;
 
-                yield return StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
+                if (wave.spawnSequences[index].WaitType == WaitBetweenSequenceType.Parallel)
+                {
+                    StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
+                } else
+                {
+                    yield return StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
+                }
                 index++;
 
                 while (index < wave.spawnSequences.Count)
@@ -133,7 +139,7 @@ namespace Assets.Scripts
                         wave.spawnSequences[index].WaitType == WaitBetweenSequenceType.Parallel)
                     {
                         yield return new WaitForSeconds(wave.spawnSequences[index].delayPostSequence);
-                        yield return StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
+                        StartCoroutine(SpawnSpawnSequence(wave.spawnSequences[index], index));
                         index++;
                     }
 

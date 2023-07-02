@@ -380,14 +380,16 @@ MonoBehaviour:
   Body: {fileID: 3867525405934021071}
   Explosion: {fileID: 2361368940365892858, guid: c4d5d442023295a4cacca7f7f2131f1d, type: 3}
   Ratio: 1
-  MaxTimeRandom: 10
+  MaxTimeRandom: 7
   DeltaTime: 0
   maxTime: 0
   followSpeed: 5
   isFollowingPlayer: 1
   isShooting: 0
+  useStartingRootBonerotation: 0
   target: {fileID: 4589025755274664419}
   rootBone: {fileID: 4589025754547887531}
+  lastBone: {fileID: 0}
   laser: {fileID: 1186925612760046624}
 --- !u!95 &1186925611738766501
 Animator:

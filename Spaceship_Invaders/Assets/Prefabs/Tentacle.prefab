@@ -637,7 +637,7 @@ MonoBehaviour:
   Body: {fileID: 2726080012039512840}
   Explosion: {fileID: 2361368940365892858, guid: c4d5d442023295a4cacca7f7f2131f1d, type: 3}
   Ratio: 1
-  MaxTimeRandom: 10
+  MaxTimeRandom: 7
   DeltaTime: 0
   maxTime: 0
   followSpeed: 5

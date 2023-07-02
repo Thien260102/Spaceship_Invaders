@@ -269,8 +269,11 @@ namespace Assets.Scripts
                 HUD.Instance.DisplayFloatingText("Life +1", Body.position);
             }
 
-            if (skill != null)
+            if (skill != null && fuel.Contain >= 1)
+            {
+                fuel.Contain--;
                 ActiveSkill(skill.skill);
+            }
 
         }
 

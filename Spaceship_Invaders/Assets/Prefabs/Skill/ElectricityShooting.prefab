@@ -156,7 +156,7 @@ MonoBehaviour:
   Body: {fileID: 3403245968089291468}
   Explosion: {fileID: 0}
   Ratio: 1
-  Damage: 20
+  Damage: 1000
   Effect:
     effect: 2
     duration: 2

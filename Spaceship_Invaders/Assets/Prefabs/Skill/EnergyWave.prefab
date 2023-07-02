@@ -140,7 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 1114683867503637989}
   Explosion: {fileID: 0}
-  Damage: 100
+  Ratio: 1
+  Damage: 1000
   Effect:
     effect: 0
     duration: 0

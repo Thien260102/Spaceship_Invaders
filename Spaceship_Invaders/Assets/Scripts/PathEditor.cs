@@ -4,6 +4,7 @@ using UnityEditor;
 
 namespace Assets.Scripts
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(Path))]
     public class PathEditor : Editor
     {
@@ -40,4 +41,6 @@ namespace Assets.Scripts
             }
         }
     }
+
+#endif
 }

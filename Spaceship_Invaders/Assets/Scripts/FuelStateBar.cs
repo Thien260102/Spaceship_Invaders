@@ -58,6 +58,7 @@ namespace Assets.Scripts
 
         private void Update()
         {
+            contain = Mathf.Clamp(contain, 0 , 10);
             if (contain <= 2)
                 RenderWarning();
 

@@ -81,17 +81,17 @@ namespace Assets.Scripts
 
         #region Laser
         public const int DAMAGE_Laser1 = 200;
-        public const int Damage_Laser_Default = 200;
-        public const int Damage_Laser_Default_Level2 = 400;
-        public const int Damage_Laser_Default_Level3 = 1000;
+        public const int Damage_Laser_Default = 500;
+        public const int Damage_Laser_Default_Level2 = 1200;
+        public const int Damage_Laser_Default_Level3 = 3000;
 
         #endregion
 
         #region Missle
         public const int DAMAGE_Missle1 = 50;
         public const int Damage_Missle_Default = 100;
-        public const int Damage_Missle_Default_Level2 = 200;
-        public const int Damage_Missle_Default_Level3 = 500;
+        public const int Damage_Missle_Default_Level2 = 500;
+        public const int Damage_Missle_Default_Level3 = 1000;
 
         #endregion
 

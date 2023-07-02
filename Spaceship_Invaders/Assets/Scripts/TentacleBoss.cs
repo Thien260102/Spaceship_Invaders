@@ -11,7 +11,7 @@ public class TentacleBoss : Enemy
     void Awake()
     {
         this.Init();
-        HP = 999999;
+        HP = 1000000;
 
         foreach (Tentacle t in tentacles)
         {
@@ -47,6 +47,7 @@ public class TentacleBoss : Enemy
                     tentaclesAlive[tentacles.IndexOf(t)] = false;
                     AudioManager.Instance.PlayEnemyExplosion();
                     Instantiate(Explosion, Body.position, new Quaternion(0.0f, 0.0f, 0.0f, 0.0f));
+                    HP -= 250000;
                     //spawn explosion
                 }
                 result--;
