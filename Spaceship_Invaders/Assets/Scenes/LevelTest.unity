@@ -205,7 +205,7 @@ MonoBehaviour:
   - path: {fileID: 1081200105}
     OrbitPath: {fileID: 0}
     enemySpawnInfos:
-    - enemy: {fileID: 4402568336884997738, guid: 68d60ba34419679499c01b7823c7820a, type: 3}
+    - entity: {fileID: 0}
       quantity: 5
       delayBetweenSpawn: 0.2
     WaitType: 1
@@ -213,7 +213,7 @@ MonoBehaviour:
   - path: {fileID: 1081200105}
     OrbitPath: {fileID: 0}
     enemySpawnInfos:
-    - enemy: {fileID: -1163143195586125660, guid: afaa125e047d71a4ab427cebcae3e008, type: 3}
+    - entity: {fileID: 0}
       quantity: 5
       delayBetweenSpawn: 0.2
     WaitType: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
   - path: {fileID: 2127429811}
     OrbitPath: {fileID: 1051999105}
     enemySpawnInfos:
-    - enemy: {fileID: 4402568336884997738, guid: 68d60ba34419679499c01b7823c7820a, type: 3}
+    - entity: {fileID: 2726080012325775680, guid: 2585d21b2da5d0b439485c9b79e39a27, type: 3}
       quantity: 5
       delayBetweenSpawn: 1
     WaitType: 0
@@ -358,15 +358,7 @@ MonoBehaviour:
   - path: {fileID: 1270428134}
     OrbitPath: {fileID: 1408240311}
     enemySpawnInfos:
-    - enemy: {fileID: -1163143195586125660, guid: afaa125e047d71a4ab427cebcae3e008, type: 3}
-      quantity: 5
-      delayBetweenSpawn: 1
-    WaitType: 0
-    delayPostSequence: 0
-  - path: {fileID: 1436991069}
-    OrbitPath: {fileID: 150658542}
-    enemySpawnInfos:
-    - enemy: {fileID: 569658467, guid: bc205e2c06bd56f4aba3c2a86f8ec653, type: 3}
+    - entity: {fileID: 3592289065291481016, guid: f0e3fe43fc951404b9d7617824b0c979, type: 3}
       quantity: 5
       delayBetweenSpawn: 1
     WaitType: 0
@@ -727,6 +719,8 @@ MonoBehaviour:
   waves:
   - {fileID: 633684253}
   - {fileID: 308479026}
+  pauseMenuScript: {fileID: 0}
+  waveDoneSpawning: 0
 --- !u!4 &1413026890
 Transform:
   m_ObjectHideFlags: 0

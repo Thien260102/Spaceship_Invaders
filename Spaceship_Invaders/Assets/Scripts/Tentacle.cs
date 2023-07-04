@@ -16,6 +16,7 @@ public class Tentacle : Entity
     public float followSpeed;
     public bool isFollowingPlayer;
     public bool isShooting = false;
+    public bool isWarning = true;
 
     [SerializeField] bool useStartingRootBonerotation;
 
@@ -80,20 +81,39 @@ public class Tentacle : Entity
         else
         {
             DeltaTime = 0;
-            Shooting();
+            Warning();
         }
-
-        if (isShooting)
+        
+        if(isWarning)
         {
-            laser.GetHitInfo(direction);
+            laser.RenderWarning();
         }
         UpdateStatusEffect();
     }
 
-    void Shooting()
+    private void FixedUpdate()
     {
-        isShooting = true;
+        if (isShooting)
+        {
+            laser.GetHitInfo();
+        }
+    }
+
+    void Warning()
+    {
+        isShooting = false;
+        isWarning = true;
         animator.SetTrigger("Shoot");
+
+        laser.Direction = Vector3.Normalize(direction);
+        StartCoroutine(Shooting());
+    }
+
+    IEnumerator Shooting()
+    {
+        yield return new WaitForSeconds(1);
+        isShooting = true;
+        isWarning = false;
     }
 
     void DoneShooting()

@@ -47,7 +47,6 @@ ScriptsOnlyBuild:
     - UnityEngine.U2D.Animation.SpriteSkin
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEngine.U2D.IK.CCDSolver2D
     - UnityEngine.U2D.IK.IKManager2D
@@ -1542,7 +1541,7 @@ ScriptsOnlyBuild:
     className: PositionAsUV1
   - hash:
       serializedVersion: 2
-      Hash: 9492e7990a963d02e20d1d244cb425c3
+      Hash: 7d13cc92aaf5144e9d58e4f624d5edc6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Tentacle

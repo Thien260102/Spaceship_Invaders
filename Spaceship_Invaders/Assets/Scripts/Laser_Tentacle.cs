@@ -16,6 +16,8 @@ public class Laser_Tentacle : MonoBehaviour
 
     public int Damage { get; set; }
 
+    public Vector2 Direction { get; set; }
+
     public GameObject Explosion;
 
     // Start is called before the first frame update
@@ -28,17 +30,17 @@ public class Laser_Tentacle : MonoBehaviour
         laserLine = GetComponent<LineRenderer>();
     }
 
-    public void GetHitInfo(Vector3 direction)
+    public void GetHitInfo()
     {
         //Debug.Log("Getting hit info");
         //float halfHeight = Variables.ScreenHeight / 2;
         //float maxDis = halfHeight - laserSpawnPoint.transform.position.y;
-        RaycastHit2D laserhit = Physics2D.Raycast(this.transform.position, direction, 20f, ~ignoreLayer);
+        RaycastHit2D laserhit = Physics2D.Raycast(this.transform.position, Direction, 20f, ~ignoreLayer);
 
         if (laserhit.collider != null)
         {
             length = Mathf.Clamp(Vector2.Distance(this.transform.position, laserhit.point), 0f, 20f);
-            Render(direction);
+            Render();
 
             Entity entity = laserhit.collider.GetComponent<Entity>();
             if (entity == null && laserhit.collider.GetComponentInParent<Entity>() != null)
@@ -66,18 +68,32 @@ public class Laser_Tentacle : MonoBehaviour
         {
             length = maxLength;
 
-            Render(direction);
+            Render();
         }
     }
 
-    public void Render(Vector2 direction)
+    public void Render()
     {
+        laserLine.endColor = Color.yellow;
+
         laserLine.enabled = true;
         //Debug.Log("Shooting");
         Vector2 position = this.transform.position;
         laserLine.positionCount = 2;
         laserLine.SetPosition(0, position);
-        position += direction.normalized * length;
+        position += Direction * length;
+        laserLine.SetPosition(1, position);
+    }
+
+    public void RenderWarning()
+    {
+        laserLine.endColor = Color.clear;
+
+        laserLine.enabled = true;
+        Vector2 position = this.transform.position;
+        laserLine.positionCount = 2;
+        laserLine.SetPosition(0, position);
+        position += Direction * maxLength;
         laserLine.SetPosition(1, position);
     }
 

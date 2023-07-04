@@ -232,6 +232,9 @@ namespace Assets.Scripts
 
         void KeyboardController()
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+                weapons[currentWeapon].Trigger();
+
             DictionarySkill skill = null;
             
             if (Input.GetKeyDown(KeyCode.Q))
@@ -252,16 +255,15 @@ namespace Assets.Scripts
             }
             else if(Input.GetKeyDown(KeyCode.UpArrow))
             {
-                SpeedCap += 10;
-                if (SpeedCap > MaximumSpeed)
-                    SpeedCap = MaximumSpeed;
+                currentWeapon++;
+                if (currentWeapon == weapons.Count)
+                    currentWeapon = 0;
             }
             else if(Input.GetKeyDown(KeyCode.DownArrow))
             {
-                SpeedCap -= 10;
-
-                if (SpeedCap < MinimumSpeed)
-                    SpeedCap = MinimumSpeed;
+                currentWeapon--;
+                if (currentWeapon < 0)
+                    currentWeapon = weapons.Count - 1;
             }
             else if(Input.GetKeyDown(KeyCode.U))
             {

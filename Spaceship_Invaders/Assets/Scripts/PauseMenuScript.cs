@@ -25,7 +25,7 @@ public class PauseMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
             GameObject winning = PauseMenuCanvas.Find(e => e.name == "WinningScene");
             // player cannot pause while winning scene showing.

@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 5761003475155994512}
   m_Layer: 9
   m_Name: Tentacle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -643,6 +643,7 @@ MonoBehaviour:
   followSpeed: 5
   isFollowingPlayer: 1
   isShooting: 0
+  isWarning: 1
   useStartingRootBonerotation: 0
   target: {fileID: 2726080011091203180}
   rootBone: {fileID: 2726080011971039268}
