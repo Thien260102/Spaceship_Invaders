@@ -69,13 +69,11 @@ namespace Assets.Scripts
 
         public void RenderNewState()
         {
-            
-            for (int i = 0; i < (level * 3) && i < Levels.Count; i++)
-                Levels[i].SetActive(true);
-
             for (int i = level * 3; i < Levels.Count; i++)
                 Levels[i].SetActive(false);
 
+            for (int i = 0; i <= (level * 3) && i < Levels.Count; i++)
+                Levels[i].SetActive(true);
 
             foreach (var e in Types)
                 e.SetActive(false);

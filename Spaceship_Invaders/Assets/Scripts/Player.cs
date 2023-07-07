@@ -45,6 +45,7 @@ namespace Assets.Scripts
         public float MaximumSpeed;
         public float MinimumSpeed;
         private float SpeedCap;
+        private BoxCollider2D Collider;
 
         //float halfHeight;
         //float halfWidth;
@@ -52,6 +53,7 @@ namespace Assets.Scripts
         private void Start()
         {
             Body = GetComponent<Rigidbody2D>();
+            Collider = GetComponent<BoxCollider2D>();
             lastFrameMousePosition = Body.position;
 
             Body.isKinematic = false; // turn on OncollisionEnter2d
@@ -197,8 +199,12 @@ namespace Assets.Scripts
             Body.position = mousePosition;
             // limit it on main Screen
             Body.position = new Vector3(
-                Mathf.Clamp(Body.position.x, -Variables.ScreenWidth / 2 + Variables.Adjust, Variables.ScreenWidth / 2 - Variables.Adjust),
-                Mathf.Clamp(Body.position.y, -Variables.ScreenHeight / 2 + Variables.Adjust, Variables.ScreenHeight / 2 - Variables.Adjust),
+                Mathf.Clamp(Body.position.x, 
+                            -Variables.ScreenWidth / 2 + Collider.size.x / 2,
+                             Variables.ScreenWidth / 2 - Collider.size.x / 2),
+                Mathf.Clamp(Body.position.y,
+                             -Variables.ScreenHeight / 2 + Collider.size.y / 2,
+                              Variables.ScreenHeight / 2 - Collider.size.y / 2),
                 0f
             );
 

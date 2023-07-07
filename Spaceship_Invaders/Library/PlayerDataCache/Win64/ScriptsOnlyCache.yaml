@@ -1749,4 +1749,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Level1.unity
   - Assets/Scenes/Level2.unity
   - Assets/Scenes/Level3.unity
-  playerPath: D:/Major project 1 report/SpaceshipInvaders/Spaceship_Invaders.exe
+  playerPath: E:/Study/MajorProject1/PCBuild/Spaceship_Invaders.exe

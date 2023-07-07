@@ -46,7 +46,7 @@ namespace Assets.Scripts
             Contains = new List<GameObject>();
             foreach (Transform child in transform)
             {
-                if (child.gameObject.name != "power")
+                if (child.gameObject.name != "power" && child.gameObject.name != "Background")
                     Contains.Add(child.gameObject);
             }
 
